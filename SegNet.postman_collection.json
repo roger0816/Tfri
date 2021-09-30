@@ -1,0 +1,49 @@
+{
+	"info": {
+		"_postman_id": "45b53fe5-537e-4b54-a721-505e4e526dd7",
+		"name": "SegNet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true,
+					"accept": true,
+					"accept-encoding": true,
+					"connection": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imagefile",
+							"type": "file",
+							"src": "/C:/work/Tfri/test01.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://161.35.98.42/classify_image",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"98",
+						"42"
+					],
+					"path": [
+						"classify_image"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

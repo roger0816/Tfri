@@ -1,0 +1,7 @@
+bin
+/TfriServer/release
+/TfriServer/debug
+/TfriServer/object_script.TfriServer.Debug
+/TfriServer/object_script.TfriServer.Release
+/TfriServer/Makefile.Debug
+/TfriServer/Makefile.Release
