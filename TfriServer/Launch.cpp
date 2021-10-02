@@ -90,7 +90,7 @@ void Launch::slotReadFromClient(QByteArray originData)
     if(data.sAciton == ACT_HISTORY_DATA)
     {
 
-        data.dData["data"] = CSqlClass::INS().getHistoryData();
+        data.listData = CSqlClass::INS().getHistoryData();
 
         LIB.network()->recallClient(data.enCodeJson());
     }

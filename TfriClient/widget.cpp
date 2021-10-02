@@ -7,23 +7,23 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
 
-  //  m_api.query();
+    //  m_api.query();
 
-//    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    //    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
 
-//    db.setDatabaseName("tfri");
+    //    db.setDatabaseName("tfri");
 
-//    db.setUserName("root");
+    //    db.setUserName("root");
 
-//    db.setPassword("Aa111111");
+    //    db.setPassword("Aa111111");
 
-//    db.setPort(3306);
+    //    db.setPort(3306);
 
-//    db.open();
+    //    db.open();
 
-//    qDebug()<<db.isDriverAvailable("QMYSQL");
+    //    qDebug()<<db.isDriverAvailable("QMYSQL");
 
-qDebug()<<LIB.LibTest();
+    qDebug()<<LIB.LibTest();
 
 
 
@@ -70,20 +70,31 @@ void Widget::on_pushButton_clicked()
     input.append(QString(END_DATA).toLatin1());
 
 
-   QByteArray output;
+    QByteArray output;
 
-   qDebug()<<"send size : "<<input.size();
+    qDebug()<<"send size : "<<input.size();
 
-   LIB.network()->connectHost("127.0.0.1","6000",input,output);
+    LIB.network()->connectHost("127.0.0.1","6000",input,output);
 }
 
 void Widget::on_pushButton_2_clicked()
 {
 
-    QByteArray input;
+    CSendData data;
+
+    data.sAciton = ACT_HISTORY_DATA;
+
+    data.sUser ="rogerTest";
+
+    QByteArray input = data.enCodeJson();
+
+    input.append(QString(END_DATA).toLatin1());
+
+
 
     QByteArray output;
 
     LIB.network()->connectHost("127.0.0.1","6000",input,output);
 
+    qDebug()<<"get history re :"<<output;
 }

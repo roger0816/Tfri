@@ -268,11 +268,14 @@ QVariantList CSqlClass::getHistoryData()
     {
         QVariantMap map;
 
+
+
         CDecodeData cData ;
 
         cData.sId = query.value("Sid").toString() ;
 
         cData.sBuilding = query.value("Building").toString() ;
+
         cData.sBicyclist = query.value("Bicyclist").toString() ;
         cData.sCar = query.value("Car").toString() ;
         cData.sFence = query.value("Fence").toString() ;
@@ -294,7 +297,7 @@ QVariantList CSqlClass::getHistoryData()
         cData.bResult = query.value("Result").toBool() ;
 
 
-        listRe.append(map);
+        listRe.append(cData.toMap());
     }
 
     return listRe;

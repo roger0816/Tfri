@@ -202,7 +202,7 @@ struct CSendData
 
         sMsg = map["msg"].toString();
 
-        dData = map["data"].toByteArray();
+       // dData = map["data"].toByteArray();
 
         listName = map["listName"].toList();
 

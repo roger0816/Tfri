@@ -20,6 +20,7 @@ class Ui_Widget
 {
 public:
     QPushButton *pushButton;
+    QPushButton *pushButton_2;
 
     void setupUi(QWidget *Widget)
     {
@@ -29,6 +30,9 @@ public:
         pushButton = new QPushButton(Widget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(250, 220, 221, 101));
+        pushButton_2 = new QPushButton(Widget);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(260, 400, 281, 111));
 
         retranslateUi(Widget);
 
@@ -39,6 +43,7 @@ public:
     {
         Widget->setWindowTitle(QCoreApplication::translate("Widget", "Widget", nullptr));
         pushButton->setText(QCoreApplication::translate("Widget", "PushButton", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("Widget", "history", nullptr));
     } // retranslateUi
 
 };
