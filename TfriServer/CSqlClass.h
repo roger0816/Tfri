@@ -6,6 +6,7 @@
 #include <QSqlQuery>
 #include "Library.h"
 #include <QFile>
+#include "CDefine.h"
 #include <QDir>
 
 class CSqlClass : public QObject
@@ -21,7 +22,13 @@ public:
 
     void decodeData(QString sId, QVariantMap mData);
 
-    int inserOriginPic(QString sUserId, QString sName, QByteArray dData);
+    void setDecodeData(QString sId,CDecodeData cData);
+
+    int inserOriginPic(QString sUser, QString sName, QByteArray dData);
+
+    void inserDecodePic(QString sId,QString sName, QByteArray dData);
+
+    QVariantList getHistoryData();
 
 
     QSqlDatabase m_db;

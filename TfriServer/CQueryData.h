@@ -19,25 +19,52 @@
 #include <QJsonDocument>
 #include <QFileInfo>
 #include "CSqlClass.h"
+#include <QTimer>
+
+#define QUERY_MSEC 3000
 
 extern  "C"
 {
 #include "upng.h"
 }
+
+struct CPicData
+{
+    QString sId;
+
+    QString sUser;
+
+    QString sFileName;
+
+    QByteArray dRawData;
+
+};
+
+
+
 class CQueryData : public QObject
 {
     Q_OBJECT
 public:
     explicit CQueryData(QObject *parent = nullptr);
 
-    void setFileList(QStringList listFile);
+    void setFileList(QString sUser, QStringList listFile);
+
+    void setDataList(QString sUser,QVariantList listFileName,QVariantList listData);
 
     void query();
+
 
     QNetworkAccessManager m_network;
 
 private:
-      QStringList m_listWaitQuery;
+  QList<CPicData> m_listData;
+
+  QTimer m_timer;
+
+  bool m_bBusyLock = false;
+
+  int m_iBusyTime = 0 ;
 signals:
 
 public slots:

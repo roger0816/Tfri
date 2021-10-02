@@ -5,3 +5,4 @@ bin
 /TfriServer/object_script.TfriServer.Release
 /TfriServer/Makefile.Debug
 /TfriServer/Makefile.Release
+RLib

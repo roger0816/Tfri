@@ -15,13 +15,13 @@ CONFIG -= app_bundle
 
 #include(../RLib/RLib/include/RLib.pri)
 
-win32: LIBS += -L$$PWD/../RLib/RLib/ -lRLibQt5Win
+win32: LIBS += -L$$PWD/../libs/RLib/ -lRLibQt5Win
 
-INCLUDEPATH += $$PWD/../RLib/RLib/include
-DEPENDPATH += $$PWD/../RLib/RLib/include
+INCLUDEPATH += $$PWD/../libs/RLib/include
+DEPENDPATH += $$PWD/../libs/RLib/include
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../RLib/RLib/RLibQt5Win.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/../RLib/RLib/libRLibQt5Win.a
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../libs/RLib/RLibQt5Win.lib
+else:win32-g++: PRE_TARGETDEPS += $$PWD/../libs/RLib/libRLibQt5Win.a
 
 DESTDIR = $$PWD/../bin/
 
@@ -30,6 +30,8 @@ DESTDIR = $$PWD/../bin/
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+INCLUDEPATH +=../common
 
 SOURCES += \
         ../libs/upng-master/upng.c \

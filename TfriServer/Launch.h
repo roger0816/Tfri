@@ -14,9 +14,11 @@ public:
 
     CQueryData m_ai;
 
-
+    QByteArray m_dCache;
 signals:
 public slots:
+
+    void slotReadFromClient(QByteArray originData);
 
 
 };

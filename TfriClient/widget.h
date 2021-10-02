@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QDebug>
 #include "Library.h"
+#include "CDefine.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -18,6 +19,11 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
+
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::Widget *ui;
