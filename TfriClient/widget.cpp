@@ -7,6 +7,8 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
 
+    CCallApi::INS().openConnect();
+
     //  m_api.query();
 
     //    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
@@ -25,12 +27,13 @@ Widget::Widget(QWidget *parent)
 
     qDebug()<<LIB.LibTest();
 
-
+    ui->stackedWidget->setCurrentIndex(0);
 
 }
 
 Widget::~Widget()
 {
+    CCallApi::INS().closeConnect();
     delete ui;
 }
 
@@ -57,7 +60,7 @@ void Widget::on_pushButton_clicked()
     }
 
 
-    for(int i=0;i<6;i++)
+    for(int i=0;i<ui->spinBox->value();i++)
     {
         data.listName.append(QString("test0%1.jpg").arg(i));
 
@@ -67,7 +70,6 @@ void Widget::on_pushButton_clicked()
 
     QByteArray input = data.enCodeJson();
 
-    input.append(QString(END_DATA).toLatin1());
 
 
     QByteArray output;
@@ -88,13 +90,53 @@ void Widget::on_pushButton_2_clicked()
 
     QByteArray input = data.enCodeJson();
 
-    input.append(QString(END_DATA).toLatin1());
-
-
 
     QByteArray output;
 
     LIB.network()->connectHost("127.0.0.1","6000",input,output);
 
     qDebug()<<"get history re :"<<output;
+}
+
+void Widget::on_btnTestPage_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->pageTest);
+}
+
+void Widget::on_btnTestBack_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->pageLogin);
+}
+
+void Widget::on_btnLogin_clicked()
+{
+    bool bOk = false;
+
+    if(ui->txUser->text().trimmed()=="" || ui->txPassword->text().trimmed() =="")
+    {
+        ui->lbMsg->setText("請輸入帳號/密碼");
+
+        return ;
+    }
+    else
+    {
+        QString sErrorMsg;
+
+        int iType = CCallApi::INS().callLogin(ui->txUser->text().trimmed(),ui->txPassword->text().trimmed(),sErrorMsg);
+
+        if(iType!=0)
+            bOk = true;
+
+    }
+
+
+    if(bOk)
+    {
+        ui->lbMsg->setText("登入成功");
+        ui->stackedWidget->setCurrentWidget(ui->pageAnalyze);
+    }
+    else
+    {
+        ui->lbMsg->setText("帳號密碼錯誤");
+    }
 }

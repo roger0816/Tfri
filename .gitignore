@@ -5,4 +5,10 @@ bin
 /TfriServer/object_script.TfriServer.Release
 /TfriServer/Makefile.Debug
 /TfriServer/Makefile.Release
+/TfriServer/*.user
+/TfriServer/*.user.*
 RLib
+/data/*
+data
+/TfriClient/*.user
+/TfriClient/*.user.*

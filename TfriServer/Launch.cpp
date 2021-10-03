@@ -2,8 +2,8 @@
 
 Launch::Launch(QObject *parent) : QObject(parent)
 {
-    // DB.inserOriginPic("aa","BB");
-    CSqlClass::INS();
+
+    CSqlClass::INS().open("segnet.sqlite");
 
     // m_ai.setFileList("testUser",QStringList()<<"../test01.jpg"<<"../test01.jpg"<<"../test01.jpg"<<"../test01.jpg");
 //    CSendData data;
@@ -55,8 +55,8 @@ void Launch::slotReadFromClient(QByteArray originData)
     }
 
     qDebug()<<"get pack size : "<<m_dCache.size();
-    QByteArray dData = m_dCache.remove(m_dCache.length()-tmp.length(),tmp.length());
-
+   // QByteArray dData = m_dCache.remove(m_dCache.length()-tmp.length(),tmp.length());
+    QByteArray dData = m_dCache;
     m_dCache.clear();
 
     CSendData data;
@@ -90,9 +90,28 @@ void Launch::slotReadFromClient(QByteArray originData)
     if(data.sAciton == ACT_HISTORY_DATA)
     {
 
-        data.listData = CSqlClass::INS().getHistoryData();
 
-        LIB.network()->recallClient(data.enCodeJson());
+        data.dData["Analyze"]= CSQL.getAnalyzeData(data.sMsg);
+
+        data.dData["Pic"] = CSQL.getPicData(data.sMsg);
+
+
     }
 
+    else if(data.sAciton == ACT_LOGIN)
+    {
+        qDebug()<<"Action : login";
+
+        QString sType = "0";
+
+        CSqlClass::INS().login(data.sUser,data.sMsg,sType);
+
+        data.sMsg = sType;
+
+
+    }
+
+    QByteArray re = data.enCodeJson();
+    qDebug()<<"return : "<<re;
+    LIB.network()->recallClient(re);
 }

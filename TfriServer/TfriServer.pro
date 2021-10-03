@@ -36,7 +36,7 @@ INCLUDEPATH +=../common
 SOURCES += \
         ../libs/upng-master/upng.c \
         CQueryData.cpp \
-        CSqlClass.cpp \
+        ../common/CSqlClass.cpp \
         Launch.cpp \
         main.cpp
 
@@ -46,11 +46,16 @@ HEADERS += \
     ../common/CDefine.h \
     ../libs/upng-master/upng.h \
     CQueryData.h \
-    CSqlClass.h \
+    ../common/CSqlClass.h \
     Launch.h
 
 INCLUDEPATH+= ../libs/upng-master
 
+
+
+OBJECTS_DIR = $$PWD/obj
+MOC_DIR = $$PWD/obj
+UI_DIR = $$PWD/obj/ui_header
 
 
 

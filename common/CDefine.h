@@ -8,13 +8,49 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+
+#define ACT_LOGIN "3001"
 #define ACT_HISTORY_DATA "4001"
 #define ACT_UPDATE_DATA "4002"
 #define ACT_SEND_DATA "6001"
 
 #define END_DATA "::ENDX::"
 
-struct CDecodeData
+
+struct CPicData
+{
+    QString sId;
+
+    QString sAnalyzeId;
+
+    QString sUser;
+
+    QString sFileName;
+
+    QByteArray dRawData;
+
+    QByteArray dDecodeData;
+
+    QString sCreateTime;
+
+    QString sUpdateTime;
+
+    void setData(const QVariantMap map)
+    {
+        sId = map["Sid"].toString();
+        sAnalyzeId = map["AnalyzeId"].toString();
+        sId = map["Sid"].toString();
+        sId = map["Sid"].toString();
+    }
+
+    QVariantMap toMap()
+    {
+
+    }
+
+};
+
+struct CAnalyzeData
 {
     //    Sky = [128,128,128]
     //    Building = [128,0,0]
@@ -46,10 +82,10 @@ struct CDecodeData
     //    "Tree:": "4.8",
     //    "Unlabelled": "0.0",
 
-    //    "Image Width": "656",
-    //    "Image Height": "438",
-    //    "Algorithm Time": "19.448",
-    //    "Algorithm Result": true,
+    //    "Image_Width": "656",
+    //    "Image_Height": "438",
+    //    "Algorithm_Time": "19.448",
+    //    "Algorithm_Result": true,
     //    "PNG":"iVBORw0KGgoAAA..."
 
 
@@ -58,7 +94,7 @@ struct CDecodeData
     {
         sId = dData["Id"].toString();
         sName = dData["Name"].toString();
-        sUser = dData["UserId"].toString();
+        sUser = dData["User"].toString();
 
         sBuilding = dData["Building"].toString();
         sBicyclist = dData["Bicyclist"].toString();
@@ -81,10 +117,18 @@ struct CDecodeData
 
         sUnlabelled = dData["Unlabelled"].toString();
 
-        iW = dData["Image Width"].toString().toInt();
-        iH = dData["Image Height"].toString().toInt();
-        sAlgorithmTime = dData["Algorithm Time"].toString();
-        bResult = dData["Algorithm Result"].toBool();
+        iW = dData["Image_Width"].toString().toInt();
+        iH = dData["Image_Height"].toString().toInt();
+        sAlgorithmTime = dData["Algorithm_Time"].toString();
+        bResult = dData["Algorithm_Result"].toBool();
+
+        if(dData["CreateTime"].isValid())
+            sCreateTime = dData["CreateTime"].toString();
+
+        if(dData["UpdateTime"].isValid())
+            sUpdateTime = dData["UpdateTime"].toString();
+
+
 
     }
 
@@ -94,7 +138,7 @@ struct CDecodeData
 
         dData["Id"] = sId;
         dData["Name"] = sName;
-        dData["UserId"] = sUser;
+        dData["User"] = sUser;
 
         dData["Building"] = sBuilding;
         dData["Bicyclist"] = sBicyclist;
@@ -112,10 +156,17 @@ struct CDecodeData
         dData["Tree"] = sTree;
         dData["Unlabelled"] = sUnlabelled;
 
-        dData["Image Width"] = iW  ;
-        dData["Image Height"] = iH ;
-        dData["Algorithm Time"] = sAlgorithmTime;
-        dData["Algorithm Result"]= bResult;
+        dData["Image_Width"] = iW  ;
+        dData["Image_Height"] = iH ;
+        dData["Algorithm_Time"] = sAlgorithmTime;
+        dData["Algorithm_Result"]= bResult;
+
+
+        dData["CreateTime"] = sCreateTime ;
+
+        dData["UpdateTime"] = sUpdateTime ;
+
+
 
         return dData;
     };
@@ -145,9 +196,15 @@ struct CDecodeData
     QString sAlgorithmTime;
     bool bResult;
 
+    QString sCreateTime;
+
+    QString sUpdateTime;
+
 
 
 };
+
+
 
 struct CSendData
 {
@@ -170,6 +227,7 @@ struct CSendData
 
         d.insert("action",sAciton);
         d.insert("user",sUser);
+
         d.insert("msg",sMsg);
 
         d.insert("data",dData);
@@ -181,16 +239,23 @@ struct CSendData
         QJsonObject obj;
 
         obj = QJsonObject(QJsonDocument::fromJson(QJsonDocument::fromVariant(QVariant(d)).toJson()).object());
-        return   QJsonDocument(obj).toJson();
+
+        QByteArray re = QJsonDocument(obj).toJson();
+
+        re.append(QString(END_DATA).toLatin1());
+
+        return   re;
 
 
     }
 
     bool deCodeJson(QByteArray jsonData)
     {
+        QByteArray tmp = QString(END_DATA).toLatin1();
 
+        QByteArray dData =jsonData.remove(jsonData.length()-tmp.length(),tmp.length());
 
-        QVariantMap map= QJsonDocument::fromJson(jsonData).toVariant().toMap();
+        QVariantMap map= QJsonDocument::fromJson(dData).toVariant().toMap();
 
 
         if(!map["action"].isValid())
@@ -202,7 +267,7 @@ struct CSendData
 
         sMsg = map["msg"].toString();
 
-       // dData = map["data"].toByteArray();
+        // dData = map["data"].toByteArray();
 
         listName = map["listName"].toList();
 

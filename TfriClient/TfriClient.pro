@@ -16,19 +16,35 @@ DEPENDPATH += $$PWD/../libs/RLib/include
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../libs/RLib/RLibQt5Win.lib
 else:win32-g++: PRE_TARGETDEPS += $$PWD/../libs/RLib/libRLibQt5Win.a
 
+DESTDIR = $$PWD/../bin
+OBJECTS_DIR = $$PWD/obj
+MOC_DIR = $$PWD/obj
+UI_DIR = $$PWD/obj/ui_header
+
+
+
 INCLUDEPATH +=../common
 
 DESTDIR = $$PWD/../bin/
 
 SOURCES += \
+    ../common/CSqlClass.cpp \
+    CCallApi.cpp \
+    Global.cpp \
+    WTableAnalyze.cpp \
     main.cpp \
     widget.cpp
 
 HEADERS += \
     ../common/CDefine.h \
+    ../common/CSqlClass.h \
+    CCallApi.h \
+    Global.h \
+    WTableAnalyze.h \
     widget.h
 
 FORMS += \
+    WTableAnalyze.ui \
     widget.ui
 
 # Default rules for deployment.

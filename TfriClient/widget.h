@@ -5,7 +5,7 @@
 #include <QDebug>
 #include "Library.h"
 #include "CDefine.h"
-
+#include "CCallApi.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -24,6 +24,12 @@ private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
+
+    void on_btnTestPage_clicked();
+
+    void on_btnTestBack_clicked();
+
+    void on_btnLogin_clicked();
 
 private:
     Ui::Widget *ui;

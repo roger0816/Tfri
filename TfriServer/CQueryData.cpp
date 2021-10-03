@@ -129,7 +129,7 @@ void CQueryData::query()
 
 
 
-    QString sUrl = QString("http://161.35.98.42:8080/v2/classify_image");
+    QString sUrl = QString("http://161.35.98.42:8080/v2.1/classify_image");
 
     QNetworkRequest request;
 
@@ -165,7 +165,7 @@ void CQueryData::query()
     //        QByteArray dData = file.readAll();
     //        file.close();
 
-    m_listData[0].sId = QString::number(CSqlClass::INS().inserOriginPic(sUser,sFileName,dPic));
+    m_listData[0].sId = QString::number(CSqlClass::INS().insertOriginPic(sUser,sFileName,dPic));
 
     QHttpMultiPart *multi_part = new QHttpMultiPart(QHttpMultiPart::FormDataType);
 
@@ -212,20 +212,6 @@ void CQueryData::slotFinish(QNetworkReply *reply)
 
     }
 
-    //    {"Building": "67.7",
-    //    "Road_Marking": "0.0",
-    //    "Image Height": "438",
-    //    "Fence": "0.0",
-    //    "Tree:": "4.8",
-    //    "Image Width": "656",
-    //    "Car": "4.4",
-    //    "Bicyclist": "0.6",
-    //    "Sky": "14.6",
-    //    "Pavement": "1.6",
-    //    "Pedestrian": "1.2",
-    //    "Pole": "1.8",
-    //    "Unlabelled": "0.0",
-    //    "PNG":"iVBORw0KGgoAAA..."};
 
 
     QJsonParseError jerr;
@@ -251,7 +237,7 @@ void CQueryData::slotFinish(QNetworkReply *reply)
 
     data.insert("Id",cPic.sId);
 
-    data.insert("UserId",cPic.sUser);
+    data.insert("User",cPic.sUser);
 
     data.insert("Name",cPic.sFileName);
 
@@ -259,17 +245,17 @@ void CQueryData::slotFinish(QNetworkReply *reply)
     m_listData.pop_front();
 
 
-    bool bApiOK = data["Algorithm Result"].isValid();
+    bool bApiOK = data["Algorithm_Result"].isValid();
 
     if(bApiOK)
     {
-        CDecodeData decodeData;
+        CAnalyzeData decodeData;
 
         decodeData.setData(data);
 
-        CSqlClass::INS().setDecodeData(cPic.sId,decodeData);
+        CSqlClass::INS().setAnalyzeData(cPic.sId,decodeData);
 
-        CSqlClass::INS().inserDecodePic(cPic.sId,cPic.sFileName,data["PNG"].toByteArray());
+        CSqlClass::INS().insertDecodePic(cPic.sId,cPic.sFileName,data["PNG"].toByteArray());
 
     }
     // LIB.utility.writeFile(QString("../data/output/%1").arg(cPic.sFileName+".png"),QByteArray::fromBase64(imgData));

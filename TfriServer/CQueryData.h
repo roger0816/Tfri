@@ -28,17 +28,7 @@ extern  "C"
 #include "upng.h"
 }
 
-struct CPicData
-{
-    QString sId;
 
-    QString sUser;
-
-    QString sFileName;
-
-    QByteArray dRawData;
-
-};
 
 
 
