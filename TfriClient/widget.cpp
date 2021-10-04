@@ -6,7 +6,7 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-
+    //157.245.142.72
     CSQL.open("local.sqlite");
 
     CCallApi::INS().openConnect();
@@ -30,6 +30,8 @@ Widget::Widget(QWidget *parent)
     qDebug()<<LIB.LibTest();
 
     ui->stackedWidget->setCurrentIndex(0);
+
+
 
 }
 
