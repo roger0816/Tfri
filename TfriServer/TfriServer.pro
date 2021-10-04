@@ -64,9 +64,9 @@ UI_DIR = $$PWD/obj/ui_header
 
 
 
-unix:!macx: LIBS += -L$$PWD/../libs/Rlib/ -lRLibQt5Embedded
+unix:!macx: LIBS += -L$$PWD/../libs/RLib/ -lRLibQt5Embedded
 
-INCLUDEPATH += $$PWD/../libs/Rlib/include
-DEPENDPATH += $$PWD/../libs/Rlib/include
+INCLUDEPATH += $$PWD/../libs/RLib/include
+DEPENDPATH += $$PWD/../libs/RLib/include
 
-unix:!macx: PRE_TARGETDEPS += $$PWD/../libs/Rlib/libRLibQt5Embedded.a
+unix:!macx: PRE_TARGETDEPS += $$PWD/../libs/RLib/libRLibQt5Embedded.a
