@@ -7,7 +7,6 @@ bin
 /TfriServer/Makefile.Release
 /TfriServer/*.user
 /TfriServer/*.user.*
-RLib
 /data/*
 data
 /TfriClient/*.user
