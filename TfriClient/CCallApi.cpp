@@ -70,7 +70,7 @@ int CCallApi::callLogin(QString sUser, QString sPassword, QString &sErrorMsg)
     QByteArray input= data.enCodeJson() ;
 
     m_scoket.write(input);
-  //  LIB.network()->connectHost(m_sServerIp,m_sPort,)
+    //  LIB.network()->connectHost(m_sServerIp,m_sPort,)
 
     m_scoket.waitForReadyRead(5000);
 
@@ -110,6 +110,8 @@ bool CCallApi::queryHistory()
 
     QVariantList listAnalyze = m_data.dData["Analyze"].toList();
 
+    QVariantList listPic = m_data.dData["Analyze"].toList();
+
     for(int i=0;i<listAnalyze.length();i++)
     {
         CAnalyzeData itemData;
@@ -119,17 +121,29 @@ bool CCallApi::queryHistory()
         CSQL.setAnalyzeData(itemData.sId, itemData);
 
 
-
     }
 
 
+    for(int i=0;i<listPic.length();i++)
+    {
+        CPicData itemData;
+
+        itemData.setData(listPic.at(i).toMap());
+
+        CSQL.setPicData(itemData);
+
+
+    }
 
 
     bool bRe =false;
 
     bRe = m_data.sAciton == data.sAciton;
 
-    return bRe;
+    if(listAnalyze.length()>0)
+        return queryHistory();
+    else
+        return bRe;
 }
 
 void CCallApi::openConnect()

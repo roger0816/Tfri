@@ -33,7 +33,7 @@ public:
 
     QString getAnalyzeLast();
 
-    void setPicData(QString sId);
+    void setPicData(CPicData cData);
 
     QVariantList getPicData(QString sLastDate);
 

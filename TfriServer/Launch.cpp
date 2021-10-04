@@ -92,9 +92,11 @@ void Launch::slotReadFromClient(QByteArray originData)
 
         qDebug()<<"get history "<<data.sMsg;
         data.dData["Analyze"]= CSQL.getAnalyzeData(data.sMsg);
+
         qDebug()<<"get pic "<<data.sMsg;
         data.dData["Pic"] = CSQL.getPicData(data.sMsg);
 
+        data.sMsg=QString("%1,%2").arg(data.dData["Analyze"].toList().length()).arg(data.dData["Pic"].toList().length());
 
     }
 

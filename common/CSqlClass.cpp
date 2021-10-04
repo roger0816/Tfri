@@ -275,7 +275,7 @@ QVariantList CSqlClass::getAnalyzeData(QString sLastDate)
 
     QSqlQuery query(m_db);
 
-    query.prepare("SELECT * FROM ANALYZE WHERE UpdateTime>:DateTime ;");
+    query.prepare("SELECT * FROM ANALYZE WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC LIMIT 3");
     query.bindValue(":DateTime",sLastDate);
     query.exec();
 
@@ -337,13 +337,39 @@ QString CSqlClass::getAnalyzeLast()
     return sRe;
 }
 
+void CSqlClass::setPicData(CPicData cData)
+{
+    QSqlQuery query(m_db);
+
+     query.prepare("INSERT INTO PicData (Sid,AnalyzeId,User,FileName,Pic,DecodePic,CreateTime,UpdateTime) "
+                   " VALUES(:Sid,:AnalyzeId,:User,:FileName,:Pic,:DecodePic,:CreateTime,:UpdateTime ) "
+                   " ON CONFLICT(Sid) DO UPDATE SET "
+                   " UPDATE PicData SET AnalyzeId=:AnalyzeId ,User=:User ,FileName=:FileName "
+                   " ,Pic=:Pic ,DecodePic=:DecodePic ,CreateTime=:CreateTime ,UpdateTime=:UpdateTime "
+                   " WHERE Sid=:Sid" );
+
+                   query.bindValue(":Sid",cData.sId);
+                   query.bindValue(":AnalyzeId",cData.sAnalyzeId);
+                   query.bindValue(":User",cData.sUser);
+                   query.bindValue(":FileName",cData.sFileName);
+                   query.bindValue(":Pic",cData.dRawData);
+                   query.bindValue(":DecodePic",cData.dDecodeData);
+                   query.bindValue(":CreateTime",cData.sCreateTime);
+                   query.bindValue(":UpdateTime",cData.sUpdateTime);
+
+                   query.exec();
+
+
+
+}
+
 QVariantList CSqlClass::getPicData(QString sLastDate)
 {
     QVariantList listRe;
 
     QSqlQuery query(m_db);
 
-    query.prepare("SELECT * FROM PicData WHERE UpdateTime>:DateTime ;");
+    query.prepare("SELECT * FROM PicData WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC LIMIT 3;");
     query.bindValue(":DateTime",sLastDate);
     query.exec();
     while(query.next())

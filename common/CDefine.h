@@ -39,13 +39,30 @@ struct CPicData
     {
         sId = map["Sid"].toString();
         sAnalyzeId = map["AnalyzeId"].toString();
-        sId = map["Sid"].toString();
-        sId = map["Sid"].toString();
+        sUser = map["User"].toString();
+        sFileName = map["FileName"].toString();
+
+        dRawData = map["Pic"].toByteArray();
+        dDecodeData = map["DecodePic"].toByteArray();
+        sCreateTime = map["CreateTime"].toString();
+        sUpdateTime = map["UpdateTime"].toString();
     }
 
     QVariantMap toMap()
     {
+        QVariantMap map;
 
+        map["Sid"] = sId;
+        map["AnalyzeId"] = sAnalyzeId  ;
+        map["User"] = sUser;
+        map["FileName"] =  sFileName;
+
+        map["Pic"] = dRawData;
+        map["DecodePic"] = dDecodeData;
+        map["CreateTime"] = sCreateTime;
+        map["UpdateTime"]= sUpdateTime;
+
+        return map;
     }
 
 };
