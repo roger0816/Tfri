@@ -7,6 +7,8 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
 
+    CSQL.open("local.sqlite");
+
     CCallApi::INS().openConnect();
 
     //  m_api.query();

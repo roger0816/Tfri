@@ -90,9 +90,9 @@ void Launch::slotReadFromClient(QByteArray originData)
     if(data.sAciton == ACT_HISTORY_DATA)
     {
 
-
+        qDebug()<<"get history "<<data.sMsg;
         data.dData["Analyze"]= CSQL.getAnalyzeData(data.sMsg);
-
+        qDebug()<<"get pic "<<data.sMsg;
         data.dData["Pic"] = CSQL.getPicData(data.sMsg);
 
 

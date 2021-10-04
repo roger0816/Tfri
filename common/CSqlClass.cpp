@@ -313,7 +313,7 @@ QVariantList CSqlClass::getAnalyzeData(QString sLastDate)
         cData.sAlgorithmTime = query.value("AlgorithmTime").toString() ;
         cData.bResult = query.value("Result").toBool() ;
 
-
+        qDebug()<<"append : "<<cData.sId;
         listRe.append(cData.toMap());
     }
 
@@ -360,7 +360,7 @@ QVariantList CSqlClass::getPicData(QString sLastDate)
         cData.dRawData = query.value("Pic").toByteArray();
         cData.dDecodeData = query.value("DecodePic").toByteArray();
 
-
+        qDebug()<<"pic data : "<<cData.sId;
         listRe.append(cData.toMap());
     }
 

@@ -29,7 +29,7 @@ public:
 
     QString m_sUser;
 
-    QList<CAnalyzeData> m_analyzeData;
+
 
 private:
     CCallApi(QObject *parent = nullptr);

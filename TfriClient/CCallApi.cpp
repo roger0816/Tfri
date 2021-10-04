@@ -91,6 +91,8 @@ bool CCallApi::queryHistory()
 
     data.sUser = m_sUser;
 
+    data.sMsg = CSQL.getAnalyzeLast();
+
     data.sAciton = ACT_HISTORY_DATA;
 
     QByteArray input= data.enCodeJson() ;
@@ -106,21 +108,20 @@ bool CCallApi::queryHistory()
 
 
 
-    QVariantList listData = m_data.listData;
+    QVariantList listAnalyze = m_data.dData["Analyze"].toList();
 
-    for(int i=0;i<listData.length();i++)
+    for(int i=0;i<listAnalyze.length();i++)
     {
         CAnalyzeData itemData;
 
-        itemData.setData(listData.at(i).toMap());
+        itemData.setData(listAnalyze.at(i).toMap());
 
-        CSQL.setAnalyzeData(m_sUser, itemData);
+        CSQL.setAnalyzeData(itemData.sId, itemData);
 
 
-        m_analyzeData.append(itemData);
+
     }
 
-    qDebug()<<"len : "<<m_analyzeData.length();
 
 
 
