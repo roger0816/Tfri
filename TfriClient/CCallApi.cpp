@@ -40,6 +40,8 @@ void CCallApi::reply()
 
 
     qDebug()<<"reply : "<<dData.length();
+
+    qDebug()<<"reply data :"<<dData.toStdString().c_str();
     m_dCache.clear();
 
     m_data.deCodeJson(dData);
@@ -110,7 +112,7 @@ bool CCallApi::queryHistory()
 
     QVariantList listAnalyze = m_data.dData["Analyze"].toList();
 
-    qDebug()<<"data len : "<<m_data.dData["Analyze"].toList();
+    qDebug()<<"data len : "<<listAnalyze.length();
 
 
 

