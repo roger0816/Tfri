@@ -110,7 +110,7 @@ void Launch::slotReadFromClient(QByteArray originData)
 
 
         if(data.sUser=="root" && data.sMsg =="Aa111111")
-            sType = 99;
+            sType = "99";
 
 
         data.sMsg = sType;
