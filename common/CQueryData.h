@@ -56,7 +56,7 @@ private:
 
   int m_iBusyTime = 0 ;
 signals:
-
+    void updateData(QString sId);
 public slots:
 
     void slotFinish(QNetworkReply *reply);

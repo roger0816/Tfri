@@ -2,6 +2,7 @@
 #define CDEFINE_H
 
 #include <QDebug>
+#include <QColor>
 #include <QString>
 #include <QByteArray>
 #include <QVariantMap>
@@ -78,6 +79,9 @@ struct CPicData
 
 struct CAnalyzeData
 {
+
+    QMap<QString,QColor> mColor;
+
     //    Sky = [128,128,128]
     //    Building = [128,0,0]
     //    Pole = [192,192,128]
@@ -168,31 +172,47 @@ struct CAnalyzeData
                <<"Image_Width"<<"Image_Height"<<"Algorithm_Time"<<"Algorithm_Result"
               <<"CreateTime"<<"UpdateTime";
 
+        mColor["Building"] =QColor::fromRgb(0,0,128);
+        mColor["Bicyclist"] =QColor::fromRgb(192,128,0);
+        mColor["Car"] =QColor::fromRgb(128,0,64);
+        mColor["Fence"] =QColor::fromRgb(128,64,64);
+        mColor["Pavement"] =QColor::fromRgb(222,40,60);
+        mColor["Pedestrian"] =QColor::fromRgb(0,64,64);
+
+        mColor["Pole"] =QColor::fromRgb(128,192,192);
+        mColor["Road"] =QColor::fromRgb(128,64,128);
+        mColor["Road_Marking"] =QColor::fromRgb(0,69,255);
+        mColor["Sky"] =QColor::fromRgb(128,128,128);
+        mColor["SignSymbol"] =QColor::fromRgb(128,128,192);
+        mColor["Tree"] =QColor::fromRgb(0,128,128);
+        mColor["Unlabelled"] =QColor::fromRgb(0,0,0);
+
+
     }
 
     QVariantMap toMap()
     {
         QVariantMap dData;
 
-        dData["Id"] = sId;
+        dData["Id"] = sId.toDouble();
         dData["Name"] = sName;
         dData["User"] = sUser;
 
-        dData["Building"] = sBuilding;
-        dData["Bicyclist"] = sBicyclist;
-        dData["Car"] = sCar;
-        dData["Fence"] = sFence;
+        dData["Building"] = sBuilding.toDouble();
+        dData["Bicyclist"] = sBicyclist.toDouble();
+        dData["Car"] = sCar.toDouble();
+        dData["Fence"] = sFence.toDouble();
 
-        dData["Pavement"] = sPavement;
-        dData["Pedestrian"] = sPedestrian;
-        dData["Pole"] = sPole;
-        dData["Road"] = sRoad;
-        dData["Road_Marking"] = sRoadMarking;
+        dData["Pavement"] = sPavement.toDouble();
+        dData["Pedestrian"] = sPedestrian.toDouble();
+        dData["Pole"] = sPole.toDouble();
+        dData["Road"] = sRoad.toDouble();
+        dData["Road_Marking"] = sRoadMarking.toDouble();
 
-        dData["Sky"] = sSky;
-        dData["SignSymbol"] = sSignSymbol;
-        dData["Tree"] = sTree;
-        dData["Unlabelled"] = sUnlabelled;
+        dData["Sky"] = sSky.toDouble();
+        dData["SignSymbol"] = sSignSymbol.toDouble();
+        dData["Tree"] = sTree.toDouble();
+        dData["Unlabelled"] = sUnlabelled.toDouble();
 
         dData["Image_Width"] = iW  ;
         dData["Image_Height"] = iH ;
@@ -239,6 +259,8 @@ struct CAnalyzeData
     QString sUpdateTime;
 
     QStringList listKey;
+
+    QVariantMap mMapping;
 
 };
 

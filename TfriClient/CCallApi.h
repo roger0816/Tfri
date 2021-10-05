@@ -50,6 +50,8 @@ void replyHistory();
 
 signals:
     void replayOk();
+
+    void updateData(QString sId);
 public slots:
     void reply();
 

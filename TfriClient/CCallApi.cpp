@@ -12,7 +12,7 @@ CCallApi::CCallApi(QObject *parent) : QObject(parent)
     m_ai.query();
 #endif
 
-
+    connect(&m_ai,&CQueryData::updateData,this,&CCallApi::updateData);
 }
 
 void CCallApi::replyHistory()

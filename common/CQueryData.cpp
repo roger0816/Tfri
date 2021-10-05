@@ -181,7 +181,7 @@ void CQueryData::query()
     //  request.setHeader(QNetworkRequest::ContentLengthHeader,data.size());
     // multi_part->setBoundary("-----wvm-----");
 
-    QNetworkReply *reply = m_network.post(request,multi_part);
+    m_network.post(request,multi_part);
 
     //        reply->setProperty("id",QString::number(iId));
 
@@ -263,6 +263,8 @@ void CQueryData::slotFinish(QNetworkReply *reply)
     reply->deleteLater();
 
     m_iBusyTime = 0;
+
+    emit updateData(cPic.sId);
 
     m_bBusyLock = false;
 
