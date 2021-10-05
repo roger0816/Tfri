@@ -6,7 +6,7 @@
 #include "Library.h"
 #include "CDefine.h"
 #include "CCallApi.h"
-
+#include "CQueryData.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE
@@ -33,5 +33,6 @@ private slots:
 
 private:
     Ui::Widget *ui;
+    CQueryData m_ai;
 };
 #endif // WIDGET_H

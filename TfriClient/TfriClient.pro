@@ -28,6 +28,7 @@ INCLUDEPATH +=../common
 DESTDIR = $$PWD/../bin/
 
 SOURCES += \
+    ../common/CQueryData.cpp \
     ../common/CSqlClass.cpp \
     CCallApi.cpp \
     Global.cpp \
@@ -37,6 +38,7 @@ SOURCES += \
 
 HEADERS += \
     ../common/CDefine.h \
+    ../common/CQueryData.h \
     ../common/CSqlClass.h \
     CCallApi.h \
     Global.h \

@@ -23,10 +23,10 @@
 
 #define QUERY_MSEC 3000
 
-extern  "C"
-{
-#include "upng.h"
-}
+//extern  "C"
+//{
+//#include "upng.h"
+//}
 
 
 

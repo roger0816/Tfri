@@ -23,6 +23,8 @@ public:
 
     void closeConnect();
 
+    void callAnylyze(QList<QString> listFilePath);
+
 
     QString m_sServerIp;
     QString m_sPort;

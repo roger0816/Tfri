@@ -11,7 +11,18 @@ Widget::Widget(QWidget *parent)
 
     CCallApi::INS().openConnect();
 
-    //  m_api.query();
+
+    QStringList list;
+
+    for(int i=0;i<100;i++)
+    {
+        list.append("../test01.jpg");
+    }
+
+    m_ai.setFileList("root",list);
+
+    m_ai.query();
+
 
     //    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
 
@@ -80,7 +91,7 @@ void Widget::on_pushButton_clicked()
 
     qDebug()<<"send size : "<<input.size();
 
-    LIB.network()->connectHost("127.0.0.1","6000",input,output);
+    LIB.network()->connectHost("157.245.142.72","6000",input,output);
 }
 
 void Widget::on_pushButton_2_clicked()

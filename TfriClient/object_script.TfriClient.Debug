@@ -1,9 +1,11 @@
+obj/CQueryData.o
 obj/CSqlClass.o
 obj/CCallApi.o
 obj/Global.o
 obj/WTableAnalyze.o
 obj/main.o
 obj/widget.o
+obj/moc_CQueryData.o
 obj/moc_CSqlClass.o
 obj/moc_CCallApi.o
 obj/moc_Global.o

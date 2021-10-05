@@ -35,7 +35,7 @@ INCLUDEPATH +=../common
 
 SOURCES += \
         ../libs/upng-master/upng.c \
-        CQueryData.cpp \
+        ../common/CQueryData.cpp \
         ../common/CSqlClass.cpp \
         Launch.cpp \
         main.cpp
@@ -45,7 +45,7 @@ SOURCES += \
 HEADERS += \
     ../common/CDefine.h \
     ../libs/upng-master/upng.h \
-    CQueryData.h \
+    ../common/CQueryData.h \
     ../common/CSqlClass.h \
     Launch.h
 

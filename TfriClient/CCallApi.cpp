@@ -168,3 +168,45 @@ void CCallApi::closeConnect()
 {
     m_scoket.close();
 }
+
+void CCallApi::callAnylyze(QList<QString> listFilePath)
+{
+
+    CSendData data;
+
+    data.sAciton = ACT_SEND_DATA;
+
+    data.sUser =m_sUser;
+
+    for(int i=0;i<listFilePath.length();i++)
+    {
+        QFile f(listFilePath.at(i));
+
+        QByteArray imgData;
+        if(f.open(QIODevice::ReadOnly))
+        {
+            imgData = f.readAll().toBase64();
+
+            f.close();
+        }
+
+
+
+            data.listName.append(listFilePath.at(i).split("/").last());
+
+            data.listData.append(imgData);
+
+    }
+
+    QByteArray input = data.enCodeJson();
+
+
+
+    QByteArray output;
+
+    qDebug()<<"send size : "<<input.size();
+
+    m_scoket.write(input);
+
+  //  LIB.network()->connectHost("127.0.0.1","6000",input,output);
+}

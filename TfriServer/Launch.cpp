@@ -87,7 +87,7 @@ void Launch::slotReadFromClient(QByteArray originData)
 
     }
 
-    if(data.sAciton == ACT_HISTORY_DATA)
+    else if(data.sAciton == ACT_HISTORY_DATA)
     {
 
         qDebug()<<"get history "<<data.sMsg;
@@ -119,6 +119,10 @@ void Launch::slotReadFromClient(QByteArray originData)
 
 
 
+    }
+    else
+    {
+        qDebug()<<"unkonw action ";
     }
 
     QByteArray re = data.enCodeJson();

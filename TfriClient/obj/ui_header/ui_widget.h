@@ -269,7 +269,7 @@ public:
         btnLogin->setText(QCoreApplication::translate("Widget", "\347\231\273\345\205\245", nullptr));
         btnTestPage->setText(QCoreApplication::translate("Widget", "TEST", nullptr));
         label_2->setText(QCoreApplication::translate("Widget", "\345\270\263\350\231\237:", nullptr));
-        txUser->setText(QCoreApplication::translate("Widget", "Roger", nullptr));
+        txUser->setText(QCoreApplication::translate("Widget", "root", nullptr));
         label_3->setText(QCoreApplication::translate("Widget", "\345\257\206\347\242\274:", nullptr));
         txPassword->setText(QCoreApplication::translate("Widget", "Aa111111", nullptr));
         lbMsg->setText(QString());
