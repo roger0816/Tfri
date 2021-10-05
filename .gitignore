@@ -13,3 +13,6 @@ data
 /TfriClient/*.user
 /TfriClient/*.user.*
 /TfriClient/obj
+/TfriServer/Makefile
+/TfriServer/TfriServer.pro.user
+obj
