@@ -8,6 +8,9 @@ CCallApi::CCallApi(QObject *parent) : QObject(parent)
     m_sServerIp="157.245.142.72";
     m_sPort ="6000";
 
+#ifdef OFFLINE
+    m_ai.query();
+#endif
 
 
 }
@@ -84,11 +87,16 @@ int CCallApi::callLogin(QString sUser, QString sPassword, QString &sErrorMsg)
     else
         m_sUser ="";
 
+
     return iType;
 }
 
 bool CCallApi::queryHistory()
 {
+   bool bRe =false;
+#ifdef OFFLINE
+
+#else
 
     CSendData data;
 
@@ -144,13 +152,15 @@ bool CCallApi::queryHistory()
     qDebug()<<"analyze data len : "<<listAnalyze.length();
 
 
-    bool bRe =false;
+
 
     bRe = m_data.sAciton == data.sAciton;
 
     if(listAnalyze.length()>0)
         return queryHistory();
-    else
+
+#endif
+
         return bRe;
 }
 
@@ -171,7 +181,13 @@ void CCallApi::closeConnect()
 
 void CCallApi::callAnylyze(QList<QString> listFilePath)
 {
+#ifdef OFFLINE
 
+
+    m_ai.setFileList(m_sUser,listFilePath);
+
+
+#else
     CSendData data;
 
     data.sAciton = ACT_SEND_DATA;
@@ -209,4 +225,6 @@ void CCallApi::callAnylyze(QList<QString> listFilePath)
     m_scoket.write(input);
 
   //  LIB.network()->connectHost("127.0.0.1","6000",input,output);
+
+#endif
 }

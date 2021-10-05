@@ -29,7 +29,12 @@ public:
     // just set/get db
     void setAnalyzeData(QString sId, CAnalyzeData cData);
 
-    QVariantList getAnalyzeData(QString sLastDate);
+    QVariantList getAnalyzeData(QString sLastDate, int iCount=3);
+
+    QVariantList getAnalyzeData(int iIdx, int iCount=3);
+
+    int getAnalyzeCount();
+
 
     QString getAnalyzeLast();
 

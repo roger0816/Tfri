@@ -33,6 +33,6 @@ private slots:
 
 private:
     Ui::Widget *ui;
-    CQueryData m_ai;
+
 };
 #endif // WIDGET_H

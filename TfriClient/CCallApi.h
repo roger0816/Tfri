@@ -7,6 +7,10 @@
 #include "Library.h"
 #include <QTcpSocket>
 #include "CSqlClass.h"
+#include "CQueryData.h"
+
+
+#define OFFLINE
 
 #define CAPI CCallApi::INS()
 
@@ -25,13 +29,13 @@ public:
 
     void callAnylyze(QList<QString> listFilePath);
 
-
     QString m_sServerIp;
+
     QString m_sPort;
 
     QString m_sUser;
 
-
+    CQueryData m_ai;
 
 private:
     CCallApi(QObject *parent = nullptr);

@@ -48,6 +48,7 @@ void CSqlClass::createTable()
                'DecodePic'	BLOB, \
                'CreateTime' TEXT, \
                'UpdateTime' TEXT, \
+                'Enable' TEXT DEFAULT 1, \
                PRIMARY KEY('Sid' AUTOINCREMENT) \
                );");
 
@@ -73,9 +74,10 @@ void CSqlClass::createTable()
                'Width' TEXT, \
                'Height' TEXT, \
                'AlgorithmTime'	TEXT, \
-               'Result' INTEGER, \
+               'Result' INTEGER DEFAULT 0 , \
                'CreateTime' TEXT, \
                'UpdateTime' TEXT, \
+               'Enable' TEXT DEFAULT 1 , \
                'Note' TEXT, \
                PRIMARY KEY('Sid' AUTOINCREMENT) \
                );");
@@ -270,14 +272,15 @@ void CSqlClass::insertDecodePic(QString sId, QString sName, QByteArray dData)
 
 }
 
-QVariantList CSqlClass::getAnalyzeData(QString sLastDate)
+QVariantList CSqlClass::getAnalyzeData(QString sLastDate,int iCount)
 {
     QVariantList listRe;
 
     QSqlQuery query(m_db);
 
-    query.prepare("SELECT * FROM ANALYZE WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC LIMIT 3");
+    query.prepare("SELECT * FROM ANALYZE WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC LIMIT :Count");
     query.bindValue(":DateTime",sLastDate);
+    query.bindValue(":Count",iCount);
     query.exec();
 
     while(query.next())
@@ -320,6 +323,71 @@ QVariantList CSqlClass::getAnalyzeData(QString sLastDate)
 
     return listRe;
 
+}
+
+QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount)
+{
+    QVariantList listRe;
+
+    QSqlQuery query(m_db);
+
+    query.exec("SELECT * FROM Analyze ORDER BY  Sid ASC LIMIT ? OFFSET ?  ;");
+    query.bindValue(0,iCount);
+    query.bindValue(1,iIdx);
+    query.exec();
+
+    while (query.next())
+    {
+        CAnalyzeData cData ;
+
+        cData.sId = query.value("Sid").toString() ;
+        cData.sName = query.value("FileName").toString() ;
+        cData.sUser = query.value("User").toString() ;
+        cData.sCreateTime = query.value("CreateTime").toString() ;
+        cData.sUpdateTime = query.value("UpdateTime").toString() ;
+
+
+        cData.sBuilding = query.value("Building").toString() ;
+
+        cData.sBicyclist = query.value("Bicyclist").toString() ;
+        cData.sCar = query.value("Car").toString() ;
+        cData.sFence = query.value("Fence").toString() ;
+
+        cData.sPavement = query.value("Pavement").toString() ;
+        cData.sPedestrian = query.value("Pedestrian").toString() ;
+        cData.sPole = query.value("Pole").toString() ;
+        cData.sRoad = query.value("Road").toString() ;
+        cData.sRoadMarking = query.value("RoadMarking").toString() ;
+
+        cData.sSky = query.value("Sky").toString() ;
+        cData.sSignSymbol = query.value("SignSymbol").toString() ;
+        cData.sTree = query.value("Tree").toString() ;
+        cData.sUnlabelled = query.value("Unlabelled").toString() ;
+
+        cData.iW = query.value("Width").toInt() ;
+        cData.iH = query.value("Height").toInt() ;
+        cData.sAlgorithmTime = query.value("AlgorithmTime").toString() ;
+        cData.bResult = query.value("Result").toBool();
+
+        qDebug()<<"append : "<<cData.sId;
+        listRe.append(cData.toMap());
+    }
+
+    return listRe;
+}
+
+int CSqlClass::getAnalyzeCount()
+{
+    int iRe = 0;
+
+    QSqlQuery query(m_db);
+
+    query.exec("SELECT count(*) FROM Analyze ;");
+
+    if(query.next())
+        iRe = query.value(0).toInt();
+
+    return iRe;
 }
 
 QString CSqlClass::getAnalyzeLast()

@@ -19,6 +19,13 @@
 
 struct CPicData
 {
+
+    CPicData()
+    {
+        listKey<<"Sid"<<"AnalyzeId"<<"User"<<"FileName"<<"Pic"<<"DecodePic"
+                 <<"CreateTime"<<"UpdateTime";
+    }
+
     QString sId;
 
     QString sAnalyzeId;
@@ -34,6 +41,8 @@ struct CPicData
     QString sCreateTime;
 
     QString sUpdateTime;
+
+    QStringList listKey;
 
     void setData(const QVariantMap map)
     {
@@ -109,6 +118,7 @@ struct CAnalyzeData
 
     void setData(const QVariantMap dData)
     {
+
         sId = dData["Id"].toString();
         sName = dData["Name"].toString();
         sUser = dData["User"].toString();
@@ -146,6 +156,17 @@ struct CAnalyzeData
             sUpdateTime = dData["UpdateTime"].toString();
 
 
+
+    }
+
+    CAnalyzeData()
+    {
+
+        listKey<<"Id"<<"Name"<<"User"<<"Building"<<"Bicyclist"<<"Car"<<"Fence"
+                 <<"Pavement"<<"Pedestrian"<<"Pole"<<"Road"<<"Road_Marking"
+                <<"Sky"<<"SignSymbol"<<"Tree"<<"Unlabelled"
+               <<"Image_Width"<<"Image_Height"<<"Algorithm_Time"<<"Algorithm_Result"
+              <<"CreateTime"<<"UpdateTime";
 
     }
 
@@ -217,7 +238,7 @@ struct CAnalyzeData
 
     QString sUpdateTime;
 
-
+    QStringList listKey;
 
 };
 

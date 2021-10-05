@@ -12,16 +12,6 @@ Widget::Widget(QWidget *parent)
     CCallApi::INS().openConnect();
 
 
-    QStringList list;
-
-    for(int i=0;i<100;i++)
-    {
-        list.append("../test01.jpg");
-    }
-
-    m_ai.setFileList("root",list);
-
-    m_ai.query();
 
 
     //    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
