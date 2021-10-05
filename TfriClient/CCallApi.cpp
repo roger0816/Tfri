@@ -4,7 +4,8 @@ CCallApi *p = nullptr;
 
 CCallApi::CCallApi(QObject *parent) : QObject(parent)
 {
-    m_sServerIp="127.0.0.1";
+    //157.245.142.72
+    m_sServerIp="157.245.142.72";
     m_sPort ="6000";
 
 
@@ -38,7 +39,7 @@ void CCallApi::reply()
     QByteArray dData = m_dCache;
 
 
-    qDebug()<<"reply : "<<dData;
+    qDebug()<<"reply : "<<dData.length();
     m_dCache.clear();
 
     m_data.deCodeJson(dData);
@@ -107,10 +108,13 @@ bool CCallApi::queryHistory()
     loop.exec();
 
 
-
     QVariantList listAnalyze = m_data.dData["Analyze"].toList();
 
-    QVariantList listPic = m_data.dData["Analyze"].toList();
+    qDebug()<<"data len : "<<m_data.dData["Analyze"].toList();
+
+
+
+    QVariantList listPic = m_data.dData["Pic"].toList();
 
     for(int i=0;i<listAnalyze.length();i++)
     {
@@ -134,6 +138,8 @@ bool CCallApi::queryHistory()
 
 
     }
+
+    qDebug()<<"analyze data len : "<<listAnalyze.length();
 
 
     bool bRe =false;

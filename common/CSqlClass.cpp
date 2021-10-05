@@ -127,6 +127,7 @@ void CSqlClass::createTable()
 
 void CSqlClass::setAnalyzeData(QString sId,CAnalyzeData cData)
 {
+
     QSqlQuery query(m_db);
 
 //    INSERT INTO Analyze (Sid,Building) VALUES('1932','67.6') ON CONFLICT(Sid) DO

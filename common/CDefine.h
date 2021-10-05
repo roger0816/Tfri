@@ -270,9 +270,9 @@ struct CSendData
     {
         QByteArray tmp = QString(END_DATA).toLatin1();
 
-        QByteArray dData =jsonData.remove(jsonData.length()-tmp.length(),tmp.length());
+        QByteArray d =jsonData.remove(jsonData.length()-tmp.length(),tmp.length());
 
-        QVariantMap map= QJsonDocument::fromJson(dData).toVariant().toMap();
+        QVariantMap map= QJsonDocument::fromJson(d).toVariant().toMap();
 
 
         if(!map["action"].isValid())
@@ -284,7 +284,7 @@ struct CSendData
 
         sMsg = map["msg"].toString();
 
-        // dData = map["data"].toByteArray();
+        dData = map["data"].toMap();
 
         listName = map["listName"].toList();
 
