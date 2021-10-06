@@ -27,12 +27,13 @@ class Ui_WTableAnalyze
 {
 public:
     QGridLayout *gridLayout;
-    QWidget *widget;
+    QWidget *wBg;
     QGridLayout *gridLayout_2;
     QTableWidget *tableWidget;
     QWidget *wColorArea;
+    QWidget *widget_2;
     QHBoxLayout *horizontalLayout_6;
-    QSpacerItem *horizontalSpacer_4;
+    QSpacerItem *horizontalSpacer;
     QWidget *widget_7;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *btnTest;
@@ -42,18 +43,18 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QWidget *widget_5;
     QHBoxLayout *horizontalLayout_3;
-    QLabel *label_2;
     QSpinBox *sbCount;
+    QPushButton *btnChangeCount;
+    QLabel *label_3;
+    QLabel *lbTotalCount;
     QSpacerItem *horizontalSpacer_2;
     QWidget *widget_4;
     QHBoxLayout *horizontalLayout;
-    QPushButton *btnFristPage;
     QPushButton *btnPrePage;
     QSpinBox *sbNowPage;
     QLabel *label;
     QLabel *lbTotalPage;
     QPushButton *btnNextPage;
-    QPushButton *btnLastPage;
     QWidget *widget_6;
     QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer_3;
@@ -70,14 +71,14 @@ public:
         gridLayout->setSpacing(0);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        widget = new QWidget(WTableAnalyze);
-        widget->setObjectName(QString::fromUtf8("widget"));
+        wBg = new QWidget(WTableAnalyze);
+        wBg->setObjectName(QString::fromUtf8("wBg"));
         QFont font1;
         font1.setPointSize(12);
-        widget->setFont(font1);
-        gridLayout_2 = new QGridLayout(widget);
+        wBg->setFont(font1);
+        gridLayout_2 = new QGridLayout(wBg);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        tableWidget = new QTableWidget(widget);
+        tableWidget = new QTableWidget(wBg);
         if (tableWidget->columnCount() < 21)
             tableWidget->setColumnCount(21);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
@@ -131,20 +132,26 @@ public:
         tableWidget->verticalHeader()->setVisible(false);
         tableWidget->verticalHeader()->setDefaultSectionSize(40);
 
-        gridLayout_2->addWidget(tableWidget, 1, 0, 1, 1);
+        gridLayout_2->addWidget(tableWidget, 2, 0, 1, 1);
 
-        wColorArea = new QWidget(widget);
+        wColorArea = new QWidget(wBg);
         wColorArea->setObjectName(QString::fromUtf8("wColorArea"));
-        wColorArea->setMinimumSize(QSize(0, 30));
-        wColorArea->setMaximumSize(QSize(16777215, 30));
-        horizontalLayout_6 = new QHBoxLayout(wColorArea);
+        wColorArea->setMinimumSize(QSize(0, 20));
+        wColorArea->setMaximumSize(QSize(16777215, 20));
+
+        gridLayout_2->addWidget(wColorArea, 1, 0, 1, 1);
+
+        widget_2 = new QWidget(wBg);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        widget_2->setMinimumSize(QSize(0, 30));
+        horizontalLayout_6 = new QHBoxLayout(widget_2);
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer_4 = new QSpacerItem(943, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalLayout_6->setContentsMargins(-1, 0, -1, 0);
+        horizontalSpacer = new QSpacerItem(925, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_6->addItem(horizontalSpacer_4);
+        horizontalLayout_6->addItem(horizontalSpacer);
 
-        widget_7 = new QWidget(wColorArea);
+        widget_7 = new QWidget(widget_2);
         widget_7->setObjectName(QString::fromUtf8("widget_7"));
         horizontalLayout_5 = new QHBoxLayout(widget_7);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
@@ -168,10 +175,10 @@ public:
         horizontalLayout_6->addWidget(widget_7);
 
 
-        gridLayout_2->addWidget(wColorArea, 0, 0, 1, 1);
+        gridLayout_2->addWidget(widget_2, 0, 0, 1, 1);
 
 
-        gridLayout->addWidget(widget, 0, 0, 1, 1);
+        gridLayout->addWidget(wBg, 0, 0, 1, 1);
 
         widget_3 = new QWidget(WTableAnalyze);
         widget_3->setObjectName(QString::fromUtf8("widget_3"));
@@ -189,18 +196,32 @@ public:
         widget_5->setMinimumSize(QSize(200, 0));
         horizontalLayout_3 = new QHBoxLayout(widget_5);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        label_2 = new QLabel(widget_5);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-
-        horizontalLayout_3->addWidget(label_2);
-
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         sbCount = new QSpinBox(widget_5);
         sbCount->setObjectName(QString::fromUtf8("sbCount"));
         sbCount->setMinimum(10);
         sbCount->setMaximum(1000);
-        sbCount->setValue(100);
+        sbCount->setValue(50);
 
         horizontalLayout_3->addWidget(sbCount);
+
+        btnChangeCount = new QPushButton(widget_5);
+        btnChangeCount->setObjectName(QString::fromUtf8("btnChangeCount"));
+        btnChangeCount->setMinimumSize(QSize(110, 0));
+        btnChangeCount->setFont(font1);
+
+        horizontalLayout_3->addWidget(btnChangeCount);
+
+        label_3 = new QLabel(widget_5);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        horizontalLayout_3->addWidget(label_3);
+
+        lbTotalCount = new QLabel(widget_5);
+        lbTotalCount->setObjectName(QString::fromUtf8("lbTotalCount"));
+        lbTotalCount->setMinimumSize(QSize(100, 0));
+
+        horizontalLayout_3->addWidget(lbTotalCount);
 
         horizontalSpacer_2 = new QSpacerItem(212, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -218,12 +239,7 @@ public:
         widget_4->setSizePolicy(sizePolicy1);
         horizontalLayout = new QHBoxLayout(widget_4);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        btnFristPage = new QPushButton(widget_4);
-        btnFristPage->setObjectName(QString::fromUtf8("btnFristPage"));
-        btnFristPage->setMaximumSize(QSize(60, 16777215));
-
-        horizontalLayout->addWidget(btnFristPage);
-
+        horizontalLayout->setContentsMargins(-1, 0, -1, 0);
         btnPrePage = new QPushButton(widget_4);
         btnPrePage->setObjectName(QString::fromUtf8("btnPrePage"));
         btnPrePage->setMaximumSize(QSize(60, 16777215));
@@ -259,12 +275,6 @@ public:
 
         horizontalLayout->addWidget(btnNextPage);
 
-        btnLastPage = new QPushButton(widget_4);
-        btnLastPage->setObjectName(QString::fromUtf8("btnLastPage"));
-        btnLastPage->setMaximumSize(QSize(60, 16777215));
-
-        horizontalLayout->addWidget(btnLastPage);
-
 
         horizontalLayout_2->addWidget(widget_4);
 
@@ -282,6 +292,9 @@ public:
 
         horizontalLayout_2->addWidget(widget_6);
 
+        horizontalLayout_2->setStretch(0, 1);
+        horizontalLayout_2->setStretch(1, 1);
+        horizontalLayout_2->setStretch(2, 1);
 
         gridLayout->addWidget(widget_3, 1, 0, 1, 1);
 
@@ -339,13 +352,13 @@ public:
         btnTest->setText(QCoreApplication::translate("WTableAnalyze", "TEST", nullptr));
         btnOutput->setText(QCoreApplication::translate("WTableAnalyze", "\345\214\257\345\207\272", nullptr));
         btnUpload->setText(QCoreApplication::translate("WTableAnalyze", "\344\270\212\345\202\263\345\234\226\347\211\207", nullptr));
-        label_2->setText(QCoreApplication::translate("WTableAnalyze", "\346\257\217\351\240\201\346\225\270\351\207\217", nullptr));
-        btnFristPage->setText(QCoreApplication::translate("WTableAnalyze", "<<", nullptr));
+        btnChangeCount->setText(QCoreApplication::translate("WTableAnalyze", "\350\256\212\346\233\264\345\226\256\351\240\201\347\255\206\346\225\270", nullptr));
+        label_3->setText(QCoreApplication::translate("WTableAnalyze", "\350\263\207\346\226\231\347\270\275\346\225\270:", nullptr));
+        lbTotalCount->setText(QString());
         btnPrePage->setText(QCoreApplication::translate("WTableAnalyze", "<", nullptr));
         label->setText(QCoreApplication::translate("WTableAnalyze", "/", nullptr));
-        lbTotalPage->setText(QCoreApplication::translate("WTableAnalyze", "99999", nullptr));
+        lbTotalPage->setText(QCoreApplication::translate("WTableAnalyze", "1", nullptr));
         btnNextPage->setText(QCoreApplication::translate("WTableAnalyze", ">", nullptr));
-        btnLastPage->setText(QCoreApplication::translate("WTableAnalyze", ">>", nullptr));
     } // retranslateUi
 
 };

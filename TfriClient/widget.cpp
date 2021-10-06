@@ -6,6 +6,9 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+
+    Global::INS(dynamic_cast<QWidget*>(ui->wBg));
+   // GLOBAL.showBlockLoading();
     //157.245.142.72
     CSQL.open("local.sqlite");
 

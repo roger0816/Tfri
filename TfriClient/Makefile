@@ -254,7 +254,8 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 		../../../../Qt/5.15.2/mingw81_64/lib/Qt5Network.prl \
 		../../../../Qt/5.15.2/mingw81_64/lib/Qt5Core.prl \
 		../../../../Qt/5.15.2/mingw81_64/lib/qtmain.prl \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/features/build_pass.prf
+		../../../../Qt/5.15.2/mingw81_64/mkspecs/features/build_pass.prf \
+		res/res.qrc
 	$(QMAKE) -o Makefile TfriClient.pro -spec win32-g++ "CONFIG+=qtquickcompiler"
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/features/spec_pre.prf:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/qdevice.pri:
@@ -441,6 +442,7 @@ TfriClient.pro:
 ../../../../Qt/5.15.2/mingw81_64/lib/Qt5Core.prl:
 ../../../../Qt/5.15.2/mingw81_64/lib/qtmain.prl:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/features/build_pass.prf:
+res/res.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile TfriClient.pro -spec win32-g++ "CONFIG+=qtquickcompiler"
 

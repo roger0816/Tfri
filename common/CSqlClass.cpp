@@ -31,7 +31,7 @@ void CSqlClass::open(QString sDbPath)
 
     m_db = LIB.database()->getCurrentDb();
 
-      createTable();
+    createTable();
 
 }
 
@@ -48,7 +48,7 @@ void CSqlClass::createTable()
                'DecodePic'	BLOB, \
                'CreateTime' TEXT, \
                'UpdateTime' TEXT, \
-                'Enable' TEXT DEFAULT 1, \
+               'Enable' TEXT DEFAULT 1, \
                PRIMARY KEY('Sid' AUTOINCREMENT) \
                );");
 
@@ -132,14 +132,14 @@ void CSqlClass::setAnalyzeData(QString sId,CAnalyzeData cData)
 
     QSqlQuery query(m_db);
 
-//    INSERT INTO Analyze (Sid,Building) VALUES('1932','67.6') ON CONFLICT(Sid) DO
+    //    INSERT INTO Analyze (Sid,Building) VALUES('1932','67.6') ON CONFLICT(Sid) DO
 
-//    UPDATE  SET Building='68.7' WHERE Sid='1932';
-      query.prepare("INSERT INTO Analyze (Sid,User,Building,Bicyclist,Car,Fence,Pavement,Pedestrian,Pole,RoadMarking, "
-                    " Sky,SignSymbol,Tree,Unlabelled,Width,Height,AlgorithmTime,Result,CreateTime,UpdateTime) "
-                    " VALUES(:Sid,:User,:Building,:Bicyclist,:Car,:Fence,:Pavement,:Pedestrian,:Pole,:RoadMarking, "
-                    " :Sky,:SignSymbol,:Tree,:Unlabelled,:Width,:Height,:AlgorithmTime,:Result,:CreateTime,:UpdateTime) "
-                    "ON CONFLICT(Sid) DO UPDATE SET "
+    //    UPDATE  SET Building='68.7' WHERE Sid='1932';
+    query.prepare("INSERT INTO Analyze (Sid,User,Building,Bicyclist,Car,Fence,Pavement,Pedestrian,Pole,RoadMarking, "
+                  " Sky,SignSymbol,Tree,Unlabelled,Width,Height,AlgorithmTime,Result,CreateTime,UpdateTime) "
+                  " VALUES(:Sid,:User,:Building,:Bicyclist,:Car,:Fence,:Pavement,:Pedestrian,:Pole,:RoadMarking, "
+                  " :Sky,:SignSymbol,:Tree,:Unlabelled,:Width,:Height,:AlgorithmTime,:Result,:CreateTime,:UpdateTime) "
+                  "ON CONFLICT(Sid) DO UPDATE SET "
                   " Building=:Building , Bicyclist=:Bicyclist , Car=:Car , Fence = :Fence "
                   " ,Pavement=:Pavement , Pedestrian=:Pedestrian , Pole=:Pole , Road = :Road ,RoadMarking = :RoadMarking "
                   " ,Sky=:Sky , SignSymbol=:SignSymbol , Tree=:Tree , Unlabelled = :Unlabelled "
@@ -210,7 +210,7 @@ int CSqlClass::insertOriginPic(QString sUser,QString sName,QByteArray dData)
     query.clear();
 
     query.prepare("INSERT INTO PicData (User,AnalyzeId,FileName,Pic,CreateTime) VALUES(?,?,?,?,?);");
-     query.bindValue(0,sUser);
+    query.bindValue(0,sUser);
     query.bindValue(1,iRe);
     query.bindValue(2,sName);
     query.bindValue(3,dData);
@@ -278,9 +278,15 @@ QVariantList CSqlClass::getAnalyzeData(QString sLastDate,int iCount)
 
     QSqlQuery query(m_db);
 
-    query.prepare("SELECT * FROM ANALYZE WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC LIMIT :Count");
+    QString sCmd = "SELECT * FROM ANALYZE WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC LIMIT :Count";
+
+    if(iCount==-1)
+        sCmd = "SELECT * FROM ANALYZE WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC";
+
+    query.prepare(sCmd);
     query.bindValue(":DateTime",sLastDate);
-    query.bindValue(":Count",iCount);
+    if(iCount!=-1)
+        query.bindValue(":Count",iCount);
     query.exec();
 
     while(query.next())
@@ -331,7 +337,9 @@ QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount)
 
     QSqlQuery query(m_db);
 
-    query.exec("SELECT * FROM Analyze ORDER BY  Sid ASC LIMIT ? OFFSET ?  ;");
+    QString sCmd = "SELECT * FROM Analyze ORDER BY  Sid ASC LIMIT ? OFFSET ?  ";
+
+    query.prepare(sCmd);
     query.bindValue(0,iCount);
     query.bindValue(1,iIdx);
     query.exec();
@@ -369,7 +377,7 @@ QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount)
         cData.sAlgorithmTime = query.value("AlgorithmTime").toString() ;
         cData.bResult = query.value("Result").toBool();
 
-        qDebug()<<"append : "<<cData.sId;
+
         listRe.append(cData.toMap());
     }
 
@@ -400,7 +408,7 @@ QString CSqlClass::getAnalyzeLast()
 
     if(query.next())
     {
-       sRe = query.value(0).toString();
+        sRe = query.value(0).toString();
     }
 
     return sRe;
@@ -410,23 +418,23 @@ void CSqlClass::setPicData(CPicData cData)
 {
     QSqlQuery query(m_db);
 
-     query.prepare("INSERT INTO PicData (Sid,AnalyzeId,User,FileName,Pic,DecodePic,CreateTime,UpdateTime) "
-                   " VALUES(:Sid,:AnalyzeId,:User,:FileName,:Pic,:DecodePic,:CreateTime,:UpdateTime ) "
-                   " ON CONFLICT(Sid) DO UPDATE SET "
-                   " UPDATE PicData SET AnalyzeId=:AnalyzeId ,User=:User ,FileName=:FileName "
-                   " ,Pic=:Pic ,DecodePic=:DecodePic ,CreateTime=:CreateTime ,UpdateTime=:UpdateTime "
-                   " WHERE Sid=:Sid" );
+    query.prepare("INSERT INTO PicData (Sid,AnalyzeId,User,FileName,Pic,DecodePic,CreateTime,UpdateTime) "
+                  " VALUES(:Sid,:AnalyzeId,:User,:FileName,:Pic,:DecodePic,:CreateTime,:UpdateTime ) "
+                  " ON CONFLICT(Sid) DO UPDATE SET "
+                  " UPDATE PicData SET AnalyzeId=:AnalyzeId ,User=:User ,FileName=:FileName "
+                  " ,Pic=:Pic ,DecodePic=:DecodePic ,CreateTime=:CreateTime ,UpdateTime=:UpdateTime "
+                  " WHERE Sid=:Sid" );
 
-                   query.bindValue(":Sid",cData.sId);
-                   query.bindValue(":AnalyzeId",cData.sAnalyzeId);
-                   query.bindValue(":User",cData.sUser);
-                   query.bindValue(":FileName",cData.sFileName);
-                   query.bindValue(":Pic",cData.dRawData);
-                   query.bindValue(":DecodePic",cData.dDecodeData);
-                   query.bindValue(":CreateTime",cData.sCreateTime);
-                   query.bindValue(":UpdateTime",cData.sUpdateTime);
+    query.bindValue(":Sid",cData.sId);
+    query.bindValue(":AnalyzeId",cData.sAnalyzeId);
+    query.bindValue(":User",cData.sUser);
+    query.bindValue(":FileName",cData.sFileName);
+    query.bindValue(":Pic",cData.dRawData);
+    query.bindValue(":DecodePic",cData.dDecodeData);
+    query.bindValue(":CreateTime",cData.sCreateTime);
+    query.bindValue(":UpdateTime",cData.sUpdateTime);
 
-                   query.exec();
+    query.exec();
 
 
 
@@ -472,7 +480,7 @@ QString CSqlClass::getPicDataLast()
 
     if(query.next())
     {
-       sRe = query.value(0).toString();
+        sRe = query.value(0).toString();
     }
 
     return sRe;

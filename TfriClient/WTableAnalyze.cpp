@@ -7,22 +7,23 @@ WTableAnalyze::WTableAnalyze(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
     ui->tableWidget->setSortingEnabled(true);
 
     ui->tableWidget->horizontalHeader()->setMinimumHeight(60);
 
-    ui->tableWidget->resizeColumnsToContents();
+  //  ui->tableWidget->resizeColumnsToContents();
     ui->tableWidget->setColumnWidth(0,60);
     ui->tableWidget->setColumnWidth(1,120);
     ui->tableWidget->setColumnWidth(2,60);
-    ui->tableWidget->setColumnWidth(18,180);
-    ui->tableWidget->setColumnWidth(19,180);
+    ui->tableWidget->setColumnWidth(18,160);
+    ui->tableWidget->setColumnWidth(19,160);
+    ui->tableWidget->setColumnWidth(20,240);
 
 
     connect(ui->tableWidget->horizontalHeader(),&QHeaderView::sectionResized,this,&WTableAnalyze::slotHeaderResize);
 
     connect(&CAPI,&CCallApi::updateData,this,&WTableAnalyze::slotUpdate);
-
 
 
     for(int i=0;i<ui->tableWidget->columnCount();i++)
@@ -34,26 +35,6 @@ WTableAnalyze::WTableAnalyze(QWidget *parent) :
         m_listColorW.append(w);
     }
 
-    //    CAnalyzeData tmp;
-
-    //    for(int i=0; i<tmp.listKey.length();i++)
-    //    {
-
-    //        QString sKey =tmp.listKey.at(i);
-
-    //        QString sColor =tmp.mColor[sKey].name();
-
-    //        if(sColor =="#000000")
-    //            continue;
-
-    //        QWidget *wColor = new QWidget(ui->wColorArea);
-
-    //        wColor->setStyleSheet("background-color:"+sColor);
-
-    //        wColor->show();
-
-    //        m_listColorW.append(wColor);
-    //    }
 
 }
 
@@ -62,90 +43,49 @@ WTableAnalyze::~WTableAnalyze()
     delete ui;
 }
 
-void WTableAnalyze::refresh()
+void WTableAnalyze::refresh(bool bReload)
 {
 
+   GLOBAL.showBlockLoading(this);
     int iTotalDataCount = CSQL.getAnalyzeCount();
 
     int iTotalPage = iTotalDataCount/ui->sbCount->value();
 
-    if(iTotalDataCount%ui->sbCount->value()>0)
+    if(iTotalDataCount%ui->sbCount->value()>0 || iTotalPage==0)
         iTotalPage++;
 
 
+    ui->lbTotalCount->setText(QString::number(iTotalDataCount));
+
     ui->lbTotalPage->setText(QString::number(iTotalPage));
+
+    ui->sbNowPage->setMaximum(iTotalPage);
 
     ui->sbNowPage->setValue(m_iPage+1);
 
-    CAnalyzeData ana;
-
-    QVariantList list ;
-    //  list.append(ana.mColor);
-    list.append(CSQL.getAnalyzeData(0,ui->sbCount->value()));
-
-    for(int i=0;i<list.length();i++)
-    {
-        QVariantMap dData = list.at(i).toMap();
-
-        ui->tableWidget->setRowCount(i+1);
-
-        CAnalyzeData tmp;
-
-        int iCol=0;
-
-        for(int j=0;j<tmp.listKey.length();j++)
-        {
-            QString sKey = tmp.listKey.at(j);
-
-            if(sKey=="Image_Width" || sKey=="Image_Height")
-                continue;
-
-            QVariant v = dData[sKey];
+    if(bReload)
+        reload();
 
 
-            if(sKey=="CreateTime" || sKey=="UpdateTime")
-            {
-                v = QDateTime::fromString(v.toString(),"yyyyMMddhhmmss").toString("yyyy/MM/dd hh:mm:ss");
-            }
-
-            QTableWidgetItem*item = new QTableWidgetItem();
-
-
-            //            if(i==0 && v.toString().trimmed()!="")
-            //            {
-            //                item->setBackground(QColor(v.toString()));
-
-            //            }
-            //            else
-            {
-
-                item->setData(Qt::DisplayRole, QVariant(v));
-
-                item->setTextAlignment(Qt::AlignCenter);
-                ui->tableWidget->setRowHeight(i,60);
-
-            }
-            ui->tableWidget->setItem(i,iCol,item);
+    GLOBAL.hideBlockLoading();
 
 
 
-            iCol++;
-        }
-
-
-        ui->tableWidget->setCellWidget(i,iCol,scalePic(dData["Id"].toString(),dData["Name"].toString()));
-
-    }
-
-
-
-    slotHeaderResize(1,1,1);
 
 }
 
 void WTableAnalyze::showEvent(QShowEvent *)
 {
-    refresh();
+
+       GLOBAL.showBlockLoading(this);
+    slotHeaderResize(1,1,1);
+    QTimer::singleShot(100,this,[=]()
+    {
+
+        refresh(true);
+
+    });
+
 }
 
 QWidget *WTableAnalyze::scalePic(QString sId, QString sFileName)
@@ -157,7 +97,7 @@ QWidget *WTableAnalyze::scalePic(QString sId, QString sFileName)
 
 
 
-    QHBoxLayout *lay = new QHBoxLayout;
+    QGridLayout *lay = new QGridLayout;
     lay->setMargin(2);
     QStringList listPic;
 
@@ -171,8 +111,8 @@ QWidget *WTableAnalyze::scalePic(QString sId, QString sFileName)
         if(QFileInfo(listPic.at(i)).exists())
         {
             QLabel *lb = new QLabel(w);
-            lb->setPixmap(QPixmap(listPic.at(i)).scaledToHeight(60));
-            lay->addWidget(lb);
+            lb->setPixmap(QPixmap(listPic.at(i)).scaledToWidth(240));
+            lay->addWidget(lb,i,0);
         }
     }
 
@@ -183,17 +123,21 @@ QWidget *WTableAnalyze::scalePic(QString sId, QString sFileName)
 
 void WTableAnalyze::slotUpdate(QString sId)
 {
-    refresh();
+    bool bReload =  ui->sbNowPage->value()==ui->lbTotalPage->text().toInt();
+
+    refresh(bReload);
+
+
 }
 
-void WTableAnalyze::slotHeaderResize(int logicalIndex, int oldSize, int newSize)
+void WTableAnalyze::slotHeaderResize(int , int , int )
 {
 
     QHeaderView *header = ui->tableWidget->horizontalHeader();
 
-//    int iW= header->sectionSize(1);
+    //    int iW= header->sectionSize(1);
 
-//    int iX= header->sectionPosition(1);
+    //    int iX= header->sectionPosition(1);
 
     //   ui->wColor0->move(iX,ui->wColor0->y());
 
@@ -242,27 +186,157 @@ void WTableAnalyze::on_btnUpload_clicked()
                                                          tr("Open Image"), "", tr("Image Files (*.png *.jpg)"));
 
 
-    //    QStringList listFile;
+    QVariantList listData = CSQL.getAnalyzeData("0",-1);
 
-    //    for(int i=0;i<500;i++)
-    //    {
-    //        listFile.append("../test01.jpg");
-    //    }
+    QStringList listMerge,listNoMerge;
 
-    QStringList ll;
-    for(int i=0;i<500;i++)
+
+    for(int i=0;i<listFile.length();i++)
     {
-        ll.append(listFile);
+        bool bHasOne = false;
+
+        for(int j=0;j<listData.length();j++)
+        {
+            QString sFile = listFile.at(i).split("/").last();
+
+            CAnalyzeData cData;
+
+            cData.setData(listData.at(j).toMap());
+
+            if(sFile == cData.sName)
+            {
+                bHasOne = true;
+                break;
+            }
+
+        }
+
+        if(bHasOne)
+            listMerge.append(listFile.at(i));
+        else
+            listNoMerge.append(listFile.at(i));
+    }
+
+    if(listMerge.length()>0)
+    {
+        DialogMsg msg;
+
+        msg.setMsg("存在重複的檔名，請選擇處理方式",listMerge.join("\n"),QStringList()<<"新增"<<"略過"<<"取消");
+
+        int iRe =msg.exec();
+
+        if(iRe==2)
+            return;
+        else if(iRe==1)
+        {
+            listFile = listNoMerge;
+        }
+
     }
 
 
-    CAPI.callAnylyze(ll);
+    CAPI.callAnylyze(listFile);
 
 }
 
 
 void WTableAnalyze::on_sbCount_valueChanged(int )
 {
-    refresh();
+
+}
+
+void WTableAnalyze::reload()
+{
+    ui->tableWidget->hide();
+    CAnalyzeData ana;
+
+    QVariantList list ;
+    //  list.append(ana.mColor);
+    list.append(CSQL.getAnalyzeData(0,ui->sbCount->value()));
+
+    for(int i=0;i<list.length();i++)
+    {
+        QVariantMap dData = list.at(i).toMap();
+
+        ui->tableWidget->setRowCount(i+1);
+
+        CAnalyzeData tmp;
+
+        int iCol=0;
+
+        for(int j=0;j<tmp.listKey.length();j++)
+        {
+            QString sKey = tmp.listKey.at(j);
+
+            if(sKey=="Image_Width" || sKey=="Image_Height")
+                continue;
+
+            QVariant v = dData[sKey];
+
+
+            if(sKey=="CreateTime" || sKey=="UpdateTime")
+            {
+                v = QDateTime::fromString(v.toString(),"yyyyMMddhhmmss").toString("yyyy/MM/dd hh:mm:ss");
+            }
+
+            QTableWidgetItem*item = new QTableWidgetItem();
+
+            item->setData(Qt::DisplayRole, QVariant(v));
+
+            item->setTextAlignment(Qt::AlignCenter);
+            ui->tableWidget->setRowHeight(i,60);
+
+            ui->tableWidget->setItem(i,iCol,item);
+
+            iCol++;
+        }
+
+
+        ui->tableWidget->setCellWidget(i,iCol,scalePic(dData["Id"].toString(),dData["Name"].toString()));
+
+    }
+
+    ui->tableWidget->show();
+}
+
+
+void WTableAnalyze::on_btnChangeCount_clicked()
+{
+    refresh(true);
+}
+
+void WTableAnalyze::on_btnNextPage_clicked()
+{
+    if(m_iPage+1>= ui->lbTotalPage->text().toInt() )
+        return;
+
+    m_iPage++;
+
+    refresh(true);
+
+
+}
+
+void WTableAnalyze::on_sbNowPage_editingFinished()
+{
+    if(m_iPage == ui->sbNowPage->value()-1)
+        return;
+    qDebug()<<"edit page";
+    m_iPage = ui->sbNowPage->value()-1;
+
+    refresh(true);
+
+
+}
+
+void WTableAnalyze::on_btnPrePage_clicked()
+{
+    if(m_iPage<=0 )
+        return;
+
+    m_iPage--;
+
+    refresh(true);
+
 }
 

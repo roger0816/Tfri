@@ -30,8 +30,10 @@ DESTDIR = $$PWD/../bin/
 SOURCES += \
     ../common/CQueryData.cpp \
     ../common/CSqlClass.cpp \
+    ../common/DialogMsg.cpp \
     CCallApi.cpp \
     Global.cpp \
+    LayerLoadingLock.cpp \
     WTableAnalyze.cpp \
     main.cpp \
     widget.cpp
@@ -40,12 +42,16 @@ HEADERS += \
     ../common/CDefine.h \
     ../common/CQueryData.h \
     ../common/CSqlClass.h \
+    ../common/DialogMsg.h \
     CCallApi.h \
     Global.h \
+    LayerLoadingLock.h \
     WTableAnalyze.h \
     widget.h
 
 FORMS += \
+    ../common/DialogMsg.ui \
+    LayerLoadingLock.ui \
     WTableAnalyze.ui \
     widget.ui
 
@@ -56,6 +62,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     ../bin/serverRun.sh
+
+RESOURCES += \
+    res/res.qrc
 
 
 

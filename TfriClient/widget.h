@@ -7,6 +7,7 @@
 #include "CDefine.h"
 #include "CCallApi.h"
 #include "CQueryData.h"
+#include "Global.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE

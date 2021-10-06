@@ -35,14 +35,14 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="wBg" native="true">
      <property name="font">
       <font>
        <pointsize>12</pointsize>
       </font>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="0">
+      <item row="2" column="0">
        <widget class="QTableWidget" name="tableWidget">
         <property name="editTriggers">
          <set>QAbstractItemView::NoEditTriggers</set>
@@ -172,41 +172,45 @@
         </column>
        </widget>
       </item>
-      <item row="0" column="0">
+      <item row="1" column="0">
        <widget class="QWidget" name="wColorArea" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QWidget" name="widget_2" native="true">
         <property name="minimumSize">
          <size>
           <width>0</width>
           <height>30</height>
          </size>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>30</height>
-         </size>
-        </property>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
          <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
           <number>0</number>
          </property>
          <property name="bottomMargin">
           <number>0</number>
          </property>
          <item>
-          <spacer name="horizontalSpacer_4">
+          <spacer name="horizontalSpacer">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>943</width>
+             <width>925</width>
              <height>20</height>
             </size>
            </property>
@@ -271,7 +275,7 @@
        <height>60</height>
       </size>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,1">
       <item>
        <widget class="QWidget" name="widget_5" native="true">
         <property name="sizePolicy">
@@ -287,13 +291,18 @@
          </size>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QLabel" name="label_2">
-           <property name="text">
-            <string>每頁數量</string>
-           </property>
-          </widget>
-         </item>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QSpinBox" name="sbCount">
            <property name="minimum">
@@ -303,7 +312,45 @@
             <number>1000</number>
            </property>
            <property name="value">
-            <number>100</number>
+            <number>50</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnChangeCount">
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>變更單頁筆數</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>資料總數:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lbTotalCount">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>
@@ -332,19 +379,12 @@
          </sizepolicy>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QPushButton" name="btnFristPage">
-           <property name="maximumSize">
-            <size>
-             <width>60</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>&lt;&lt;</string>
-           </property>
-          </widget>
-         </item>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QPushButton" name="btnPrePage">
            <property name="maximumSize">
@@ -399,7 +439,7 @@
             </size>
            </property>
            <property name="text">
-            <string>99999</string>
+            <string>1</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -416,19 +456,6 @@
            </property>
            <property name="text">
             <string>&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnLastPage">
-           <property name="maximumSize">
-            <size>
-             <width>60</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>&gt;&gt;</string>
            </property>
           </widget>
          </item>

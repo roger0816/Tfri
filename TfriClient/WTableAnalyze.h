@@ -10,9 +10,14 @@
 #include <QFileDialog>
 #include <QShowEvent>
 #include <QVBoxLayout>
+#include <QGridLayout>
+#include "Global.h"
+#include "DialogMsg.h"
+#include <QThread>
 namespace Ui {
 class WTableAnalyze;
 }
+
 
 class WTableAnalyze : public QWidget
 {
@@ -22,7 +27,7 @@ public:
     explicit WTableAnalyze(QWidget *parent = nullptr);
     ~WTableAnalyze();
 
-    void refresh();
+    void refresh(bool bReload = false);
 
     void showEvent(QShowEvent *) override;
 
@@ -30,11 +35,12 @@ public:
 
     QList<QWidget*> m_listColorW;
 
+
 public slots:
 
     void slotUpdate(QString sId);
 
-    void slotHeaderResize(int logicalIndex, int oldSize, int newSize);
+    void slotHeaderResize(int , int, int);
 private slots:
     void on_btnTest_clicked();
 
@@ -42,8 +48,23 @@ private slots:
 
     void on_sbCount_valueChanged(int);
 
+    void on_btnChangeCount_clicked();
+
+    void on_btnNextPage_clicked();
+
+    void on_sbNowPage_editingFinished();
+
+    void on_btnPrePage_clicked();
+
 private:
     Ui::WTableAnalyze *ui;
+
+    void reload();
+
+
+
+
+    bool m_bFirst = true;
 
     int m_iPage = 0;
 };
