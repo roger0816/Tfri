@@ -121,6 +121,52 @@ QWidget *WTableAnalyze::scalePic(QString sId, QString sFileName)
     return w;
 }
 
+void WTableAnalyze::setScalePic(int iRow,QString sId, QString sFileName)
+{
+    QWidget *w = ui->tableWidget->cellWidget(iRow,20);
+
+
+
+    if(sId=="")
+        return;
+
+
+
+    QGridLayout *lay = new QGridLayout;
+    lay->setMargin(2);
+    QStringList listPic;
+
+    QString sTmp =QString::number(sId.toInt());  //  00001  to   1
+
+    listPic<<"../data/input/"+sTmp+"/"+sFileName;
+    listPic<<"../data/output/"+sTmp+"/"+sFileName.split(".").first()+".png";
+
+    for(int i=0;i<listPic.length();i++)
+    {
+        if(QFileInfo(listPic.at(i)).exists())
+        {
+            QLabel *lb = new QLabel(w);
+            lb->setPixmap(QPixmap(listPic.at(i)).scaledToWidth(240));
+            lay->addWidget(lb,i,0);
+        }
+    }
+
+    w->setLayout(lay);
+
+  //  ui->tableWidget->setCellWidget(iRow,20,w);
+}
+
+void WTableAnalyze::setPicList(QStringList listSid, QStringList listName)
+{
+    QTimer::singleShot(100,this,[=]()
+    {
+        for(int i=0;i<listSid.length() && i<listName.length();i++)
+        {
+            setScalePic(i,listSid.at(i),listName.at(i));
+        }
+    });
+}
+
 void WTableAnalyze::slotUpdate(QString sId)
 {
     bool bReload =  ui->sbNowPage->value()==ui->lbTotalPage->text().toInt();
@@ -190,7 +236,6 @@ void WTableAnalyze::on_btnUpload_clicked()
 
     QStringList listMerge,listNoMerge;
 
-
     for(int i=0;i<listFile.length();i++)
     {
         bool bHasOne = false;
@@ -250,6 +295,9 @@ void WTableAnalyze::reload()
     ui->tableWidget->hide();
     CAnalyzeData ana;
 
+    QStringList listSid;
+
+    QStringList listFileName;
     QVariantList list ;
     //  list.append(ana.mColor);
     list.append(CSQL.getAnalyzeData(0,ui->sbCount->value()));
@@ -291,10 +339,19 @@ void WTableAnalyze::reload()
             iCol++;
         }
 
+        listSid.append(dData["Id"].toString());
 
-        ui->tableWidget->setCellWidget(i,iCol,scalePic(dData["Id"].toString(),dData["Name"].toString()));
+        listFileName.append(dData["Name"].toString());
+
+
+        ui->tableWidget->setCellWidget(i,20,new QWidget());
+
+
+      //  ui->tableWidget->setCellWidget(i,iCol,scalePic(dData["Id"].toString(),dData["Name"].toString()));
 
     }
+
+    setPicList(listSid,listFileName);
 
     ui->tableWidget->show();
 }

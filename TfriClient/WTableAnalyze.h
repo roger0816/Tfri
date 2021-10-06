@@ -33,7 +33,11 @@ public:
 
     QWidget* scalePic(QString sId,QString sFileName);
 
+    void setScalePic(int iRow, QString sId, QString sFileName);
+
     QList<QWidget*> m_listColorW;
+
+    void setPicList(QStringList listSid,QStringList listName);
 
 
 public slots:
