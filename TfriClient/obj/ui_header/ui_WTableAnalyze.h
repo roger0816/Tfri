@@ -37,6 +37,7 @@ public:
     QWidget *widget_7;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *btnTest;
+    QPushButton *btnClipPic;
     QPushButton *btnOutput;
     QPushButton *btnUpload;
     QWidget *widget_3;
@@ -128,6 +129,7 @@ public:
         tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
         tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
         tableWidget->horizontalHeader()->setMinimumSectionSize(40);
+        tableWidget->horizontalHeader()->setDefaultSectionSize(85);
         tableWidget->horizontalHeader()->setStretchLastSection(true);
         tableWidget->verticalHeader()->setVisible(false);
         tableWidget->verticalHeader()->setDefaultSectionSize(40);
@@ -160,6 +162,11 @@ public:
         btnTest->setObjectName(QString::fromUtf8("btnTest"));
 
         horizontalLayout_5->addWidget(btnTest);
+
+        btnClipPic = new QPushButton(widget_7);
+        btnClipPic->setObjectName(QString::fromUtf8("btnClipPic"));
+
+        horizontalLayout_5->addWidget(btnClipPic);
 
         btnOutput = new QPushButton(widget_7);
         btnOutput->setObjectName(QString::fromUtf8("btnOutput"));
@@ -350,6 +357,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem20 = tableWidget->horizontalHeaderItem(20);
         ___qtablewidgetitem20->setText(QCoreApplication::translate("WTableAnalyze", "Picture", nullptr));
         btnTest->setText(QCoreApplication::translate("WTableAnalyze", "TEST", nullptr));
+        btnClipPic->setText(QCoreApplication::translate("WTableAnalyze", "\350\243\201\345\210\207\345\276\214\344\270\212\345\202\263", nullptr));
         btnOutput->setText(QCoreApplication::translate("WTableAnalyze", "\345\214\257\345\207\272", nullptr));
         btnUpload->setText(QCoreApplication::translate("WTableAnalyze", "\344\270\212\345\202\263\345\234\226\347\211\207", nullptr));
         btnChangeCount->setText(QCoreApplication::translate("WTableAnalyze", "\350\256\212\346\233\264\345\226\256\351\240\201\347\255\206\346\225\270", nullptr));

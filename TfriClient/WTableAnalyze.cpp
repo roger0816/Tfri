@@ -12,13 +12,19 @@ WTableAnalyze::WTableAnalyze(QWidget *parent) :
 
     ui->tableWidget->horizontalHeader()->setMinimumHeight(60);
 
-  //  ui->tableWidget->resizeColumnsToContents();
+    //  ui->tableWidget->resizeColumnsToContents();
     ui->tableWidget->setColumnWidth(0,60);
     ui->tableWidget->setColumnWidth(1,120);
     ui->tableWidget->setColumnWidth(2,60);
+    ui->tableWidget->setColumnWidth(5,50);
+       ui->tableWidget->setColumnWidth(9,50);
+          ui->tableWidget->setColumnWidth(10,50);
+    ui->tableWidget->setColumnWidth(12,50);
+
+    ui->tableWidget->setColumnWidth(14,50);
     ui->tableWidget->setColumnWidth(18,160);
     ui->tableWidget->setColumnWidth(19,160);
-    ui->tableWidget->setColumnWidth(20,240);
+    ui->tableWidget->setColumnWidth(20,180);
 
 
     connect(ui->tableWidget->horizontalHeader(),&QHeaderView::sectionResized,this,&WTableAnalyze::slotHeaderResize);
@@ -46,7 +52,7 @@ WTableAnalyze::~WTableAnalyze()
 void WTableAnalyze::refresh(bool bReload)
 {
 
-   GLOBAL.showBlockLoading(this);
+    GLOBAL.showBlockLoading(this);
     int iTotalDataCount = CSQL.getAnalyzeCount();
 
     int iTotalPage = iTotalDataCount/ui->sbCount->value();
@@ -77,7 +83,7 @@ void WTableAnalyze::refresh(bool bReload)
 void WTableAnalyze::showEvent(QShowEvent *)
 {
 
-       GLOBAL.showBlockLoading(this);
+    GLOBAL.showBlockLoading(this);
     slotHeaderResize(1,1,1);
     QTimer::singleShot(100,this,[=]()
     {
@@ -111,7 +117,7 @@ QWidget *WTableAnalyze::scalePic(QString sId, QString sFileName)
         if(QFileInfo(listPic.at(i)).exists())
         {
             QLabel *lb = new QLabel(w);
-            lb->setPixmap(QPixmap(listPic.at(i)).scaledToWidth(240));
+            lb->setPixmap(QPixmap(listPic.at(i)).scaledToWidth(180));
             lay->addWidget(lb,i,0);
         }
     }
@@ -146,14 +152,14 @@ void WTableAnalyze::setScalePic(int iRow,QString sId, QString sFileName)
         if(QFileInfo(listPic.at(i)).exists())
         {
             QLabel *lb = new QLabel(w);
-            lb->setPixmap(QPixmap(listPic.at(i)).scaledToWidth(240));
-            lay->addWidget(lb,i,0);
+            lb->setPixmap(QPixmap(listPic.at(i)).scaledToHeight(60));
+            lay->addWidget(lb,0,i);
         }
     }
 
     w->setLayout(lay);
 
-  //  ui->tableWidget->setCellWidget(iRow,20,w);
+    //  ui->tableWidget->setCellWidget(iRow,20,w);
 }
 
 void WTableAnalyze::setPicList(QStringList listSid, QStringList listName)
@@ -231,56 +237,7 @@ void WTableAnalyze::on_btnUpload_clicked()
     QStringList listFile = QFileDialog::getOpenFileNames(this,
                                                          tr("Open Image"), "", tr("Image Files (*.png *.jpg)"));
 
-
-    QVariantList listData = CSQL.getAnalyzeData("0",-1);
-
-    QStringList listMerge,listNoMerge;
-
-    for(int i=0;i<listFile.length();i++)
-    {
-        bool bHasOne = false;
-
-        for(int j=0;j<listData.length();j++)
-        {
-            QString sFile = listFile.at(i).split("/").last();
-
-            CAnalyzeData cData;
-
-            cData.setData(listData.at(j).toMap());
-
-            if(sFile == cData.sName)
-            {
-                bHasOne = true;
-                break;
-            }
-
-        }
-
-        if(bHasOne)
-            listMerge.append(listFile.at(i));
-        else
-            listNoMerge.append(listFile.at(i));
-    }
-
-    if(listMerge.length()>0)
-    {
-        DialogMsg msg;
-
-        msg.setMsg("存在重複的檔名，請選擇處理方式",listMerge.join("\n"),QStringList()<<"新增"<<"略過"<<"取消");
-
-        int iRe =msg.exec();
-
-        if(iRe==2)
-            return;
-        else if(iRe==1)
-        {
-            listFile = listNoMerge;
-        }
-
-    }
-
-
-    CAPI.callAnylyze(listFile);
+    uploadFile(listFile);
 
 }
 
@@ -347,13 +304,68 @@ void WTableAnalyze::reload()
         ui->tableWidget->setCellWidget(i,20,new QWidget());
 
 
-      //  ui->tableWidget->setCellWidget(i,iCol,scalePic(dData["Id"].toString(),dData["Name"].toString()));
+        //  ui->tableWidget->setCellWidget(i,iCol,scalePic(dData["Id"].toString(),dData["Name"].toString()));
 
     }
 
     setPicList(listSid,listFileName);
 
     ui->tableWidget->show();
+}
+
+void WTableAnalyze::uploadFile(QStringList listFile)
+{
+    if(listFile.length()<1)
+        return;
+    QVariantList listData = CSQL.getAnalyzeData("0",-1);
+
+    QStringList listMerge,listNoMerge;
+
+    for(int i=0;i<listFile.length();i++)
+    {
+        bool bHasOne = false;
+
+        for(int j=0;j<listData.length();j++)
+        {
+            QString sFile = listFile.at(i).split("/").last();
+
+            CAnalyzeData cData;
+
+            cData.setData(listData.at(j).toMap());
+
+            if(sFile == cData.sName)
+            {
+                bHasOne = true;
+                break;
+            }
+
+        }
+
+        if(bHasOne)
+            listMerge.append(listFile.at(i));
+        else
+            listNoMerge.append(listFile.at(i));
+    }
+
+    if(listMerge.length()>0)
+    {
+        DialogMsg msg;
+
+        msg.setMsg("存在重複的檔名，請選擇處理方式",listMerge.join("\n"),QStringList()<<"新增"<<"略過"<<"取消");
+
+        int iRe =msg.exec();
+
+        if(iRe==2)
+            return;
+        else if(iRe==1)
+        {
+            listFile = listNoMerge;
+        }
+
+    }
+
+
+    CAPI.callAnylyze(listFile);
 }
 
 
@@ -394,6 +406,33 @@ void WTableAnalyze::on_btnPrePage_clicked()
     m_iPage--;
 
     refresh(true);
+
+}
+
+
+void WTableAnalyze::on_btnClipPic_clicked()
+{
+    QStringList listFile = QFileDialog::getOpenFileNames(this,
+                                                         tr("Open Image"), "", tr("Image Files (*.png *.jpg)"));
+
+
+    if(listFile.length()<1)
+        return;
+
+    DialogSelectFilter dialogSelect;
+
+    dialogSelect.setData(listFile);
+
+
+    int iRe =dialogSelect.exec();
+
+    if(iRe==1 && dialogSelect.m_bUpload)
+    {
+
+        uploadFile(dialogSelect.m_listAfFile);
+
+
+    }
 
 }
 

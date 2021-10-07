@@ -14,6 +14,8 @@
 #include "Global.h"
 #include "DialogMsg.h"
 #include <QThread>
+#include <QImage>
+#include "DialogSelectFilter.h"
 namespace Ui {
 class WTableAnalyze;
 }
@@ -60,12 +62,14 @@ private slots:
 
     void on_btnPrePage_clicked();
 
+    void on_btnClipPic_clicked();
+
 private:
     Ui::WTableAnalyze *ui;
 
     void reload();
 
-
+    void uploadFile(QStringList listFile);
 
 
     bool m_bFirst = true;
