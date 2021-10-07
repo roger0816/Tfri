@@ -183,7 +183,7 @@ font: 75 12pt &quot;Arial Narrow&quot;;</string>
         </column>
         <column>
          <property name="text">
-          <string>Picture</string>
+          <string>Picture (點擊詳細)</string>
          </property>
         </column>
        </widget>

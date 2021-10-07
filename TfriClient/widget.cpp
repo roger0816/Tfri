@@ -6,7 +6,7 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-
+    setWindowTitle("TFRI環境辨視");
     Global::INS(dynamic_cast<QWidget*>(ui->wBg));
    // GLOBAL.showBlockLoading();
     //157.245.142.72

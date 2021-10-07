@@ -38,22 +38,21 @@ public:
     QSpacerItem *horizontalSpacer_3;
     QWidget *widget_3;
     QGridLayout *gridLayout_3;
-    QPushButton *btnLogin;
-    QSpacerItem *horizontalSpacer;
-    QSpacerItem *verticalSpacer_3;
-    QPushButton *btnTestPage;
     QWidget *widget_2;
     QFormLayout *formLayout;
     QLabel *label_2;
     QLineEdit *txUser;
-    QLabel *label_3;
     QLineEdit *txPassword;
+    QLabel *label_3;
+    QSpacerItem *verticalSpacer_3;
     QLabel *lbMsg;
+    QPushButton *btnTestPage;
+    QPushButton *btnLogin;
+    QLabel *label_6;
+    QLabel *label_4;
     QLabel *label_5;
     QSpacerItem *verticalSpacer_2;
-    QLabel *label_4;
     QSpacerItem *verticalSpacer;
-    QLabel *label_6;
     QWidget *pageAnalyze;
     QGridLayout *gridLayout_6;
     WTableAnalyze *widget_4;
@@ -71,7 +70,7 @@ public:
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QString::fromUtf8("Widget"));
-        Widget->resize(1280, 720);
+        Widget->resize(1820, 1000);
         gridLayout = new QGridLayout(Widget);
         gridLayout->setSpacing(0);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
@@ -81,12 +80,14 @@ public:
         QFont font;
         font.setPointSize(12);
         wBg->setFont(font);
+        wBg->setStyleSheet(QString::fromUtf8(""));
         gridLayout_2 = new QGridLayout(wBg);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         stackedWidget = new QStackedWidget(wBg);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
         pageLogin = new QWidget();
         pageLogin->setObjectName(QString::fromUtf8("pageLogin"));
+        pageLogin->setStyleSheet(QString::fromUtf8(""));
         gridLayout_4 = new QGridLayout(pageLogin);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -99,47 +100,44 @@ public:
 
         widget_3 = new QWidget(pageLogin);
         widget_3->setObjectName(QString::fromUtf8("widget_3"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(widget_3->sizePolicy().hasHeightForWidth());
+        widget_3->setSizePolicy(sizePolicy);
+        widget_3->setMinimumSize(QSize(450, 0));
+        widget_3->setMaximumSize(QSize(450, 300));
+        widget_3->setStyleSheet(QString::fromUtf8("QWidget#widget_3{background-color: rgba(255, 255, 255, 168);}"));
         gridLayout_3 = new QGridLayout(widget_3);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        btnLogin = new QPushButton(widget_3);
-        btnLogin->setObjectName(QString::fromUtf8("btnLogin"));
-        btnLogin->setMaximumSize(QSize(120, 16777215));
-        QFont font1;
-        font1.setPointSize(16);
-        btnLogin->setFont(font1);
-
-        gridLayout_3->addWidget(btnLogin, 3, 2, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_3->addItem(horizontalSpacer, 3, 1, 1, 1);
-
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout_3->addItem(verticalSpacer_3, 0, 1, 1, 2);
-
-        btnTestPage = new QPushButton(widget_3);
-        btnTestPage->setObjectName(QString::fromUtf8("btnTestPage"));
-        btnTestPage->setFont(font1);
-
-        gridLayout_3->addWidget(btnTestPage, 3, 0, 1, 1);
-
         widget_2 = new QWidget(widget_3);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
         formLayout = new QFormLayout(widget_2);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
+        formLayout->setContentsMargins(50, -1, 50, -1);
         label_2 = new QLabel(widget_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setMinimumSize(QSize(40, 0));
+        QFont font1;
+        font1.setPointSize(16);
         label_2->setFont(font1);
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_2);
 
         txUser = new QLineEdit(widget_2);
         txUser->setObjectName(QString::fromUtf8("txUser"));
+        txUser->setMaximumSize(QSize(200, 16777215));
         txUser->setFont(font1);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, txUser);
+
+        txPassword = new QLineEdit(widget_2);
+        txPassword->setObjectName(QString::fromUtf8("txPassword"));
+        txPassword->setMaximumSize(QSize(200, 16777215));
+        txPassword->setFont(font1);
+        txPassword->setEchoMode(QLineEdit::Password);
+
+        formLayout->setWidget(1, QFormLayout::FieldRole, txPassword);
 
         label_3 = new QLabel(widget_2);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -147,31 +145,54 @@ public:
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label_3);
 
-        txPassword = new QLineEdit(widget_2);
-        txPassword->setObjectName(QString::fromUtf8("txPassword"));
-        txPassword->setFont(font1);
-        txPassword->setEchoMode(QLineEdit::Password);
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, txPassword);
+        gridLayout_3->addWidget(widget_2, 3, 0, 1, 3);
 
+        verticalSpacer_3 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
-        gridLayout_3->addWidget(widget_2, 1, 0, 1, 3);
+        gridLayout_3->addItem(verticalSpacer_3, 2, 0, 1, 3);
 
         lbMsg = new QLabel(widget_3);
         lbMsg->setObjectName(QString::fromUtf8("lbMsg"));
         lbMsg->setFont(font1);
         lbMsg->setStyleSheet(QString::fromUtf8("color: rgb(220, 73, 0);"));
 
-        gridLayout_3->addWidget(lbMsg, 2, 0, 1, 3);
+        gridLayout_3->addWidget(lbMsg, 5, 0, 1, 3);
+
+        btnTestPage = new QPushButton(widget_3);
+        btnTestPage->setObjectName(QString::fromUtf8("btnTestPage"));
+        btnTestPage->setFont(font1);
+
+        gridLayout_3->addWidget(btnTestPage, 4, 0, 1, 1);
+
+        btnLogin = new QPushButton(widget_3);
+        btnLogin->setObjectName(QString::fromUtf8("btnLogin"));
+        btnLogin->setMaximumSize(QSize(120, 16777215));
+        btnLogin->setFont(font1);
+
+        gridLayout_3->addWidget(btnLogin, 4, 2, 1, 1);
+
+        label_6 = new QLabel(widget_3);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        QFont font2;
+        font2.setPointSize(20);
+        label_6->setFont(font2);
+        label_6->setAlignment(Qt::AlignCenter);
+
+        gridLayout_3->addWidget(label_6, 0, 0, 1, 3);
+
+        label_4 = new QLabel(widget_3);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setFont(font2);
+        label_4->setAlignment(Qt::AlignCenter);
+
+        gridLayout_3->addWidget(label_4, 1, 0, 1, 3);
 
 
         gridLayout_4->addWidget(widget_3, 3, 1, 1, 1);
 
         label_5 = new QLabel(pageLogin);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
         label_5->setSizePolicy(sizePolicy);
         label_5->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -182,25 +203,9 @@ public:
 
         gridLayout_4->addItem(verticalSpacer_2, 4, 1, 1, 1);
 
-        label_4 = new QLabel(pageLogin);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        QFont font2;
-        font2.setPointSize(20);
-        label_4->setFont(font2);
-        label_4->setAlignment(Qt::AlignCenter);
-
-        gridLayout_4->addWidget(label_4, 2, 1, 1, 1);
-
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout_4->addItem(verticalSpacer, 0, 1, 1, 1);
-
-        label_6 = new QLabel(pageLogin);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setFont(font2);
-        label_6->setAlignment(Qt::AlignCenter);
-
-        gridLayout_4->addWidget(label_6, 1, 1, 1, 1);
 
         stackedWidget->addWidget(pageLogin);
         pageAnalyze = new QWidget();
@@ -267,16 +272,16 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QCoreApplication::translate("Widget", "Widget", nullptr));
-        btnLogin->setText(QCoreApplication::translate("Widget", "\347\231\273\345\205\245", nullptr));
-        btnTestPage->setText(QCoreApplication::translate("Widget", "TEST", nullptr));
         label_2->setText(QCoreApplication::translate("Widget", "\345\270\263\350\231\237:", nullptr));
         txUser->setText(QCoreApplication::translate("Widget", "root", nullptr));
-        label_3->setText(QCoreApplication::translate("Widget", "\345\257\206\347\242\274:", nullptr));
         txPassword->setText(QCoreApplication::translate("Widget", "Aa111111", nullptr));
+        label_3->setText(QCoreApplication::translate("Widget", "\345\257\206\347\242\274:", nullptr));
         lbMsg->setText(QString());
-        label_5->setText(QCoreApplication::translate("Widget", "v1.0.1003", nullptr));
-        label_4->setText(QCoreApplication::translate("Widget", "\347\222\260\345\242\203\350\276\250\350\255\230\345\271\263\345\217\260", nullptr));
+        btnTestPage->setText(QCoreApplication::translate("Widget", "TEST", nullptr));
+        btnLogin->setText(QCoreApplication::translate("Widget", "\347\231\273\345\205\245", nullptr));
         label_6->setText(QCoreApplication::translate("Widget", "TFRI", nullptr));
+        label_4->setText(QCoreApplication::translate("Widget", "\347\222\260\345\242\203\350\276\250\350\255\230\345\271\263\345\217\260", nullptr));
+        label_5->setText(QCoreApplication::translate("Widget", "v1.0.1003", nullptr));
         pushButton->setText(QCoreApplication::translate("Widget", "decode pic", nullptr));
         pushButton_2->setText(QCoreApplication::translate("Widget", "history", nullptr));
         btnTestBack->setText(QCoreApplication::translate("Widget", "BACK", nullptr));

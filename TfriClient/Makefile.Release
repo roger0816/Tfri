@@ -159,6 +159,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_res.cpp
 release/qrc_res.cpp: res/res.qrc \
 		../../../../Qt/5.15.2/mingw81_64/bin/rcc.exe \
+		res/_1112-1183.jpg \
 		res/loading/loading1-5.png \
 		res/loading/loading1-4.png \
 		res/loading/loading1-8.png \
@@ -853,6 +854,26 @@ obj/moc_DialogDetail.cpp: DialogDetail.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
+		../common/CDefine.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QColor \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QByteArray \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QVariantMap \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTimer \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qtimer.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qbasictimer.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QResizeEvent \
 		obj/moc_predefs.h \
 		../../../../Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include C:/work/q_project/Tfri/TfriClient/obj/moc_predefs.h -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -IC:/work/q_project/Tfri/TfriClient -IC:/work/q_project/Tfri/libs/RLib/include -IC:/work/q_project/Tfri/common -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtSql -IC:/Qt/5.15.2/mingw81_64/include/QtNetwork -IC:/Qt/5.15.2/mingw81_64/include/QtCore -IW:/Qt/windows/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IW:/Qt/windows/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IW:/Qt/windows/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IW:/Qt/windows/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IW:/Qt/windows/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IW:/Qt/windows/Tools/mingw810_64/x86_64-w64-mingw32/include DialogDetail.h -o obj\moc_DialogDetail.cpp
@@ -1535,6 +1556,7 @@ obj/moc_WTableAnalyze.cpp: WTableAnalyze.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qpen.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QSpinBox \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h \
+		DialogDetail.h \
 		obj/moc_predefs.h \
 		../../../../Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include C:/work/q_project/Tfri/TfriClient/obj/moc_predefs.h -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -IC:/work/q_project/Tfri/TfriClient -IC:/work/q_project/Tfri/libs/RLib/include -IC:/work/q_project/Tfri/common -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtSql -IC:/Qt/5.15.2/mingw81_64/include/QtNetwork -IC:/Qt/5.15.2/mingw81_64/include/QtCore -IW:/Qt/windows/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IW:/Qt/windows/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IW:/Qt/windows/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IW:/Qt/windows/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IW:/Qt/windows/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IW:/Qt/windows/Tools/mingw810_64/x86_64-w64-mingw32/include WTableAnalyze.h -o obj\moc_WTableAnalyze.cpp
@@ -2012,7 +2034,8 @@ obj/ui_header/ui_widget.h: widget.ui \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qpen.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QSpinBox \
-		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h \
+		DialogDetail.h
 	C:\Qt\5.15.2\mingw81_64\bin\uic.exe widget.ui -o obj\ui_header\ui_widget.h
 
 compiler_yacc_decl_make_all:
@@ -2721,7 +2744,50 @@ obj/DialogDetail.o: DialogDetail.cpp DialogDetail.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		obj/ui_header/ui_DialogDetail.h
+		../common/CDefine.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QColor \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QByteArray \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QVariantMap \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTimer \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qtimer.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qbasictimer.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QResizeEvent \
+		obj/ui_header/ui_DialogDetail.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QVariant \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QSpacerItem \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj\DialogDetail.o DialogDetail.cpp
 
 obj/DialogSelectFilter.o: DialogSelectFilter.cpp DialogSelectFilter.h \
@@ -3449,6 +3515,7 @@ obj/WTableAnalyze.o: WTableAnalyze.cpp WTableAnalyze.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qpen.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QSpinBox \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h \
+		DialogDetail.h \
 		obj/ui_header/ui_WTableAnalyze.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
@@ -3930,7 +3997,8 @@ obj/widget.o: widget.cpp widget.h \
 		DialogSelectFilter.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QResizeEvent \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
-		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
+		DialogDetail.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj\widget.o widget.cpp
 
 obj/qrc_res.o: release/qrc_res.cpp 

@@ -356,7 +356,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem19 = tableWidget->horizontalHeaderItem(19);
         ___qtablewidgetitem19->setText(QCoreApplication::translate("WTableAnalyze", "UpdateTime", nullptr));
         QTableWidgetItem *___qtablewidgetitem20 = tableWidget->horizontalHeaderItem(20);
-        ___qtablewidgetitem20->setText(QCoreApplication::translate("WTableAnalyze", "Picture", nullptr));
+        ___qtablewidgetitem20->setText(QCoreApplication::translate("WTableAnalyze", "Picture (\351\273\236\346\223\212\350\251\263\347\264\260)", nullptr));
         btnClipPic->setText(QCoreApplication::translate("WTableAnalyze", "\350\243\201\345\210\207\344\270\212\345\202\263", nullptr));
         btnOutput->setText(QCoreApplication::translate("WTableAnalyze", "\345\214\257\345\207\272", nullptr));
         btnUpload->setText(QCoreApplication::translate("WTableAnalyze", "\344\270\212\345\202\263\345\234\226\347\211\207", nullptr));

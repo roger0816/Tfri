@@ -8,6 +8,8 @@ DialogDetail::DialogDetail(QWidget *parent) :
     ui(new Ui::DialogDetail)
 {
     ui->setupUi(this);
+
+    setWindowTitle("詳細資料");
 }
 
 DialogDetail::~DialogDetail()
@@ -17,6 +19,7 @@ DialogDetail::~DialogDetail()
 
 void DialogDetail::setData(CAnalyzeData data)
 {
+     setWindowTitle("詳細資料 Sid : "+data.sId);
         ui->lbSid->setText(data.sId);
 
     qDebug()<<"origin file :"<<qApp->applicationDirPath()+"/../data/input/"+data.sName;

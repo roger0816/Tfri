@@ -24,9 +24,9 @@ WTableAnalyze::WTableAnalyze(QWidget *parent) :
     ui->tableWidget->setColumnWidth(14,50);
     ui->tableWidget->setColumnWidth(16,60);
     ui->tableWidget->setColumnWidth(17,65);
-    ui->tableWidget->setColumnWidth(18,150);
-    ui->tableWidget->setColumnWidth(19,150);
-    ui->tableWidget->setColumnWidth(20,180);
+    ui->tableWidget->setColumnWidth(18,140);
+    ui->tableWidget->setColumnWidth(19,140);
+    ui->tableWidget->setColumnWidth(20,200);
 
    // connect(ui->tableWidget,&QTabWidget::)
 
@@ -144,7 +144,7 @@ void WTableAnalyze::setScalePic(int iRow,QString sId, QString sFileName)
 
 
     QGridLayout *lay = new QGridLayout;
-    lay->setMargin(2);
+    lay->setMargin(1);
     QStringList listPic;
 
     QString sTmp =QString::number(sId.toInt());  //  00001  to   1
@@ -161,6 +161,10 @@ void WTableAnalyze::setScalePic(int iRow,QString sId, QString sFileName)
             lay->addWidget(lb,0,i);
         }
     }
+
+    QSpacerItem *item = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+    lay->addItem(item,0,2);
 
     w->setLayout(lay);
 
