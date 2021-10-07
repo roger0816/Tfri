@@ -115,16 +115,11 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_axserver_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_bluetooth.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_bodymovin_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_charts.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_charts_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_concurrent.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_concurrent_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_core.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_core_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_datavisualization.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_datavisualization_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_dbus.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_dbus_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_designer.pri \
@@ -150,8 +145,6 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_network.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_network_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_networkauth.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_networkauth_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_nfc.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_nfc_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_opengl.pri \
@@ -166,8 +159,6 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_positioningquick_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_printsupport.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_printsupport_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_purchasing.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_purchasing_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_qml.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_qml_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_qmldebug_private.pri \
@@ -180,16 +171,6 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_qmlworkerscript_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3d.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3d_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3dassetimport.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3dassetimport_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3drender.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3drender_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3druntimerender.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3druntimerender_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3dutils.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3dutils_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
@@ -203,10 +184,6 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_remoteobjects_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_repparser.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_repparser_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_script.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_script_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_scripttools.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_scripttools_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_scxml.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_scxml_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_sensors.pri \
@@ -227,8 +204,6 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_uiplugin.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_uitools.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_uitools_private.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_virtualkeyboard.pri \
-		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_virtualkeyboard_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_vulkan_support_private.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_webchannel.pri \
 		../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_webchannel_private.pri \
@@ -327,16 +302,11 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_axserver_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_bluetooth.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_bluetooth_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_bodymovin_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_bootstrap_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_charts.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_charts_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_concurrent.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_concurrent_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_core.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_core_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_datavisualization.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_datavisualization_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_dbus.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_dbus_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_designer.pri:
@@ -362,8 +332,6 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_network.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_network_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_networkauth.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_networkauth_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_nfc.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_nfc_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_opengl.pri:
@@ -378,8 +346,6 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_positioningquick_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_printsupport.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_printsupport_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_purchasing.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_purchasing_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_qml.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_qml_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_qmldebug_private.pri:
@@ -392,16 +358,6 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_qmlworkerscript_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3d.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3d_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3dassetimport.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3dassetimport_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3drender.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3drender_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3druntimerender.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3druntimerender_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3dutils.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick3dutils_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quick_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quickcontrols2.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri:
@@ -415,10 +371,6 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_remoteobjects_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_repparser.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_repparser_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_script.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_script_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_scripttools.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_scripttools_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_scxml.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_scxml_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_sensors.pri:
@@ -439,8 +391,6 @@ Makefile: TfriClient.pro ../../../../Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmak
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_uiplugin.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_uitools.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_uitools_private.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_virtualkeyboard.pri:
-../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_virtualkeyboard_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_vulkan_support_private.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_webchannel.pri:
 ../../../../Qt/5.15.2/mingw81_64/mkspecs/modules/qt_lib_webchannel_private.pri:

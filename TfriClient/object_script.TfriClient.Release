@@ -2,6 +2,7 @@ obj/CQueryData.o
 obj/CSqlClass.o
 obj/DialogMsg.o
 obj/CCallApi.o
+obj/DialogDetail.o
 obj/DialogSelectFilter.o
 obj/Global.o
 obj/LayerLoadingLock.o
@@ -13,6 +14,7 @@ obj/moc_CQueryData.o
 obj/moc_CSqlClass.o
 obj/moc_DialogMsg.o
 obj/moc_CCallApi.o
+obj/moc_DialogDetail.o
 obj/moc_DialogSelectFilter.o
 obj/moc_Global.o
 obj/moc_LayerLoadingLock.o

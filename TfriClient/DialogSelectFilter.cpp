@@ -153,6 +153,9 @@ void DialogSelectFilter::changeImage()
     ui->lbPic->setPixmap(QPixmap(m_listOriginFile.at(m_originIdx)));
 
     ui->lbOriginFile->setText(m_listOriginFile.at(m_originIdx));
+
+    ui->lbOriginCount->setText(QString("%1/%2").arg(m_originIdx+1).arg(m_listOriginFile.length()));
+
 }
 
 
@@ -164,6 +167,7 @@ void DialogSelectFilter::on_btnAdd_clicked()
     m_iCount++;
 
     changeSb();
+    on_btnSet_clicked();
 }
 
 
@@ -174,6 +178,7 @@ void DialogSelectFilter::on_btnSub_clicked()
     m_iCount--;
 
     changeSb();
+    on_btnSet_clicked();
 }
 
 
@@ -199,6 +204,7 @@ void DialogSelectFilter::on_btnSet_clicked()
         }
         else
         {
+
             m_wFilter[i]->clearMask();
 
             m_wFilter[i]->hide();

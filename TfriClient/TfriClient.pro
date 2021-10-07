@@ -32,6 +32,7 @@ SOURCES += \
     ../common/CSqlClass.cpp \
     ../common/DialogMsg.cpp \
     CCallApi.cpp \
+    DialogDetail.cpp \
     DialogSelectFilter.cpp \
     Global.cpp \
     LayerLoadingLock.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     ../common/CSqlClass.h \
     ../common/DialogMsg.h \
     CCallApi.h \
+    DialogDetail.h \
     DialogSelectFilter.h \
     Global.h \
     LayerLoadingLock.h \
@@ -53,6 +55,7 @@ HEADERS += \
 
 FORMS += \
     ../common/DialogMsg.ui \
+    DialogDetail.ui \
     DialogSelectFilter.ui \
     LayerLoadingLock.ui \
     WTableAnalyze.ui \

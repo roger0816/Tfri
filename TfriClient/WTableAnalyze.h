@@ -14,8 +14,11 @@
 #include "Global.h"
 #include "DialogMsg.h"
 #include <QThread>
+#include <QTableWidget>
 #include <QImage>
 #include "DialogSelectFilter.h"
+#include "DialogDetail.h"
+#include <QFileDialog>
 namespace Ui {
 class WTableAnalyze;
 }
@@ -47,6 +50,8 @@ public slots:
     void slotUpdate(QString sId);
 
     void slotHeaderResize(int , int, int);
+
+    void slotCellClicked(int iRow,int iCol);
 private slots:
     void on_btnTest_clicked();
 
@@ -63,6 +68,8 @@ private slots:
     void on_btnPrePage_clicked();
 
     void on_btnClipPic_clicked();
+
+    void on_btnOutput_clicked();
 
 private:
     Ui::WTableAnalyze *ui;

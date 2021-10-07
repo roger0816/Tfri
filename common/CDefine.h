@@ -190,6 +190,22 @@ struct CAnalyzeData
 
     }
 
+    QStringList  toList()
+    {
+        QVariantMap dData = toMap();
+
+        QStringList list;
+
+        for(int i=0;i<listKey.length();i++)
+        {
+            list.append(dData[listKey.at(i)].toString());
+
+        }
+
+        return list;
+    }
+
+
     QVariantMap toMap()
     {
         QVariantMap dData;

@@ -35,6 +35,7 @@ public:
 
     int getAnalyzeCount();
 
+    QVariantMap getAnalyzeFromId(QString sId);
 
     QString getAnalyzeLast();
 

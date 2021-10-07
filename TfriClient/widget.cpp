@@ -14,7 +14,7 @@ Widget::Widget(QWidget *parent)
 
     CCallApi::INS().openConnect();
 
-
+    ui->btnTestPage->hide();
 
 
     //    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
@@ -35,7 +35,7 @@ Widget::Widget(QWidget *parent)
 
     ui->stackedWidget->setCurrentIndex(0);
 
-
+    ui->btnTestPage->hide();
 
 }
 

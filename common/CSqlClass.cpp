@@ -398,6 +398,51 @@ int CSqlClass::getAnalyzeCount()
     return iRe;
 }
 
+QVariantMap CSqlClass::getAnalyzeFromId(QString sId)
+{
+    QSqlQuery query(m_db);
+
+    query.exec("SELECT * FROM Analyze WHERE Sid ='"+sId+"';");
+
+    CAnalyzeData cData ;
+    if (query.next())
+    {
+
+
+        cData.sId = query.value("Sid").toString() ;
+        cData.sName = query.value("FileName").toString() ;
+        cData.sUser = query.value("User").toString() ;
+        cData.sCreateTime = query.value("CreateTime").toString() ;
+        cData.sUpdateTime = query.value("UpdateTime").toString() ;
+
+
+        cData.sBuilding = query.value("Building").toString() ;
+
+        cData.sBicyclist = query.value("Bicyclist").toString() ;
+        cData.sCar = query.value("Car").toString() ;
+        cData.sFence = query.value("Fence").toString() ;
+
+        cData.sPavement = query.value("Pavement").toString() ;
+        cData.sPedestrian = query.value("Pedestrian").toString() ;
+        cData.sPole = query.value("Pole").toString() ;
+        cData.sRoad = query.value("Road").toString() ;
+        cData.sRoadMarking = query.value("RoadMarking").toString() ;
+
+        cData.sSky = query.value("Sky").toString() ;
+        cData.sSignSymbol = query.value("SignSymbol").toString() ;
+        cData.sTree = query.value("Tree").toString() ;
+        cData.sUnlabelled = query.value("Unlabelled").toString() ;
+
+        cData.iW = query.value("Width").toInt() ;
+        cData.iH = query.value("Height").toInt() ;
+        cData.sAlgorithmTime = query.value("AlgorithmTime").toString() ;
+        cData.bResult = query.value("Result").toBool();
+
+    }
+
+    return cData.toMap();
+}
+
 QString CSqlClass::getAnalyzeLast()
 {
     QString sRe="0";

@@ -181,6 +181,9 @@
                   <property name="text">
                    <string>Aa111111</string>
                   </property>
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
+                  </property>
                  </widget>
                 </item>
                </layout>

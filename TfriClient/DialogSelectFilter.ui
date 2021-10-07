@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>800</height>
+    <height>872</height>
    </rect>
   </property>
   <property name="font">
@@ -57,7 +57,7 @@
          </font>
         </property>
         <property name="text">
-         <string>請選擇裁切範圍</string>
+         <string>請設定裁切範圍</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -100,6 +100,16 @@
       <property name="verticalSpacing">
        <number>0</number>
       </property>
+      <item row="0" column="1">
+       <widget class="QLabel" name="lbOriginFile">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="QPushButton" name="btnPrePic">
         <property name="maximumSize">
@@ -135,27 +145,17 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="lbOriginFile">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="2">
        <widget class="QLabel" name="lbOriginCount">
         <property name="minimumSize">
          <size>
-          <width>120</width>
+          <width>140</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>120</width>
+          <width>140</width>
           <height>16777215</height>
          </size>
         </property>
@@ -1223,16 +1223,16 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <property name="spacing">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="leftMargin">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="topMargin">
        <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="bottomMargin">
        <number>0</number>
@@ -1252,6 +1252,13 @@
       </item>
       <item>
        <widget class="QLineEdit" name="txPath"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_30">
+        <property name="text">
+         <string>(裁切範圍是全部圖都統一的，預覽圖切換只是方便檢查)</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

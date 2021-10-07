@@ -150,6 +150,7 @@ public:
         txPassword = new QLineEdit(widget_2);
         txPassword->setObjectName(QString::fromUtf8("txPassword"));
         txPassword->setFont(font1);
+        txPassword->setEchoMode(QLineEdit::Password);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, txPassword);
 

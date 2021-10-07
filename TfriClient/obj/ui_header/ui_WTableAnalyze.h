@@ -36,7 +36,6 @@ public:
     QSpacerItem *horizontalSpacer;
     QWidget *widget_7;
     QHBoxLayout *horizontalLayout_5;
-    QPushButton *btnTest;
     QPushButton *btnClipPic;
     QPushButton *btnOutput;
     QPushButton *btnUpload;
@@ -66,7 +65,7 @@ public:
             WTableAnalyze->setObjectName(QString::fromUtf8("WTableAnalyze"));
         WTableAnalyze->resize(1207, 445);
         QFont font;
-        font.setPointSize(14);
+        font.setPointSize(12);
         WTableAnalyze->setFont(font);
         gridLayout = new QGridLayout(WTableAnalyze);
         gridLayout->setSpacing(0);
@@ -74,9 +73,7 @@ public:
         gridLayout->setContentsMargins(0, 0, 0, 0);
         wBg = new QWidget(WTableAnalyze);
         wBg->setObjectName(QString::fromUtf8("wBg"));
-        QFont font1;
-        font1.setPointSize(12);
-        wBg->setFont(font1);
+        wBg->setFont(font);
         gridLayout_2 = new QGridLayout(wBg);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         tableWidget = new QTableWidget(wBg);
@@ -125,11 +122,20 @@ public:
         QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(20, __qtablewidgetitem20);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Arial Narrow"));
+        font1.setPointSize(12);
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(9);
+        tableWidget->setFont(font1);
+        tableWidget->setStyleSheet(QString::fromUtf8("\n"
+"font: 75 12pt \"Arial Narrow\";"));
         tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
         tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
         tableWidget->horizontalHeader()->setMinimumSectionSize(40);
-        tableWidget->horizontalHeader()->setDefaultSectionSize(85);
+        tableWidget->horizontalHeader()->setDefaultSectionSize(80);
         tableWidget->horizontalHeader()->setStretchLastSection(true);
         tableWidget->verticalHeader()->setVisible(false);
         tableWidget->verticalHeader()->setDefaultSectionSize(40);
@@ -158,11 +164,6 @@ public:
         horizontalLayout_5 = new QHBoxLayout(widget_7);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        btnTest = new QPushButton(widget_7);
-        btnTest->setObjectName(QString::fromUtf8("btnTest"));
-
-        horizontalLayout_5->addWidget(btnTest);
-
         btnClipPic = new QPushButton(widget_7);
         btnClipPic->setObjectName(QString::fromUtf8("btnClipPic"));
 
@@ -215,7 +216,7 @@ public:
         btnChangeCount = new QPushButton(widget_5);
         btnChangeCount->setObjectName(QString::fromUtf8("btnChangeCount"));
         btnChangeCount->setMinimumSize(QSize(110, 0));
-        btnChangeCount->setFont(font1);
+        btnChangeCount->setFont(font);
 
         horizontalLayout_3->addWidget(btnChangeCount);
 
@@ -356,8 +357,7 @@ public:
         ___qtablewidgetitem19->setText(QCoreApplication::translate("WTableAnalyze", "UpdateTime", nullptr));
         QTableWidgetItem *___qtablewidgetitem20 = tableWidget->horizontalHeaderItem(20);
         ___qtablewidgetitem20->setText(QCoreApplication::translate("WTableAnalyze", "Picture", nullptr));
-        btnTest->setText(QCoreApplication::translate("WTableAnalyze", "TEST", nullptr));
-        btnClipPic->setText(QCoreApplication::translate("WTableAnalyze", "\350\243\201\345\210\207\345\276\214\344\270\212\345\202\263", nullptr));
+        btnClipPic->setText(QCoreApplication::translate("WTableAnalyze", "\350\243\201\345\210\207\344\270\212\345\202\263", nullptr));
         btnOutput->setText(QCoreApplication::translate("WTableAnalyze", "\345\214\257\345\207\272", nullptr));
         btnUpload->setText(QCoreApplication::translate("WTableAnalyze", "\344\270\212\345\202\263\345\234\226\347\211\207", nullptr));
         btnChangeCount->setText(QCoreApplication::translate("WTableAnalyze", "\350\256\212\346\233\264\345\226\256\351\240\201\347\255\206\346\225\270", nullptr));

@@ -17,15 +17,20 @@ WTableAnalyze::WTableAnalyze(QWidget *parent) :
     ui->tableWidget->setColumnWidth(1,120);
     ui->tableWidget->setColumnWidth(2,60);
     ui->tableWidget->setColumnWidth(5,50);
-       ui->tableWidget->setColumnWidth(9,50);
-          ui->tableWidget->setColumnWidth(10,50);
+    ui->tableWidget->setColumnWidth(9,50);
+    ui->tableWidget->setColumnWidth(10,50);
     ui->tableWidget->setColumnWidth(12,50);
 
     ui->tableWidget->setColumnWidth(14,50);
-    ui->tableWidget->setColumnWidth(18,160);
-    ui->tableWidget->setColumnWidth(19,160);
+    ui->tableWidget->setColumnWidth(16,60);
+    ui->tableWidget->setColumnWidth(17,65);
+    ui->tableWidget->setColumnWidth(18,150);
+    ui->tableWidget->setColumnWidth(19,150);
     ui->tableWidget->setColumnWidth(20,180);
 
+   // connect(ui->tableWidget,&QTabWidget::)
+
+    connect(ui->tableWidget,&QTableWidget::cellClicked,this,&WTableAnalyze::slotCellClicked);
 
     connect(ui->tableWidget->horizontalHeader(),&QHeaderView::sectionResized,this,&WTableAnalyze::slotHeaderResize);
 
@@ -223,6 +228,33 @@ void WTableAnalyze::slotHeaderResize(int , int , int )
         }
 
     }
+}
+
+void WTableAnalyze::slotCellClicked(int iRow, int iCol)
+{
+    if(iCol !=20 || iRow<0)
+        return;
+
+
+   QString sId = ui->tableWidget->item(iRow,0)->text();
+
+//   QString sFileName =ui->tableWidget->item(iRow,1)->text();
+
+//   QString sPath =QApplication::applicationDirPath()+"/../data/%1/%2/"+sFileName.split(".").first();
+
+  QVariantMap dData = CSQL.getAnalyzeFromId(sId);
+
+  CAnalyzeData item;
+
+  item.setData(dData);
+
+  DialogDetail dialog;
+
+  dialog.setData(item);
+
+  dialog.exec();
+
+
 }
 
 void WTableAnalyze::on_btnTest_clicked()
@@ -436,3 +468,44 @@ void WTableAnalyze::on_btnClipPic_clicked()
 
 }
 
+
+void WTableAnalyze::on_btnOutput_clicked()
+{
+   QString sPath= QFileDialog::getExistingDirectory(this,"AA",".");
+
+
+   QVariantList list = CSQL.getAnalyzeData("0",-1);
+
+   QFile file(sPath+"/"+QDateTime::currentDateTime().toString("yyyyMMddhhmmss")+".csv");
+
+   if(file.open(QIODevice::WriteOnly))
+   {
+
+
+
+
+       QTextStream outStream(&file);
+
+       for(int i=0;i<list.length();i++)
+       {
+            CAnalyzeData d ;
+
+            d.setData(list.at(i).toMap());
+
+            if(i!=0)
+                outStream<<"\n";
+            outStream<<d.toList().join(",");
+
+       }
+
+       file.flush();
+
+       file.close();
+
+   }
+
+
+
+
+   qDebug()<<"path : "<<sPath;
+}
