@@ -490,14 +490,21 @@ void WTableAnalyze::on_btnOutput_clicked()
 
        QTextStream outStream(&file);
 
+
+
        for(int i=0;i<list.length();i++)
        {
             CAnalyzeData d ;
 
             d.setData(list.at(i).toMap());
 
-            if(i!=0)
-                outStream<<"\n";
+            if(i==0)
+            {
+                outStream<<d.listKey.join(",");
+            }
+
+            outStream<<"\n";
+
             outStream<<d.toList().join(",");
 
        }
