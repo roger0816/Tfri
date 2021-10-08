@@ -53,6 +53,9 @@
           <bold>false</bold>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">
 font: 75 12pt &quot;Arial Narrow&quot;;</string>
@@ -81,6 +84,26 @@ font: 75 12pt &quot;Arial Narrow&quot;;</string>
         <attribute name="verticalHeaderDefaultSectionSize">
          <number>40</number>
         </attribute>
+        <row>
+         <property name="text">
+          <string>新增列</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>新增列</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>新增列</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>新增列</string>
+         </property>
+        </row>
         <column>
          <property name="text">
           <string>Sid</string>
@@ -186,6 +209,26 @@ font: 75 12pt &quot;Arial Narrow&quot;;</string>
           <string>Picture (點擊詳細)</string>
          </property>
         </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item row="0" column="1">
+         <property name="text">
+          <string>Testpic</string>
+         </property>
+        </item>
+        <item row="0" column="2">
+         <property name="text">
+          <string>root</string>
+         </property>
+        </item>
+        <item row="0" column="3">
+         <property name="text">
+          <string>12.12</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item row="1" column="0">

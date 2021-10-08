@@ -33,6 +33,8 @@ public:
 
     QList<QRect> m_listRect;
 
+
+
     QString m_sPath;
 
     QStringList m_listAfFile;
@@ -65,6 +67,8 @@ private:
     QList<QWidget*> m_listW;
 
     QStringList m_listOriginFile;
+
+
 
 
     int m_iCount = 6;

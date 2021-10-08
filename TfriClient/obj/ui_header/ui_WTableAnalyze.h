@@ -121,6 +121,24 @@ public:
         tableWidget->setHorizontalHeaderItem(19, __qtablewidgetitem19);
         QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(20, __qtablewidgetitem20);
+        if (tableWidget->rowCount() < 4)
+            tableWidget->setRowCount(4);
+        QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
+        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem21);
+        QTableWidgetItem *__qtablewidgetitem22 = new QTableWidgetItem();
+        tableWidget->setVerticalHeaderItem(1, __qtablewidgetitem22);
+        QTableWidgetItem *__qtablewidgetitem23 = new QTableWidgetItem();
+        tableWidget->setVerticalHeaderItem(2, __qtablewidgetitem23);
+        QTableWidgetItem *__qtablewidgetitem24 = new QTableWidgetItem();
+        tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem24);
+        QTableWidgetItem *__qtablewidgetitem25 = new QTableWidgetItem();
+        tableWidget->setItem(0, 0, __qtablewidgetitem25);
+        QTableWidgetItem *__qtablewidgetitem26 = new QTableWidgetItem();
+        tableWidget->setItem(0, 1, __qtablewidgetitem26);
+        QTableWidgetItem *__qtablewidgetitem27 = new QTableWidgetItem();
+        tableWidget->setItem(0, 2, __qtablewidgetitem27);
+        QTableWidgetItem *__qtablewidgetitem28 = new QTableWidgetItem();
+        tableWidget->setItem(0, 3, __qtablewidgetitem28);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Arial Narrow"));
@@ -129,6 +147,7 @@ public:
         font1.setItalic(false);
         font1.setWeight(9);
         tableWidget->setFont(font1);
+        tableWidget->setFocusPolicy(Qt::NoFocus);
         tableWidget->setStyleSheet(QString::fromUtf8("\n"
 "font: 75 12pt \"Arial Narrow\";"));
         tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -357,6 +376,27 @@ public:
         ___qtablewidgetitem19->setText(QCoreApplication::translate("WTableAnalyze", "UpdateTime", nullptr));
         QTableWidgetItem *___qtablewidgetitem20 = tableWidget->horizontalHeaderItem(20);
         ___qtablewidgetitem20->setText(QCoreApplication::translate("WTableAnalyze", "Picture (\351\273\236\346\223\212\350\251\263\347\264\260)", nullptr));
+        QTableWidgetItem *___qtablewidgetitem21 = tableWidget->verticalHeaderItem(0);
+        ___qtablewidgetitem21->setText(QCoreApplication::translate("WTableAnalyze", "\346\226\260\345\242\236\345\210\227", nullptr));
+        QTableWidgetItem *___qtablewidgetitem22 = tableWidget->verticalHeaderItem(1);
+        ___qtablewidgetitem22->setText(QCoreApplication::translate("WTableAnalyze", "\346\226\260\345\242\236\345\210\227", nullptr));
+        QTableWidgetItem *___qtablewidgetitem23 = tableWidget->verticalHeaderItem(2);
+        ___qtablewidgetitem23->setText(QCoreApplication::translate("WTableAnalyze", "\346\226\260\345\242\236\345\210\227", nullptr));
+        QTableWidgetItem *___qtablewidgetitem24 = tableWidget->verticalHeaderItem(3);
+        ___qtablewidgetitem24->setText(QCoreApplication::translate("WTableAnalyze", "\346\226\260\345\242\236\345\210\227", nullptr));
+
+        const bool __sortingEnabled = tableWidget->isSortingEnabled();
+        tableWidget->setSortingEnabled(false);
+        QTableWidgetItem *___qtablewidgetitem25 = tableWidget->item(0, 0);
+        ___qtablewidgetitem25->setText(QCoreApplication::translate("WTableAnalyze", "1", nullptr));
+        QTableWidgetItem *___qtablewidgetitem26 = tableWidget->item(0, 1);
+        ___qtablewidgetitem26->setText(QCoreApplication::translate("WTableAnalyze", "Testpic", nullptr));
+        QTableWidgetItem *___qtablewidgetitem27 = tableWidget->item(0, 2);
+        ___qtablewidgetitem27->setText(QCoreApplication::translate("WTableAnalyze", "root", nullptr));
+        QTableWidgetItem *___qtablewidgetitem28 = tableWidget->item(0, 3);
+        ___qtablewidgetitem28->setText(QCoreApplication::translate("WTableAnalyze", "12.12", nullptr));
+        tableWidget->setSortingEnabled(__sortingEnabled);
+
         btnClipPic->setText(QCoreApplication::translate("WTableAnalyze", "\350\243\201\345\210\207\344\270\212\345\202\263", nullptr));
         btnOutput->setText(QCoreApplication::translate("WTableAnalyze", "\345\214\257\345\207\272", nullptr));
         btnUpload->setText(QCoreApplication::translate("WTableAnalyze", "\344\270\212\345\202\263\345\234\226\347\211\207", nullptr));

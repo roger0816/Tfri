@@ -170,6 +170,21 @@
    <item>
     <widget class="QWidget" name="widget_2" native="true">
      <layout class="QGridLayout" name="gridLayout_11">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <property name="spacing">
+       <number>0</number>
+      </property>
       <item row="0" column="0">
        <widget class="QScrollArea" name="scrollArea">
         <property name="minimumSize">
@@ -186,7 +201,7 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>1242</width>
+           <width>1260</width>
            <height>538</height>
           </rect>
          </property>
@@ -208,6 +223,9 @@
           </property>
           <item row="0" column="0">
            <widget class="QLabel" name="lbPic">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(0, 0, 0);</string>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -297,7 +315,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>28</number>
+            <number>18</number>
            </property>
           </widget>
          </item>
@@ -337,7 +355,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>490</number>
+            <number>480</number>
            </property>
           </widget>
          </item>
@@ -429,7 +447,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>28</number>
+            <number>18</number>
            </property>
           </widget>
          </item>
@@ -469,7 +487,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>490</number>
+            <number>480</number>
            </property>
           </widget>
          </item>
@@ -609,7 +627,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>28</number>
+            <number>18</number>
            </property>
           </widget>
          </item>
@@ -649,7 +667,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>490</number>
+            <number>480</number>
            </property>
           </widget>
          </item>
@@ -840,7 +858,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>28</number>
+            <number>18</number>
            </property>
           </widget>
          </item>
@@ -880,7 +898,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>490</number>
+            <number>480</number>
            </property>
           </widget>
          </item>
@@ -972,7 +990,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>28</number>
+            <number>18</number>
            </property>
           </widget>
          </item>
@@ -1012,7 +1030,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>490</number>
+            <number>480</number>
            </property>
           </widget>
          </item>
@@ -1117,7 +1135,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>28</number>
+            <number>18</number>
            </property>
           </widget>
          </item>
@@ -1157,7 +1175,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>490</number>
+            <number>480</number>
            </property>
           </widget>
          </item>

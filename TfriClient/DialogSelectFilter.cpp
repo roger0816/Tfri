@@ -150,6 +150,7 @@ void DialogSelectFilter::changeSb()
 
 void DialogSelectFilter::changeImage()
 {
+
     ui->lbPic->setPixmap(QPixmap(m_listOriginFile.at(m_originIdx)));
 
     ui->lbOriginFile->setText(m_listOriginFile.at(m_originIdx));
@@ -196,10 +197,12 @@ void DialogSelectFilter::on_btnSet_clicked()
                     QPoint(m_listSb.at(i)["x1"]->value(),m_listSb.at(i)["y1"]->value()));
 
             m_wFilter[i]->resize(ui->lbPic->size());
-            m_wFilter[i]->setMask(rectT);
+            m_listRect.append(rectT);
+
+            m_wFilter[i]->setMask(rectT.marginsRemoved(QMargins(0,10,0,-10)));
             m_wFilter[i]->show();
 
-            m_listRect.append(rectT);
+
 
         }
         else
