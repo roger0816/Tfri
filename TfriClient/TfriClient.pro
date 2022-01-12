@@ -34,6 +34,7 @@ SOURCES += \
     CCallApi.cpp \
     DialogDetail.cpp \
     DialogSelectFilter.cpp \
+    DialogUser.cpp \
     Global.cpp \
     LayerLoadingLock.cpp \
     WTableAnalyze.cpp \
@@ -48,6 +49,7 @@ HEADERS += \
     CCallApi.h \
     DialogDetail.h \
     DialogSelectFilter.h \
+    DialogUser.h \
     Global.h \
     LayerLoadingLock.h \
     WTableAnalyze.h \
@@ -57,6 +59,7 @@ FORMS += \
     ../common/DialogMsg.ui \
     DialogDetail.ui \
     DialogSelectFilter.ui \
+    DialogUser.ui \
     LayerLoadingLock.ui \
     WTableAnalyze.ui \
     widget.ui

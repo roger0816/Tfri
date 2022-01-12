@@ -11,7 +11,7 @@ CQueryData::CQueryData(QObject *parent) : QObject(parent)
     m_timer.start(QUERY_MSEC);
 }
 
-void CQueryData::setFileList(QString sUser, QStringList listFile)
+void CQueryData::setFileList(QString sUser,QString sGroup, QStringList listFile)
 {
     for(int i=0;i<listFile.length();i++)
     {
@@ -24,11 +24,16 @@ void CQueryData::setFileList(QString sUser, QStringList listFile)
 
             CPicData data;
 
+            data.sGroup = sGroup;
+
             data.sUser = sUser;
 
             data.sFileName = listFile.at(i).split("/").last();
 
             data.dRawData = dData;
+
+
+            qDebug()<<"1.1 : "<<data.sUser<<" ; gropu :"<<data.sGroup;
 
             m_listData.append(data);
 
@@ -40,34 +45,6 @@ void CQueryData::setFileList(QString sUser, QStringList listFile)
 
 }
 
-void CQueryData::setDataList(QString sUser, QVariantList listFileName, QVariantList listData)
-{
-
-    qDebug()<<"user : "<<sUser;
-
-    qDebug()<<"list name : "<<listFileName;
-
-    qDebug()<<"listData len : "<<listData.length();
-
-    for(int i=0;i<listFileName.length();i++)
-    {
-
-        if(listData.length()<=i)
-            listData.append(QByteArray());
-
-        CPicData data;
-
-        data.sUser = sUser;
-
-        data.sFileName = listFileName.at(i).toString().split("/").last();;
-
-        data.dRawData = listData.at(i).toByteArray();
-
-        m_listData.append(data);
-    }
-
-
-}
 
 void CQueryData::query()
 {
@@ -100,7 +77,11 @@ void CQueryData::query()
 
     QString sUser = cData.sUser;
 
+    QString sGroup = cData.sGroup;
+
     QString sFileName = cData.sFileName;
+
+    m_sTarget = sFileName;
 
     QByteArray dPic = cData.dRawData;
 
@@ -129,7 +110,9 @@ void CQueryData::query()
 
 
 
-    QString sUrl = QString("http://161.35.98.42:8080/v2.1/classify_image");
+  //  QString sUrl = QString("http://161.35.98.42:8080/v2.1/classify_image");
+
+        QString sUrl = QString("http://161.35.98.42:8080/v2.1/classify_image?decimalplaces=2");
 
     QNetworkRequest request;
 
@@ -165,7 +148,8 @@ void CQueryData::query()
     //        QByteArray dData = file.readAll();
     //        file.close();
 
-    m_listData[0].sId = QString::number(CSqlClass::INS().insertOriginPic(sUser,sFileName,dPic));
+    m_listData[0].sId = QString::number(CSqlClass::INS().insertOriginPic(sUser,sGroup,sFileName,dPic));
+
 
     QHttpMultiPart *multi_part = new QHttpMultiPart(QHttpMultiPart::FormDataType);
 
@@ -199,6 +183,16 @@ void CQueryData::query()
 
 
 
+}
+
+int CQueryData::getWaitCount()
+{
+    return m_listData.length();
+}
+
+QString CQueryData::getCurrentTarget()
+{
+    return m_sTarget;
 }
 
 
@@ -238,6 +232,8 @@ void CQueryData::slotFinish(QNetworkReply *reply)
     data.insert("Id",cPic.sId);
 
     data.insert("User",cPic.sUser);
+
+    data.insert("ClassGroup",cPic.sGroup);
 
     data.insert("Name",cPic.sFileName);
 

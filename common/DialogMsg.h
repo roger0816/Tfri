@@ -17,7 +17,10 @@ public:
 
     void setMsg(QString sTitle,QString sMsg,QStringList listBtn);
 
-private:
+    void setInput(QString sTitle,QString sMsg,QStringList listBtn);
+
+    QString getInput();
+private:;
     Ui::DialogMsg *ui;
 
     QList<QPushButton*> m_listBtn;

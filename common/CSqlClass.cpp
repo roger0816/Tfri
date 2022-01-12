@@ -33,6 +33,13 @@ void CSqlClass::open(QString sDbPath)
 
     createTable();
 
+    if(getUserData("root").length()<1)
+    {
+        qDebug()<<"add root data";
+
+        insertUser("root","Aa111111",99);
+    }
+
 }
 
 void CSqlClass::createTable()
@@ -54,10 +61,11 @@ void CSqlClass::createTable()
 
     query.clear();
 
-    query.exec("CREATE TABLE 'Analyze' ( \
+    query.exec("CREATE TABLE 'AnalyzeData' ( \
                'Sid'	INTEGER,  \
                'FileName'   TEXT, \
                'User'	TEXT, \
+               'ClassGroup' TEXT , \
                'Building'	TEXT, \
                'Bicyclist'	TEXT, \
                'Car'	TEXT, \
@@ -111,11 +119,12 @@ void CSqlClass::createTable()
     query.clear();
 
 
-    query.exec("CREATE TABLE 'UserList' ( \
+    query.exec("CREATE TABLE 'User' ( \
                'Sid'	INTEGER NOT NULL, \
                'Name'	TEXT, \
                'Password'	TEXT, \
                'Type'	INTEGER DEFAULT 1, \
+               'ClassGroup'	TEXT, \
                'Note'	TEXT, \
                'CreateTime' TEXT, \
                'UpdateTime' TEXT, \
@@ -135,9 +144,9 @@ void CSqlClass::setAnalyzeData(QString sId,CAnalyzeData cData)
     //    INSERT INTO Analyze (Sid,Building) VALUES('1932','67.6') ON CONFLICT(Sid) DO
 
     //    UPDATE  SET Building='68.7' WHERE Sid='1932';
-    query.prepare("INSERT INTO Analyze (Sid,User,Building,Bicyclist,Car,Fence,Pavement,Pedestrian,Pole,RoadMarking, "
+    query.prepare("INSERT INTO AnalyzeData (Sid,User,ClassGroup,Building,Bicyclist,Car,Fence,Pavement,Pedestrian,Pole,RoadMarking, "
                   " Sky,SignSymbol,Tree,Unlabelled,Width,Height,AlgorithmTime,Result,CreateTime,UpdateTime) "
-                  " VALUES(:Sid,:User,:Building,:Bicyclist,:Car,:Fence,:Pavement,:Pedestrian,:Pole,:RoadMarking, "
+                  " VALUES(:Sid,:User,:ClassGroup,:Building,:Bicyclist,:Car,:Fence,:Pavement,:Pedestrian,:Pole,:RoadMarking, "
                   " :Sky,:SignSymbol,:Tree,:Unlabelled,:Width,:Height,:AlgorithmTime,:Result,:CreateTime,:UpdateTime) "
                   "ON CONFLICT(Sid) DO UPDATE SET "
                   " Building=:Building , Bicyclist=:Bicyclist , Car=:Car , Fence = :Fence "
@@ -154,6 +163,12 @@ void CSqlClass::setAnalyzeData(QString sId,CAnalyzeData cData)
 
     query.bindValue(":Sid",sId.toInt());
     query.bindValue(":User",cData.sUser);
+    QString sGroup = cData.sClassGroup;
+
+    qDebug()<<"aa 1.2 : "<<sGroup;
+    if(sGroup=="")
+        sGroup = "Def";
+    query.bindValue(":ClassGroup",sGroup);
     query.bindValue(":Building",cData.sBuilding);
     query.bindValue(":Bicyclist",cData.sBicyclist);
     query.bindValue(":Car",cData.sCar);
@@ -184,21 +199,35 @@ void CSqlClass::setAnalyzeData(QString sId,CAnalyzeData cData)
 
 }
 
-int CSqlClass::insertOriginPic(QString sUser,QString sName,QByteArray dData)
+void CSqlClass::deleteAnalyzeData(QString sId)
+{
+    QSqlQuery query(m_db);
+
+    query.prepare("DELETE FROM AnalyzeData WHERE Sid=?;");
+    query.bindValue(0,sId);
+    query.exec();
+}
+
+int CSqlClass::insertOriginPic(QString sUser,QString sGroup,QString sName,QByteArray dData)
 {
     QSqlQuery query(m_db);
 
     int iRe =0;
-    query.prepare("INSERT INTO Analyze (User,FileName,CreateTime) "
-                  "VALUES (?,?,?)");
+    query.prepare("INSERT INTO AnalyzeData (User,ClassGroup,FileName,CreateTime) "
+                  "VALUES (?,?,?,?)");
+
+    if(sGroup=="" || sGroup.toLower() =="all")
+        sGroup = "Def";
+
     query.bindValue(0, sUser);
-    query.bindValue(1, sName);
-    query.bindValue(2,QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
+    query.bindValue(1,sGroup);
+    query.bindValue(2, sName);
+    query.bindValue(3,QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
     query.exec();
 
     query.clear();
 
-    query.exec("SELECT Sid FROM Analyze ORDER BY Sid DESC;");
+    query.exec("SELECT Sid FROM AnalyzeData ORDER BY Sid DESC;");
 
 
     if (query.next())
@@ -272,18 +301,32 @@ void CSqlClass::insertDecodePic(QString sId, QString sName, QByteArray dData)
 
 }
 
-QVariantList CSqlClass::getAnalyzeData(QString sLastDate,int iCount)
+QVariantList CSqlClass::getAnalyzeData(QString sLastDate, int iCount, QString sGroup)
 {
     QVariantList listRe;
 
     QSqlQuery query(m_db);
 
-    QString sCmd = "SELECT * FROM ANALYZE WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC LIMIT :Count";
+    QString sCmd = "SELECT * FROM AnalyzeData WHERE  %1 UpdateTime>:DateTime ORDER BY UpdateTime ASC %2";
 
-    if(iCount==-1)
-        sCmd = "SELECT * FROM ANALYZE WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC";
+    QString sCmdGroup = " ClassGroup = '"+sGroup+"' AND";
 
-    query.prepare(sCmd);
+
+    if(sGroup=="" || sGroup.toLower()=="all")
+        sCmdGroup ="";
+
+    QString sCmdLimit =" LIMIT :Count";
+
+
+    if(iCount ==-1)
+        sCmdLimit="";
+
+   // QString sCmd = "SELECT * FROM AnalyzeData WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC LIMIT :Count";
+
+//    if(iCount==-1)
+//        sCmd = "SELECT * FROM AnalyzeData WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC";
+
+    query.prepare(sCmd.arg(sCmdGroup).arg(sCmdLimit));
     query.bindValue(":DateTime",sLastDate);
     if(iCount!=-1)
         query.bindValue(":Count",iCount);
@@ -331,15 +374,21 @@ QVariantList CSqlClass::getAnalyzeData(QString sLastDate,int iCount)
 
 }
 
-QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount)
+QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount, QString sGroup)
 {
     QVariantList listRe;
 
     QSqlQuery query(m_db);
 
-    QString sCmd = "SELECT * FROM Analyze ORDER BY  Sid ASC LIMIT ? OFFSET ?  ";
 
-    query.prepare(sCmd);
+    QString sCmd = "SELECT * FROM AnalyzeData %1 ORDER BY Sid ASC LIMIT ? OFFSET ?  ";
+
+    QString sCmdGroup =" WHERE ClassGroup = '"+sGroup+"' ";
+    if(sGroup=="" || sGroup.toLower()=="all")
+        sCmdGroup = " ";
+
+
+    query.prepare(sCmd.arg(sCmdGroup));
     query.bindValue(0,iCount);
     query.bindValue(1,iIdx);
     query.exec();
@@ -384,13 +433,21 @@ QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount)
     return listRe;
 }
 
-int CSqlClass::getAnalyzeCount()
+int CSqlClass::getAnalyzeCount(QString sGroup)
 {
     int iRe = 0;
 
     QSqlQuery query(m_db);
 
-    query.exec("SELECT count(*) FROM Analyze ;");
+    QString sCmd ="SELECT count(*) FROM AnalyzeData %1;";
+
+    QString sGroupCmd = "  WHERE ClassGroup ='"+sGroup+"' ";
+
+    if(sGroup=="" || sGroup.toLower()=="all")
+        sGroupCmd=" ";
+
+
+    query.exec(sCmd.arg(sGroupCmd));
 
     if(query.next())
         iRe = query.value(0).toInt();
@@ -402,7 +459,7 @@ QVariantMap CSqlClass::getAnalyzeFromId(QString sId)
 {
     QSqlQuery query(m_db);
 
-    query.exec("SELECT * FROM Analyze WHERE Sid ='"+sId+"';");
+    query.exec("SELECT * FROM AnalyzeData WHERE Sid ='"+sId+"';");
 
     CAnalyzeData cData ;
     if (query.next())
@@ -449,7 +506,7 @@ QString CSqlClass::getAnalyzeLast()
 
     QSqlQuery query(m_db);
 
-    query.exec("SELECT UpdateTime FROM Analyze ORDER BY UpdateTime DESC LIMIT 1;");
+    query.exec("SELECT UpdateTime FROM AnalyzeData ORDER BY UpdateTime DESC LIMIT 1;");
 
     if(query.next())
     {
@@ -531,29 +588,117 @@ QString CSqlClass::getPicDataLast()
     return sRe;
 }
 
-bool CSqlClass::login(QString sUser, QString sPassword, QString &sType)
+QList<QVariantMap> CSqlClass::getUserData(QString sUser)
+{
+    QList<QVariantMap> list;
+    QVariantMap map;
+
+    QSqlQuery query(m_db);
+
+    if(sUser=="")
+    {
+         query.exec("SELECT * FROM User;");
+    }
+
+    else
+    {
+        query.prepare("SELECT * FROM User Where Name = ?;");
+
+        query.bindValue(0,sUser);
+
+        query.exec();
+    }
+
+    while(query.next())
+    {
+
+        map["Sid"] = query.value(0).toString();
+
+        map["Name"] = query.value(1).toString();
+
+        map["Password"] = query.value(2).toString();
+
+        map["Type"] = query.value(3).toString();
+
+        map["ClassGroup"] = query.value(4).toString().split(";;");
+
+        map["Note"] = query.value(5).toString();
+
+        map["CreateTime"] = query.value(6).toString();
+
+        map["UpdateTime"] = query.value(7).toString();
+
+        qDebug()<<"appand : "<<map;
+
+        list.append(map);
+    }
+
+    return list;
+}
+
+void CSqlClass::insertUser(QString sUser, QString sPw, int iType)
+{
+    QSqlQuery query(m_db);
+
+    query.prepare("INSERT INTO User (Name,Password,Type,ClassGroup,CreateTime,UpdateTime) "
+                  "VALUES (?,?,?,?,?,?)");
+    query.bindValue(0, sUser);
+    query.bindValue(1, sPw);
+    query.bindValue(2, iType);
+    query.bindValue(3, "Def");
+    query.bindValue(4,QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
+    query.bindValue(5,QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
+
+    query.exec();
+}
+
+void CSqlClass::changePassword(QString sUser, QString sNewPw)
+{
+
+    QSqlQuery query(m_db);
+
+    query.prepare("UPDATE  User SET Password =? Where Name = ?;");
+    query.bindValue(0, sNewPw);
+    query.bindValue(1, sUser);
+    query.exec();
+}
+
+void CSqlClass::changeClassGroup(QString sUser, QStringList listGroup)
+{
+    QSqlQuery query(m_db);
+
+    query.prepare("UPDATE  User SET ClassGroup =? Where Name = ?;");
+    query.bindValue(0, listGroup.join(";;"));
+    query.bindValue(1, sUser);
+    query.exec();
+}
+
+bool CSqlClass::login(QString sUser, QString sPassword, QString &sError)
 {
     bool bRe =false;
     qDebug()<<"login : "<<sUser<<" , PW : "<<sPassword;
 
     QSqlQuery query(m_db);
 
-    query.prepare("SELECT * FROM UserList WHERE Name=? AND Password=? ;");
+    query.prepare("SELECT * FROM User WHERE Name=? AND Password=? ;");
 
     query.bindValue(0,sUser);
     query.bindValue(1,sPassword);
     bool bOk = query.exec();
 
     qDebug()<<"last  : "<<bOk;
+
+    sError= "登入錯誤";
+
     if(query.next())
     {
 
         bRe = true;
 
-        sType = query.value(0).toString();
+        //    sType = query.value(0).toString();
 
-        qDebug()<<"has user type :";
-
+        qDebug()<<"has user :";
+        sError = "登入成功";
 
     }
 

@@ -97,6 +97,21 @@
              <string notr="true">QWidget#widget_3{background-color: rgba(255, 255, 255, 168);}</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_3">
+             <item row="1" column="0" colspan="3">
+              <widget class="QLabel" name="label_4">
+               <property name="font">
+                <font>
+                 <pointsize>20</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>環境辨識平台</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
              <item row="3" column="0" colspan="3">
               <widget class="QWidget" name="widget_2" native="true">
                <layout class="QFormLayout" name="formLayout">
@@ -142,6 +157,18 @@
                   </property>
                  </widget>
                 </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>16</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>密碼:</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="1" column="1">
                  <widget class="QLineEdit" name="txPassword">
                   <property name="maximumSize">
@@ -163,19 +190,22 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="label_3">
-                  <property name="font">
-                   <font>
-                    <pointsize>16</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>密碼:</string>
-                  </property>
-                 </widget>
-                </item>
                </layout>
+              </widget>
+             </item>
+             <item row="0" column="0" colspan="3">
+              <widget class="QLabel" name="label_6">
+               <property name="font">
+                <font>
+                 <pointsize>20</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>TFRI</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
               </widget>
              </item>
              <item row="2" column="0" colspan="3">
@@ -194,7 +224,7 @@
                </property>
               </spacer>
              </item>
-             <item row="5" column="0" colspan="3">
+             <item row="6" column="0" colspan="3">
               <widget class="QLabel" name="lbMsg">
                <property name="font">
                 <font>
@@ -206,18 +236,6 @@
                </property>
                <property name="text">
                 <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QPushButton" name="btnTestPage">
-               <property name="font">
-                <font>
-                 <pointsize>16</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>TEST</string>
                </property>
               </widget>
              </item>
@@ -239,33 +257,36 @@
                </property>
               </widget>
              </item>
-             <item row="0" column="0" colspan="3">
-              <widget class="QLabel" name="label_6">
+             <item row="4" column="1">
+              <widget class="QCheckBox" name="chSavePass">
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
-                 <pointsize>20</pointsize>
+                 <pointsize>12</pointsize>
                 </font>
                </property>
-               <property name="text">
-                <string>TFRI</string>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
                </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
+               <property name="text">
+                <string>儲存密碼</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="0" colspan="3">
-              <widget class="QLabel" name="label_4">
+             <item row="4" column="0">
+              <widget class="QPushButton" name="btnTestPage">
                <property name="font">
                 <font>
-                 <pointsize>20</pointsize>
+                 <pointsize>16</pointsize>
                 </font>
                </property>
                <property name="text">
-                <string>環境辨識平台</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
+                <string>TEST</string>
                </property>
               </widget>
              </item>
@@ -281,7 +302,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>v1.0.1003</string>
+             <string>v1.1.0112</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

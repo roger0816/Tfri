@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 5.12.12
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -38,18 +39,19 @@ public:
     QSpacerItem *horizontalSpacer_3;
     QWidget *widget_3;
     QGridLayout *gridLayout_3;
+    QLabel *label_4;
     QWidget *widget_2;
     QFormLayout *formLayout;
     QLabel *label_2;
     QLineEdit *txUser;
-    QLineEdit *txPassword;
     QLabel *label_3;
+    QLineEdit *txPassword;
+    QLabel *label_6;
     QSpacerItem *verticalSpacer_3;
     QLabel *lbMsg;
-    QPushButton *btnTestPage;
     QPushButton *btnLogin;
-    QLabel *label_6;
-    QLabel *label_4;
+    QCheckBox *chSavePass;
+    QPushButton *btnTestPage;
     QLabel *label_5;
     QSpacerItem *verticalSpacer_2;
     QSpacerItem *verticalSpacer;
@@ -110,6 +112,15 @@ public:
         widget_3->setStyleSheet(QString::fromUtf8("QWidget#widget_3{background-color: rgba(255, 255, 255, 168);}"));
         gridLayout_3 = new QGridLayout(widget_3);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        label_4 = new QLabel(widget_3);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        QFont font1;
+        font1.setPointSize(20);
+        label_4->setFont(font1);
+        label_4->setAlignment(Qt::AlignCenter);
+
+        gridLayout_3->addWidget(label_4, 1, 0, 1, 3);
+
         widget_2 = new QWidget(widget_3);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
         formLayout = new QFormLayout(widget_2);
@@ -118,35 +129,42 @@ public:
         label_2 = new QLabel(widget_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setMinimumSize(QSize(40, 0));
-        QFont font1;
-        font1.setPointSize(16);
-        label_2->setFont(font1);
+        QFont font2;
+        font2.setPointSize(16);
+        label_2->setFont(font2);
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_2);
 
         txUser = new QLineEdit(widget_2);
         txUser->setObjectName(QString::fromUtf8("txUser"));
         txUser->setMaximumSize(QSize(200, 16777215));
-        txUser->setFont(font1);
+        txUser->setFont(font2);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, txUser);
+
+        label_3 = new QLabel(widget_2);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setFont(font2);
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, label_3);
 
         txPassword = new QLineEdit(widget_2);
         txPassword->setObjectName(QString::fromUtf8("txPassword"));
         txPassword->setMaximumSize(QSize(200, 16777215));
-        txPassword->setFont(font1);
+        txPassword->setFont(font2);
         txPassword->setEchoMode(QLineEdit::Password);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, txPassword);
 
-        label_3 = new QLabel(widget_2);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setFont(font1);
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_3);
-
 
         gridLayout_3->addWidget(widget_2, 3, 0, 1, 3);
+
+        label_6 = new QLabel(widget_3);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setFont(font1);
+        label_6->setAlignment(Qt::AlignCenter);
+
+        gridLayout_3->addWidget(label_6, 0, 0, 1, 3);
 
         verticalSpacer_3 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
@@ -154,39 +172,31 @@ public:
 
         lbMsg = new QLabel(widget_3);
         lbMsg->setObjectName(QString::fromUtf8("lbMsg"));
-        lbMsg->setFont(font1);
+        lbMsg->setFont(font2);
         lbMsg->setStyleSheet(QString::fromUtf8("color: rgb(220, 73, 0);"));
 
-        gridLayout_3->addWidget(lbMsg, 5, 0, 1, 3);
-
-        btnTestPage = new QPushButton(widget_3);
-        btnTestPage->setObjectName(QString::fromUtf8("btnTestPage"));
-        btnTestPage->setFont(font1);
-
-        gridLayout_3->addWidget(btnTestPage, 4, 0, 1, 1);
+        gridLayout_3->addWidget(lbMsg, 6, 0, 1, 3);
 
         btnLogin = new QPushButton(widget_3);
         btnLogin->setObjectName(QString::fromUtf8("btnLogin"));
         btnLogin->setMaximumSize(QSize(120, 16777215));
-        btnLogin->setFont(font1);
+        btnLogin->setFont(font2);
 
         gridLayout_3->addWidget(btnLogin, 4, 2, 1, 1);
 
-        label_6 = new QLabel(widget_3);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        QFont font2;
-        font2.setPointSize(20);
-        label_6->setFont(font2);
-        label_6->setAlignment(Qt::AlignCenter);
+        chSavePass = new QCheckBox(widget_3);
+        chSavePass->setObjectName(QString::fromUtf8("chSavePass"));
+        chSavePass->setMaximumSize(QSize(120, 16777215));
+        chSavePass->setFont(font);
+        chSavePass->setLayoutDirection(Qt::LeftToRight);
 
-        gridLayout_3->addWidget(label_6, 0, 0, 1, 3);
+        gridLayout_3->addWidget(chSavePass, 4, 1, 1, 1);
 
-        label_4 = new QLabel(widget_3);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setFont(font2);
-        label_4->setAlignment(Qt::AlignCenter);
+        btnTestPage = new QPushButton(widget_3);
+        btnTestPage->setObjectName(QString::fromUtf8("btnTestPage"));
+        btnTestPage->setFont(font2);
 
-        gridLayout_3->addWidget(label_4, 1, 0, 1, 3);
+        gridLayout_3->addWidget(btnTestPage, 4, 0, 1, 1);
 
 
         gridLayout_4->addWidget(widget_3, 3, 1, 1, 1);
@@ -271,20 +281,21 @@ public:
 
     void retranslateUi(QWidget *Widget)
     {
-        Widget->setWindowTitle(QCoreApplication::translate("Widget", "Widget", nullptr));
-        label_2->setText(QCoreApplication::translate("Widget", "\345\270\263\350\231\237:", nullptr));
-        txUser->setText(QCoreApplication::translate("Widget", "root", nullptr));
-        txPassword->setText(QCoreApplication::translate("Widget", "Aa111111", nullptr));
-        label_3->setText(QCoreApplication::translate("Widget", "\345\257\206\347\242\274:", nullptr));
+        Widget->setWindowTitle(QApplication::translate("Widget", "Widget", nullptr));
+        label_4->setText(QApplication::translate("Widget", "\347\222\260\345\242\203\350\276\250\350\255\230\345\271\263\345\217\260", nullptr));
+        label_2->setText(QApplication::translate("Widget", "\345\270\263\350\231\237:", nullptr));
+        txUser->setText(QApplication::translate("Widget", "root", nullptr));
+        label_3->setText(QApplication::translate("Widget", "\345\257\206\347\242\274:", nullptr));
+        txPassword->setText(QApplication::translate("Widget", "Aa111111", nullptr));
+        label_6->setText(QApplication::translate("Widget", "TFRI", nullptr));
         lbMsg->setText(QString());
-        btnTestPage->setText(QCoreApplication::translate("Widget", "TEST", nullptr));
-        btnLogin->setText(QCoreApplication::translate("Widget", "\347\231\273\345\205\245", nullptr));
-        label_6->setText(QCoreApplication::translate("Widget", "TFRI", nullptr));
-        label_4->setText(QCoreApplication::translate("Widget", "\347\222\260\345\242\203\350\276\250\350\255\230\345\271\263\345\217\260", nullptr));
-        label_5->setText(QCoreApplication::translate("Widget", "v1.0.1003", nullptr));
-        pushButton->setText(QCoreApplication::translate("Widget", "decode pic", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("Widget", "history", nullptr));
-        btnTestBack->setText(QCoreApplication::translate("Widget", "BACK", nullptr));
+        btnLogin->setText(QApplication::translate("Widget", "\347\231\273\345\205\245", nullptr));
+        chSavePass->setText(QApplication::translate("Widget", "\345\204\262\345\255\230\345\257\206\347\242\274", nullptr));
+        btnTestPage->setText(QApplication::translate("Widget", "TEST", nullptr));
+        label_5->setText(QApplication::translate("Widget", "v1.1.0112", nullptr));
+        pushButton->setText(QApplication::translate("Widget", "decode pic", nullptr));
+        pushButton_2->setText(QApplication::translate("Widget", "history", nullptr));
+        btnTestBack->setText(QApplication::translate("Widget", "BACK", nullptr));
     } // retranslateUi
 
 };

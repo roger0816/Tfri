@@ -19,6 +19,9 @@
 #include "DialogSelectFilter.h"
 #include "DialogDetail.h"
 #include <QFileDialog>
+#include <QTimerEvent>
+
+#include "DialogUser.h"
 namespace Ui {
 class WTableAnalyze;
 }
@@ -36,6 +39,7 @@ public:
 
     void showEvent(QShowEvent *) override;
 
+    void timerEvent(QTimerEvent *) override;
     QWidget* scalePic(QString sId,QString sFileName);
 
     void setScalePic(int iRow, QString sId, QString sFileName);
@@ -71,12 +75,18 @@ private slots:
 
     void on_btnOutput_clicked();
 
+    void on_btnClass_clicked();
+
+    void on_cbClass_currentIndexChanged(int);
+
+    void on_btnDelRow_clicked();
+
 private:
     Ui::WTableAnalyze *ui;
 
     void reload();
 
-    void uploadFile(QStringList listFile);
+    void uploadFile(QString sGroup,QStringList listFile);
 
 
     bool m_bFirst = true;

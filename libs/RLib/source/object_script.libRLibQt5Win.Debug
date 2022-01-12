@@ -1,0 +1,23 @@
+CREATE ..\..\RLib\libRLibQt5Win.a
+ADDMOD obj\CTcpClient.o
+ADDMOD obj\CTcpServer.o
+ADDMOD obj\Network.o
+ADDMOD obj\DataBase.o
+ADDMOD obj\CSql.o
+ADDMOD obj\Ipc.o
+ADDMOD obj\CLocalServer.o
+ADDMOD obj\CLocalClient.o
+ADDMOD obj\Utility.o
+ADDMOD obj\Library.o
+ADDMOD obj\qrc_res.o
+ADDMOD obj\moc_Network.o
+ADDMOD obj\moc_DataBase.o
+ADDMOD obj\moc_Ipc.o
+ADDMOD obj\moc_Utility.o
+ADDMOD obj\moc_Library.o
+ADDMOD obj\moc_CSql.o
+ADDMOD obj\moc_CTcpClient.o
+ADDMOD obj\moc_CTcpServer.o
+ADDMOD obj\moc_CLocalServer.o
+ADDMOD obj\moc_CLocalClient.o
+SAVE

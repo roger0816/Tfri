@@ -28,7 +28,7 @@ WTableAnalyze::WTableAnalyze(QWidget *parent) :
     ui->tableWidget->setColumnWidth(19,140);
     ui->tableWidget->setColumnWidth(20,200);
 
-   // connect(ui->tableWidget,&QTabWidget::)
+    // connect(ui->tableWidget,&QTabWidget::)
 
     connect(ui->tableWidget,&QTableWidget::cellClicked,this,&WTableAnalyze::slotCellClicked);
 
@@ -46,7 +46,7 @@ WTableAnalyze::WTableAnalyze(QWidget *parent) :
         m_listColorW.append(w);
     }
 
-
+    startTimer(1000);
 }
 
 WTableAnalyze::~WTableAnalyze()
@@ -58,7 +58,7 @@ void WTableAnalyze::refresh(bool bReload)
 {
 
     GLOBAL.showBlockLoading(this);
-    int iTotalDataCount = CSQL.getAnalyzeCount();
+    int iTotalDataCount = CSQL.getAnalyzeCount(ui->cbClass->currentText());
 
     int iTotalPage = iTotalDataCount/ui->sbCount->value();
 
@@ -90,12 +90,41 @@ void WTableAnalyze::showEvent(QShowEvent *)
 
     GLOBAL.showBlockLoading(this);
     slotHeaderResize(1,1,1);
+
+    ui->cbClass->clear();
+
     QTimer::singleShot(100,this,[=]()
     {
 
         refresh(true);
 
+        CUserData dataCurrent ;
+
+        dataCurrent.setData(CSQL.getUserData(GLOBAL.m_sUser).first());
+
+        if(dataCurrent.listGroup.length()<1)
+            dataCurrent.listGroup.append("Def");
+
+        ui->cbClass->addItem("All");
+
+        ui->cbClass->addItems(dataCurrent.listGroup);
+
     });
+
+}
+
+void WTableAnalyze::timerEvent(QTimerEvent *)
+{
+
+    int iCount = CAPI.INS().m_ai.getWaitCount();
+
+    QString sTarget = CAPI.INS().m_ai.getCurrentTarget();
+
+    if(iCount<=0)
+        ui->lbWaitMsg->setText("");
+    else
+        ui->lbWaitMsg->setText(QString("正在解析%1，還有%2張等待解析。").arg(sTarget).arg(iCount));
+
 
 }
 
@@ -145,6 +174,12 @@ void WTableAnalyze::setScalePic(int iRow,QString sId, QString sFileName)
 
     QGridLayout *lay = new QGridLayout;
     lay->setMargin(1);
+
+    QSpacerItem *item = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+    lay->addItem(item,0,0);
+
+
     QStringList listPic;
 
     QString sTmp =QString::number(sId.toInt());  //  00001  to   1
@@ -158,13 +193,13 @@ void WTableAnalyze::setScalePic(int iRow,QString sId, QString sFileName)
         {
             QLabel *lb = new QLabel(w);
             lb->setPixmap(QPixmap(listPic.at(i)).scaledToHeight(60));
-            lay->addWidget(lb,0,i);
+            lay->addWidget(lb,0,i+1);
         }
     }
 
-    QSpacerItem *item = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+    QSpacerItem *item2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-    lay->addItem(item,0,2);
+    lay->addItem(item2,0,3);
 
     w->setLayout(lay);
 
@@ -186,6 +221,7 @@ void WTableAnalyze::slotUpdate(QString sId)
 {
     bool bReload =  ui->sbNowPage->value()==ui->lbTotalPage->text().toInt();
 
+    qDebug()<<" update : "<<bReload;
     refresh(bReload);
 
 
@@ -240,23 +276,24 @@ void WTableAnalyze::slotCellClicked(int iRow, int iCol)
         return;
 
 
-   QString sId = ui->tableWidget->item(iRow,0)->text();
+    QString sId = ui->tableWidget->item(iRow,0)->text();
 
-//   QString sFileName =ui->tableWidget->item(iRow,1)->text();
+    //   QString sFileName =ui->tableWidget->item(iRow,1)->text();
 
-//   QString sPath =QApplication::applicationDirPath()+"/../data/%1/%2/"+sFileName.split(".").first();
+    //   QString sPath =QApplication::applicationDirPath()+"/../data/%1/%2/"+sFileName.split(".").first();
 
-  QVariantMap dData = CSQL.getAnalyzeFromId(sId);
+    QVariantMap dData = CSQL.getAnalyzeFromId(sId);
 
-  CAnalyzeData item;
+    CAnalyzeData item;
 
-  item.setData(dData);
 
-  DialogDetail dialog;
+    item.setData(dData);
 
-  dialog.setData(item);
+    DialogDetail dialog;
 
-  dialog.exec();
+    dialog.setData(item);
+
+    dialog.exec();
 
 
 }
@@ -270,11 +307,17 @@ void WTableAnalyze::on_btnTest_clicked()
 
 void WTableAnalyze::on_btnUpload_clicked()
 {
-    QStringList listFile = QFileDialog::getOpenFileNames(this,
-                                                         tr("Open Image"), "", tr("Image Files (*.png *.jpg)"));
 
-    uploadFile(listFile);
+    DialogMsg dialog;
 
+    dialog.setMsg("上傳圖片",QString("確定上傳到所選擇的分類 '%1' 嗎?").arg(ui->cbClass->currentText()),QStringList()<<"否"<<"是");
+
+    if(dialog.exec()==1)
+    {
+        QStringList listFile = QFileDialog::getOpenFileNames(this,
+                                                             tr("Open Image"), "", tr("Image Files (*.png *.jpg)"));
+        uploadFile(ui->cbClass->currentText(),listFile);
+    }
 }
 
 
@@ -293,8 +336,15 @@ void WTableAnalyze::reload()
     QStringList listFileName;
     QVariantList list ;
     //  list.append(ana.mColor);
-    list.append(CSQL.getAnalyzeData(0,ui->sbCount->value()));
+    list.append(CSQL.getAnalyzeData(0,ui->sbCount->value(),ui->cbClass->currentText()));
 
+
+    if(list.length()<1)
+    {
+        ui->tableWidget->setRowCount(0);
+
+        // return;
+    }
     for(int i=0;i<list.length();i++)
     {
         QVariantMap dData = list.at(i).toMap();
@@ -349,7 +399,7 @@ void WTableAnalyze::reload()
     ui->tableWidget->show();
 }
 
-void WTableAnalyze::uploadFile(QStringList listFile)
+void WTableAnalyze::uploadFile(QString sGroup, QStringList listFile)
 {
     if(listFile.length()<1)
         return;
@@ -369,7 +419,7 @@ void WTableAnalyze::uploadFile(QStringList listFile)
 
             cData.setData(listData.at(j).toMap());
 
-            if(sFile == cData.sName)
+            if(sFile == cData.sName && sGroup == cData.sClassGroup)
             {
                 bHasOne = true;
                 break;
@@ -401,7 +451,7 @@ void WTableAnalyze::uploadFile(QStringList listFile)
     }
 
 
-    CAPI.callAnylyze(listFile);
+    CAPI.callAnylyze(GLOBAL.m_sUser, sGroup,listFile);
 }
 
 
@@ -448,6 +498,16 @@ void WTableAnalyze::on_btnPrePage_clicked()
 
 void WTableAnalyze::on_btnClipPic_clicked()
 {
+    DialogMsg dialog;
+
+    dialog.setMsg("裁切上傳",QString("確定上傳到所選擇的分類 '%1' 嗎?").arg(ui->cbClass->currentText()),QStringList()<<"否"<<"是");
+
+    if(dialog.exec()!=1)
+    {
+        return;
+    }
+
+
     QStringList listFile = QFileDialog::getOpenFileNames(this,
                                                          tr("Open Image"), "", tr("Image Files (*.png *.jpg)"));
 
@@ -465,7 +525,7 @@ void WTableAnalyze::on_btnClipPic_clicked()
     if(iRe==1 && dialogSelect.m_bUpload)
     {
 
-        uploadFile(dialogSelect.m_listAfFile);
+        uploadFile(ui->cbClass->currentText(),dialogSelect.m_listAfFile);
 
 
     }
@@ -475,25 +535,28 @@ void WTableAnalyze::on_btnClipPic_clicked()
 
 void WTableAnalyze::on_btnOutput_clicked()
 {
-   QString sPath= QFileDialog::getExistingDirectory(this,"AA",".");
+    QString sPath= QFileDialog::getExistingDirectory(this,"AA",".");
 
 
-   QVariantList list = CSQL.getAnalyzeData("0",-1);
+    QVariantList list = CSQL.getAnalyzeData("0",-1,ui->cbClass->currentText());
 
-   QFile file(sPath+"/"+QDateTime::currentDateTime().toString("yyyyMMddhhmmss")+".csv");
+    if(!QDir(sPath+"/"+GLOBAL.m_sUser).exists())
+        QDir().mkdir(sPath+"/"+GLOBAL.m_sUser);
 
-   if(file.open(QIODevice::WriteOnly))
-   {
+    QFile file(sPath+"/"+GLOBAL.m_sUser+"/"+ui->cbClass->currentText()+"_"+QDateTime::currentDateTime().toString("yyyyMMddhhmmss")+".csv");
 
-
-
-
-       QTextStream outStream(&file);
+    if(file.open(QIODevice::WriteOnly))
+    {
 
 
 
-       for(int i=0;i<list.length();i++)
-       {
+
+        QTextStream outStream(&file);
+
+
+
+        for(int i=0;i<list.length();i++)
+        {
             CAnalyzeData d ;
 
             d.setData(list.at(i).toMap());
@@ -507,16 +570,126 @@ void WTableAnalyze::on_btnOutput_clicked()
 
             outStream<<d.toList().join(",");
 
-       }
+        }
 
-       file.flush();
+        file.flush();
 
-       file.close();
+        file.close();
 
-   }
-
-
+    }
 
 
-   qDebug()<<"path : "<<sPath;
+
+    DialogMsg msg;
+
+    msg.setMsg("匯出資料","匯出完成",QStringList()<<"OK");
+
+    msg.exec();
+
+    qDebug()<<"path : "<<sPath;
+}
+
+void WTableAnalyze::on_btnClass_clicked()
+{
+    DialogUser dialog;
+
+    QStringList listCurrentClass;
+
+    QStringList listUser, listPass;
+
+    foreach(QVariantMap data, CSQL.getUserData())
+    {
+        QString sName = data["Name"].toString();
+
+        if(GLOBAL.m_sUser!= sName)
+        {
+            listUser.append(data["Name"].toString());
+
+            listPass.append(data["Password"].toString());
+        }
+        else
+        {
+            listCurrentClass = data["ClassGroup"].toStringList();
+
+            if(listCurrentClass.length()<1)
+                listCurrentClass.append("Def");
+        }
+    }
+
+    /**
+    CUserData dataCurrent ;
+
+    dataCurrent.setData(CSQL.getUserData(GLOBAL.m_sUser).first());
+
+    if(dataCurrent.listGroup.length()<1)
+        dataCurrent.listGroup.append("Def");
+
+    dialog.setData(GLOBAL.m_sUser,GLOBAL.m_sPassword,dataCurrent.listGroup);
+   */
+
+    dialog.setData(GLOBAL.m_sUser,GLOBAL.m_sPassword,listCurrentClass);
+
+
+    int iRe = dialog.exec();
+
+    if(iRe ==1 )
+    {
+        CSQL.changePassword(GLOBAL.m_sUser,dialog.m_sReData);
+
+        DialogMsg msg;
+
+        msg.setMsg("","密碼已變更",QStringList()<<"OK");
+
+        msg.exec();
+    }
+
+    if(iRe ==2 )
+    {
+        CSQL.changeClassGroup(GLOBAL.m_sUser,dialog.m_listClass);
+
+        DialogMsg msg;
+
+        msg.setMsg("","分類已修改",QStringList()<<"OK");
+
+        msg.exec();
+
+        ui->cbClass->clear();
+        ui->cbClass->addItem("All");
+        ui->cbClass->addItems(dialog.m_listClass);
+    }
+}
+
+
+void WTableAnalyze::on_cbClass_currentIndexChanged(int )
+{
+    //if(ui->cbClass->count()>=0)
+    refresh(true);
+
+}
+
+
+void WTableAnalyze::on_btnDelRow_clicked()
+{
+    DialogMsg msg;
+
+    if(ui->tableWidget->currentRow()<0)
+    {
+        msg.setMsg("刪除資料","請先選擇要刪除的資料",QStringList()<<"ok");
+        msg.exec();
+
+        return;
+    }
+
+    QString sId = ui->tableWidget->item(ui->tableWidget->currentRow(),0)->text();
+
+    QString sName = ui->tableWidget->item(ui->tableWidget->currentRow(),1)->text();
+
+    msg.setMsg("刪除資料",QString("確定刪除Sid ' %1 ' , ' %2 '?").arg(sId).arg(sName),QStringList()<<"取消"<<"確認");
+
+    if(msg.exec()==1)
+    {
+        CSQL.deleteAnalyzeData(sId);
+
+        refresh(true);
+    }
 }

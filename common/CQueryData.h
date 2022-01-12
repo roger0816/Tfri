@@ -38,19 +38,25 @@ class CQueryData : public QObject
 public:
     explicit CQueryData(QObject *parent = nullptr);
 
-    void setFileList(QString sUser, QStringList listFile);
+    void setFileList(QString sUser,QString sGroup, QStringList listFile);
 
-    void setDataList(QString sUser,QVariantList listFileName,QVariantList listData);
+//    void setDataList(QString sUser,QVariantList listFileName,QVariantList listData);
 
     void query();
 
 
     QNetworkAccessManager m_network;
 
+    int  getWaitCount();
+
+    QString getCurrentTarget();
+
 private:
   QList<CPicData> m_listData;
 
   QTimer m_timer;
+
+  QString m_sTarget;
 
   bool m_bBusyLock = false;
 

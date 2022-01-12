@@ -22,18 +22,18 @@ public:
 
     void createTable();
     // ai analyze  , start decode
-    int insertOriginPic(QString sUser, QString sName, QByteArray dData);
+    int insertOriginPic(QString sUser, QString sGroup, QString sName, QByteArray dData);
        // ai analyze  , return decode
     void insertDecodePic(QString sId,QString sName, QByteArray dData);
     //----------------
     // just set/get db
     void setAnalyzeData(QString sId, CAnalyzeData cData);
+    void deleteAnalyzeData(QString sId);
+    QVariantList getAnalyzeData(QString sLastDate, int iCount=3,QString sGroup ="");
 
-    QVariantList getAnalyzeData(QString sLastDate, int iCount=3);
+    QVariantList getAnalyzeData(int iIdx, int iCount=3,QString sGroup ="");
 
-    QVariantList getAnalyzeData(int iIdx, int iCount=3);
-
-    int getAnalyzeCount();
+    int getAnalyzeCount(QString sGroup="");
 
     QVariantMap getAnalyzeFromId(QString sId);
 
@@ -44,9 +44,17 @@ public:
     QVariantList getPicData(QString sLastDate);
 
     QString getPicDataLast();
+
+    QList<QVariantMap> getUserData(QString sUser="");
+
+    void insertUser(QString sUser,QString sPw,int iType);
+
+    void changePassword(QString sUser,QString sNewPw);
+
+    void changeClassGroup(QString sUser,QStringList listGroup);
     //--------
 
-    bool login(QString sUser, QString sPassword, QString &sType);
+    bool login(QString sUser, QString sPassword, QString &sError);
 
 
     QSqlDatabase m_db;

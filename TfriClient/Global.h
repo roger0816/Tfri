@@ -16,6 +16,9 @@ public:
 
     QString m_sUser;
 
+    QString m_sPassword;
+
+
     CQueryData m_ai;
 
     void showBlockLoading(QWidget *parent = nullptr);

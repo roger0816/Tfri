@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'WTableAnalyze.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 5.12.12
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -29,16 +30,22 @@ public:
     QGridLayout *gridLayout;
     QWidget *wBg;
     QGridLayout *gridLayout_2;
-    QTableWidget *tableWidget;
-    QWidget *wColorArea;
     QWidget *widget_2;
     QHBoxLayout *horizontalLayout_6;
+    QPushButton *btnClass;
     QSpacerItem *horizontalSpacer;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_7;
+    QLabel *label_2;
+    QComboBox *cbClass;
+    QWidget *widget_8;
     QWidget *widget_7;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *btnClipPic;
     QPushButton *btnOutput;
     QPushButton *btnUpload;
+    QTableWidget *tableWidget;
+    QWidget *wColorArea;
     QWidget *widget_3;
     QHBoxLayout *horizontalLayout_2;
     QWidget *widget_5;
@@ -58,6 +65,11 @@ public:
     QWidget *widget_6;
     QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer_3;
+    QWidget *widget_9;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *lbWaitMsg;
+    QPushButton *btnDelRow;
+    QSpacerItem *horizontalSpacer_4;
 
     void setupUi(QWidget *WTableAnalyze)
     {
@@ -76,6 +88,82 @@ public:
         wBg->setFont(font);
         gridLayout_2 = new QGridLayout(wBg);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        widget_2 = new QWidget(wBg);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(widget_2->sizePolicy().hasHeightForWidth());
+        widget_2->setSizePolicy(sizePolicy);
+        widget_2->setMinimumSize(QSize(0, 30));
+        horizontalLayout_6 = new QHBoxLayout(widget_2);
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        horizontalLayout_6->setContentsMargins(-1, 0, -1, 0);
+        btnClass = new QPushButton(widget_2);
+        btnClass->setObjectName(QString::fromUtf8("btnClass"));
+
+        horizontalLayout_6->addWidget(btnClass);
+
+        horizontalSpacer = new QSpacerItem(925, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer);
+
+        widget = new QWidget(widget_2);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setMinimumSize(QSize(0, 0));
+        horizontalLayout_7 = new QHBoxLayout(widget);
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
+        label_2 = new QLabel(widget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy1);
+
+        horizontalLayout_7->addWidget(label_2);
+
+        cbClass = new QComboBox(widget);
+        cbClass->setObjectName(QString::fromUtf8("cbClass"));
+        cbClass->setMinimumSize(QSize(160, 0));
+
+        horizontalLayout_7->addWidget(cbClass);
+
+
+        horizontalLayout_6->addWidget(widget);
+
+        widget_8 = new QWidget(widget_2);
+        widget_8->setObjectName(QString::fromUtf8("widget_8"));
+        widget_8->setMinimumSize(QSize(60, 0));
+
+        horizontalLayout_6->addWidget(widget_8);
+
+        widget_7 = new QWidget(widget_2);
+        widget_7->setObjectName(QString::fromUtf8("widget_7"));
+        horizontalLayout_5 = new QHBoxLayout(widget_7);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
+        btnClipPic = new QPushButton(widget_7);
+        btnClipPic->setObjectName(QString::fromUtf8("btnClipPic"));
+
+        horizontalLayout_5->addWidget(btnClipPic);
+
+        btnOutput = new QPushButton(widget_7);
+        btnOutput->setObjectName(QString::fromUtf8("btnOutput"));
+
+        horizontalLayout_5->addWidget(btnOutput);
+
+        btnUpload = new QPushButton(widget_7);
+        btnUpload->setObjectName(QString::fromUtf8("btnUpload"));
+
+        horizontalLayout_5->addWidget(btnUpload);
+
+
+        horizontalLayout_6->addWidget(widget_7);
+
+
+        gridLayout_2->addWidget(widget_2, 0, 0, 1, 1);
+
         tableWidget = new QTableWidget(wBg);
         if (tableWidget->columnCount() < 21)
             tableWidget->setColumnCount(21);
@@ -121,31 +209,11 @@ public:
         tableWidget->setHorizontalHeaderItem(19, __qtablewidgetitem19);
         QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(20, __qtablewidgetitem20);
-        if (tableWidget->rowCount() < 4)
-            tableWidget->setRowCount(4);
-        QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem21);
-        QTableWidgetItem *__qtablewidgetitem22 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(1, __qtablewidgetitem22);
-        QTableWidgetItem *__qtablewidgetitem23 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(2, __qtablewidgetitem23);
-        QTableWidgetItem *__qtablewidgetitem24 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem24);
-        QTableWidgetItem *__qtablewidgetitem25 = new QTableWidgetItem();
-        tableWidget->setItem(0, 0, __qtablewidgetitem25);
-        QTableWidgetItem *__qtablewidgetitem26 = new QTableWidgetItem();
-        tableWidget->setItem(0, 1, __qtablewidgetitem26);
-        QTableWidgetItem *__qtablewidgetitem27 = new QTableWidgetItem();
-        tableWidget->setItem(0, 2, __qtablewidgetitem27);
-        QTableWidgetItem *__qtablewidgetitem28 = new QTableWidgetItem();
-        tableWidget->setItem(0, 3, __qtablewidgetitem28);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
         QFont font1;
-        font1.setFamily(QString::fromUtf8("Arial Narrow"));
         font1.setPointSize(12);
         font1.setBold(false);
         font1.setItalic(false);
-        font1.setWeight(9);
         tableWidget->setFont(font1);
         tableWidget->setFocusPolicy(Qt::NoFocus);
         tableWidget->setStyleSheet(QString::fromUtf8("\n"
@@ -159,50 +227,16 @@ public:
         tableWidget->verticalHeader()->setVisible(false);
         tableWidget->verticalHeader()->setDefaultSectionSize(40);
 
-        gridLayout_2->addWidget(tableWidget, 2, 0, 1, 1);
+        gridLayout_2->addWidget(tableWidget, 3, 0, 1, 1);
 
         wColorArea = new QWidget(wBg);
         wColorArea->setObjectName(QString::fromUtf8("wColorArea"));
+        sizePolicy.setHeightForWidth(wColorArea->sizePolicy().hasHeightForWidth());
+        wColorArea->setSizePolicy(sizePolicy);
         wColorArea->setMinimumSize(QSize(0, 20));
         wColorArea->setMaximumSize(QSize(16777215, 20));
 
         gridLayout_2->addWidget(wColorArea, 1, 0, 1, 1);
-
-        widget_2 = new QWidget(wBg);
-        widget_2->setObjectName(QString::fromUtf8("widget_2"));
-        widget_2->setMinimumSize(QSize(0, 30));
-        horizontalLayout_6 = new QHBoxLayout(widget_2);
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        horizontalLayout_6->setContentsMargins(-1, 0, -1, 0);
-        horizontalSpacer = new QSpacerItem(925, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_6->addItem(horizontalSpacer);
-
-        widget_7 = new QWidget(widget_2);
-        widget_7->setObjectName(QString::fromUtf8("widget_7"));
-        horizontalLayout_5 = new QHBoxLayout(widget_7);
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        btnClipPic = new QPushButton(widget_7);
-        btnClipPic->setObjectName(QString::fromUtf8("btnClipPic"));
-
-        horizontalLayout_5->addWidget(btnClipPic);
-
-        btnOutput = new QPushButton(widget_7);
-        btnOutput->setObjectName(QString::fromUtf8("btnOutput"));
-
-        horizontalLayout_5->addWidget(btnOutput);
-
-        btnUpload = new QPushButton(widget_7);
-        btnUpload->setObjectName(QString::fromUtf8("btnUpload"));
-
-        horizontalLayout_5->addWidget(btnUpload);
-
-
-        horizontalLayout_6->addWidget(widget_7);
-
-
-        gridLayout_2->addWidget(widget_2, 0, 0, 1, 1);
 
 
         gridLayout->addWidget(wBg, 0, 0, 1, 1);
@@ -215,11 +249,11 @@ public:
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         widget_5 = new QWidget(widget_3);
         widget_5->setObjectName(QString::fromUtf8("widget_5"));
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(widget_5->sizePolicy().hasHeightForWidth());
-        widget_5->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(widget_5->sizePolicy().hasHeightForWidth());
+        widget_5->setSizePolicy(sizePolicy2);
         widget_5->setMinimumSize(QSize(200, 0));
         horizontalLayout_3 = new QHBoxLayout(widget_5);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
@@ -259,11 +293,11 @@ public:
 
         widget_4 = new QWidget(widget_3);
         widget_4->setObjectName(QString::fromUtf8("widget_4"));
-        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(widget_4->sizePolicy().hasHeightForWidth());
-        widget_4->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy3(QSizePolicy::Maximum, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(widget_4->sizePolicy().hasHeightForWidth());
+        widget_4->setSizePolicy(sizePolicy3);
         horizontalLayout = new QHBoxLayout(widget_4);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(-1, 0, -1, 0);
@@ -307,14 +341,37 @@ public:
 
         widget_6 = new QWidget(widget_3);
         widget_6->setObjectName(QString::fromUtf8("widget_6"));
-        sizePolicy.setHeightForWidth(widget_6->sizePolicy().hasHeightForWidth());
-        widget_6->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(widget_6->sizePolicy().hasHeightForWidth());
+        widget_6->setSizePolicy(sizePolicy2);
         widget_6->setMinimumSize(QSize(200, 0));
         horizontalLayout_4 = new QHBoxLayout(widget_6);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        horizontalSpacer_3 = new QSpacerItem(358, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalLayout_4->setContentsMargins(-1, 0, -1, 0);
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_4->addItem(horizontalSpacer_3);
+
+        widget_9 = new QWidget(widget_6);
+        widget_9->setObjectName(QString::fromUtf8("widget_9"));
+        widget_9->setMinimumSize(QSize(240, 0));
+        horizontalLayout_8 = new QHBoxLayout(widget_9);
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        lbWaitMsg = new QLabel(widget_9);
+        lbWaitMsg->setObjectName(QString::fromUtf8("lbWaitMsg"));
+
+        horizontalLayout_8->addWidget(lbWaitMsg);
+
+
+        horizontalLayout_4->addWidget(widget_9);
+
+        btnDelRow = new QPushButton(widget_6);
+        btnDelRow->setObjectName(QString::fromUtf8("btnDelRow"));
+
+        horizontalLayout_4->addWidget(btnDelRow);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_4);
 
 
         horizontalLayout_2->addWidget(widget_6);
@@ -333,80 +390,63 @@ public:
 
     void retranslateUi(QWidget *WTableAnalyze)
     {
-        WTableAnalyze->setWindowTitle(QCoreApplication::translate("WTableAnalyze", "Form", nullptr));
+        WTableAnalyze->setWindowTitle(QApplication::translate("WTableAnalyze", "Form", nullptr));
+        btnClass->setText(QApplication::translate("WTableAnalyze", "\350\250\255\345\256\232", nullptr));
+        label_2->setText(QApplication::translate("WTableAnalyze", "\345\210\206\351\241\236:", nullptr));
+        btnClipPic->setText(QApplication::translate("WTableAnalyze", "\350\243\201\345\210\207\344\270\212\345\202\263", nullptr));
+        btnOutput->setText(QApplication::translate("WTableAnalyze", "\345\214\257\345\207\272", nullptr));
+        btnUpload->setText(QApplication::translate("WTableAnalyze", "\344\270\212\345\202\263\345\234\226\347\211\207", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QCoreApplication::translate("WTableAnalyze", "Sid", nullptr));
+        ___qtablewidgetitem->setText(QApplication::translate("WTableAnalyze", "Sid", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QCoreApplication::translate("WTableAnalyze", "FileName", nullptr));
+        ___qtablewidgetitem1->setText(QApplication::translate("WTableAnalyze", "FileName", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QCoreApplication::translate("WTableAnalyze", "User", nullptr));
+        ___qtablewidgetitem2->setText(QApplication::translate("WTableAnalyze", "User", nullptr));
         QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QCoreApplication::translate("WTableAnalyze", "Building", nullptr));
+        ___qtablewidgetitem3->setText(QApplication::translate("WTableAnalyze", "Building", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QCoreApplication::translate("WTableAnalyze", "Bicyclist", nullptr));
+        ___qtablewidgetitem4->setText(QApplication::translate("WTableAnalyze", "Bicyclist", nullptr));
         QTableWidgetItem *___qtablewidgetitem5 = tableWidget->horizontalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QCoreApplication::translate("WTableAnalyze", "Car  ", nullptr));
+        ___qtablewidgetitem5->setText(QApplication::translate("WTableAnalyze", "Car  ", nullptr));
         QTableWidgetItem *___qtablewidgetitem6 = tableWidget->horizontalHeaderItem(6);
-        ___qtablewidgetitem6->setText(QCoreApplication::translate("WTableAnalyze", "Fence", nullptr));
+        ___qtablewidgetitem6->setText(QApplication::translate("WTableAnalyze", "Fence", nullptr));
         QTableWidgetItem *___qtablewidgetitem7 = tableWidget->horizontalHeaderItem(7);
-        ___qtablewidgetitem7->setText(QCoreApplication::translate("WTableAnalyze", "Pavement", nullptr));
+        ___qtablewidgetitem7->setText(QApplication::translate("WTableAnalyze", "Pavement", nullptr));
         QTableWidgetItem *___qtablewidgetitem8 = tableWidget->horizontalHeaderItem(8);
-        ___qtablewidgetitem8->setText(QCoreApplication::translate("WTableAnalyze", "Pedestrian", nullptr));
+        ___qtablewidgetitem8->setText(QApplication::translate("WTableAnalyze", "Pedestrian", nullptr));
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(9);
-        ___qtablewidgetitem9->setText(QCoreApplication::translate("WTableAnalyze", "Pole", nullptr));
+        ___qtablewidgetitem9->setText(QApplication::translate("WTableAnalyze", "Pole", nullptr));
         QTableWidgetItem *___qtablewidgetitem10 = tableWidget->horizontalHeaderItem(10);
-        ___qtablewidgetitem10->setText(QCoreApplication::translate("WTableAnalyze", "Road", nullptr));
+        ___qtablewidgetitem10->setText(QApplication::translate("WTableAnalyze", "Road", nullptr));
         QTableWidgetItem *___qtablewidgetitem11 = tableWidget->horizontalHeaderItem(11);
-        ___qtablewidgetitem11->setText(QCoreApplication::translate("WTableAnalyze", "Road Marking", nullptr));
+        ___qtablewidgetitem11->setText(QApplication::translate("WTableAnalyze", "Road Marking", nullptr));
         QTableWidgetItem *___qtablewidgetitem12 = tableWidget->horizontalHeaderItem(12);
-        ___qtablewidgetitem12->setText(QCoreApplication::translate("WTableAnalyze", "Sky  ", nullptr));
+        ___qtablewidgetitem12->setText(QApplication::translate("WTableAnalyze", "Sky  ", nullptr));
         QTableWidgetItem *___qtablewidgetitem13 = tableWidget->horizontalHeaderItem(13);
-        ___qtablewidgetitem13->setText(QCoreApplication::translate("WTableAnalyze", "SignSymbol", nullptr));
+        ___qtablewidgetitem13->setText(QApplication::translate("WTableAnalyze", "SignSymbol", nullptr));
         QTableWidgetItem *___qtablewidgetitem14 = tableWidget->horizontalHeaderItem(14);
-        ___qtablewidgetitem14->setText(QCoreApplication::translate("WTableAnalyze", "Tree", nullptr));
+        ___qtablewidgetitem14->setText(QApplication::translate("WTableAnalyze", "Tree", nullptr));
         QTableWidgetItem *___qtablewidgetitem15 = tableWidget->horizontalHeaderItem(15);
-        ___qtablewidgetitem15->setText(QCoreApplication::translate("WTableAnalyze", "Unlabelled", nullptr));
+        ___qtablewidgetitem15->setText(QApplication::translate("WTableAnalyze", "Unlabelled", nullptr));
         QTableWidgetItem *___qtablewidgetitem16 = tableWidget->horizontalHeaderItem(16);
-        ___qtablewidgetitem16->setText(QCoreApplication::translate("WTableAnalyze", "Timer  ", nullptr));
+        ___qtablewidgetitem16->setText(QApplication::translate("WTableAnalyze", "Timer  ", nullptr));
         QTableWidgetItem *___qtablewidgetitem17 = tableWidget->horizontalHeaderItem(17);
-        ___qtablewidgetitem17->setText(QCoreApplication::translate("WTableAnalyze", "Result", nullptr));
+        ___qtablewidgetitem17->setText(QApplication::translate("WTableAnalyze", "Result", nullptr));
         QTableWidgetItem *___qtablewidgetitem18 = tableWidget->horizontalHeaderItem(18);
-        ___qtablewidgetitem18->setText(QCoreApplication::translate("WTableAnalyze", "CreateTime", nullptr));
+        ___qtablewidgetitem18->setText(QApplication::translate("WTableAnalyze", "CreateTime", nullptr));
         QTableWidgetItem *___qtablewidgetitem19 = tableWidget->horizontalHeaderItem(19);
-        ___qtablewidgetitem19->setText(QCoreApplication::translate("WTableAnalyze", "UpdateTime", nullptr));
+        ___qtablewidgetitem19->setText(QApplication::translate("WTableAnalyze", "UpdateTime", nullptr));
         QTableWidgetItem *___qtablewidgetitem20 = tableWidget->horizontalHeaderItem(20);
-        ___qtablewidgetitem20->setText(QCoreApplication::translate("WTableAnalyze", "Picture (\351\273\236\346\223\212\350\251\263\347\264\260)", nullptr));
-        QTableWidgetItem *___qtablewidgetitem21 = tableWidget->verticalHeaderItem(0);
-        ___qtablewidgetitem21->setText(QCoreApplication::translate("WTableAnalyze", "\346\226\260\345\242\236\345\210\227", nullptr));
-        QTableWidgetItem *___qtablewidgetitem22 = tableWidget->verticalHeaderItem(1);
-        ___qtablewidgetitem22->setText(QCoreApplication::translate("WTableAnalyze", "\346\226\260\345\242\236\345\210\227", nullptr));
-        QTableWidgetItem *___qtablewidgetitem23 = tableWidget->verticalHeaderItem(2);
-        ___qtablewidgetitem23->setText(QCoreApplication::translate("WTableAnalyze", "\346\226\260\345\242\236\345\210\227", nullptr));
-        QTableWidgetItem *___qtablewidgetitem24 = tableWidget->verticalHeaderItem(3);
-        ___qtablewidgetitem24->setText(QCoreApplication::translate("WTableAnalyze", "\346\226\260\345\242\236\345\210\227", nullptr));
-
-        const bool __sortingEnabled = tableWidget->isSortingEnabled();
-        tableWidget->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem25 = tableWidget->item(0, 0);
-        ___qtablewidgetitem25->setText(QCoreApplication::translate("WTableAnalyze", "1", nullptr));
-        QTableWidgetItem *___qtablewidgetitem26 = tableWidget->item(0, 1);
-        ___qtablewidgetitem26->setText(QCoreApplication::translate("WTableAnalyze", "Testpic", nullptr));
-        QTableWidgetItem *___qtablewidgetitem27 = tableWidget->item(0, 2);
-        ___qtablewidgetitem27->setText(QCoreApplication::translate("WTableAnalyze", "root", nullptr));
-        QTableWidgetItem *___qtablewidgetitem28 = tableWidget->item(0, 3);
-        ___qtablewidgetitem28->setText(QCoreApplication::translate("WTableAnalyze", "12.12", nullptr));
-        tableWidget->setSortingEnabled(__sortingEnabled);
-
-        btnClipPic->setText(QCoreApplication::translate("WTableAnalyze", "\350\243\201\345\210\207\344\270\212\345\202\263", nullptr));
-        btnOutput->setText(QCoreApplication::translate("WTableAnalyze", "\345\214\257\345\207\272", nullptr));
-        btnUpload->setText(QCoreApplication::translate("WTableAnalyze", "\344\270\212\345\202\263\345\234\226\347\211\207", nullptr));
-        btnChangeCount->setText(QCoreApplication::translate("WTableAnalyze", "\350\256\212\346\233\264\345\226\256\351\240\201\347\255\206\346\225\270", nullptr));
-        label_3->setText(QCoreApplication::translate("WTableAnalyze", "\350\263\207\346\226\231\347\270\275\346\225\270:", nullptr));
+        ___qtablewidgetitem20->setText(QApplication::translate("WTableAnalyze", "Picture (\351\273\236\346\223\212\350\251\263\347\264\260)", nullptr));
+        btnChangeCount->setText(QApplication::translate("WTableAnalyze", "\350\256\212\346\233\264\345\226\256\351\240\201\347\255\206\346\225\270", nullptr));
+        label_3->setText(QApplication::translate("WTableAnalyze", "\350\263\207\346\226\231\347\270\275\346\225\270:", nullptr));
         lbTotalCount->setText(QString());
-        btnPrePage->setText(QCoreApplication::translate("WTableAnalyze", "<", nullptr));
-        label->setText(QCoreApplication::translate("WTableAnalyze", "/", nullptr));
-        lbTotalPage->setText(QCoreApplication::translate("WTableAnalyze", "1", nullptr));
-        btnNextPage->setText(QCoreApplication::translate("WTableAnalyze", ">", nullptr));
+        btnPrePage->setText(QApplication::translate("WTableAnalyze", "<", nullptr));
+        label->setText(QApplication::translate("WTableAnalyze", "/", nullptr));
+        lbTotalPage->setText(QApplication::translate("WTableAnalyze", "1", nullptr));
+        btnNextPage->setText(QApplication::translate("WTableAnalyze", ">", nullptr));
+        lbWaitMsg->setText(QApplication::translate("WTableAnalyze", "\346\255\243\345\234\250\350\247\243\346\236\220%1\357\274\214\351\202\204\346\234\211%2\347\255\211\345\276\205\350\247\243\346\236\220\343\200\202", nullptr));
+        btnDelRow->setText(QApplication::translate("WTableAnalyze", "\345\210\252\351\231\244\344\270\200\347\255\206\350\263\207\346\226\231", nullptr));
     } // retranslateUi
 
 };

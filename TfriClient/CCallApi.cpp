@@ -179,12 +179,12 @@ void CCallApi::closeConnect()
     m_scoket.close();
 }
 
-void CCallApi::callAnylyze(QList<QString> listFilePath)
+void CCallApi::callAnylyze(QString sUser,QString sGroup,QList<QString> listFilePath)
 {
 #ifdef OFFLINE
 
 
-    m_ai.setFileList(m_sUser,listFilePath);
+    m_ai.setFileList(sUser,sGroup,listFilePath);
 
 
 #else

@@ -37,6 +37,15 @@ Widget::Widget(QWidget *parent)
 
     ui->btnTestPage->hide();
 
+
+    ui->chSavePass->setChecked(LIB.database()->getKeyPair("isSavePassword").toInt());
+
+    ui->txUser->setText(LIB.database()->getKeyPair("lastUser"));
+
+    ui->txPassword->setText(LIB.database()->getKeyPair("lastPassword"));
+          //  bool insertKeyPair(QString sKey, QString sValue, bool isHaveKeyDoUpdate = true);
+
+
 }
 
 Widget::~Widget()
@@ -122,6 +131,8 @@ void Widget::on_btnLogin_clicked()
 
     if(ui->txUser->text().trimmed()=="" || ui->txPassword->text().trimmed() =="")
     {
+
+
         ui->lbMsg->setText("請輸入帳號/密碼");
 
         return ;
@@ -130,10 +141,12 @@ void Widget::on_btnLogin_clicked()
     {
         QString sErrorMsg;
 
-        int iType = CCallApi::INS().callLogin(ui->txUser->text().trimmed(),ui->txPassword->text().trimmed(),sErrorMsg);
+//        int iType = CCallApi::INS().callLogin(ui->txUser->text().trimmed(),ui->txPassword->text().trimmed(),sErrorMsg);
 
-        if(iType!=0)
-            bOk = true;
+//        if(iType!=0)
+//            bOk = true;
+
+        bOk = CSQL.login(ui->txUser->text().trimmed(),ui->txPassword->text().trimmed(),sErrorMsg);
 
     }
 
@@ -141,6 +154,24 @@ void Widget::on_btnLogin_clicked()
     if(bOk)
     {
         ui->lbMsg->setText("登入成功");
+
+        GLOBAL.m_sUser = ui->txUser->text().trimmed();
+
+        GLOBAL.m_sPassword = ui->txPassword->text().trimmed();
+
+
+        int iValue = ui->chSavePass->isChecked();
+
+        LIB.database()->insertKeyPair("isSavePassword", QString::number(iValue));
+
+        LIB.database()->insertKeyPair("lastUser", GLOBAL.m_sUser);
+
+        QString sTmp = "";
+        if(ui->chSavePass->isChecked())
+            sTmp = GLOBAL.m_sPassword;
+
+        LIB.database()->insertKeyPair("lastPassword", GLOBAL.m_sPassword);
+
         ui->stackedWidget->setCurrentWidget(ui->pageAnalyze);
     }
     else

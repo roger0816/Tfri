@@ -17,6 +17,67 @@
 
 #define END_DATA "::ENDX::"
 
+struct CUserData
+{
+    void setData(QVariantMap map)
+    {
+        iSid = map["Sid"].toInt();
+
+        sName = map["Name"].toString();
+
+        sPassword = map["Password"].toString();
+
+        iType = map["Type"].toInt();
+
+        sNote = map["Note"].toString();
+
+        listGroup = map["ClassGroup"].toStringList();
+
+        sCreateTime = map["CreateTime"].toString();
+
+        sUpdateTime = map["UpdateTime"].toString();
+    }
+
+    QVariantMap toMap()
+    {
+        QVariantMap map;
+
+        map["Sid"] = iSid;
+
+        map["Name"] = sName;
+
+        map["Password"] = sPassword;
+
+        map["Type"] = iType;
+
+        map["Note"] = sNote;
+
+        map["ClassGroup"] = listGroup.join(";;");
+
+        map["CreateTime"] = sCreateTime;
+
+        map["UpdateTime"] = sUpdateTime;
+
+        return map;
+    }
+
+    int iSid;
+
+    QString sName;
+
+    QString sPassword;
+
+    int iType;
+
+    QStringList listGroup;
+
+    QString sNote;
+
+    QString sCreateTime;
+
+    QString sUpdateTime;
+};
+
 
 struct CPicData
 {
@@ -28,6 +89,8 @@ struct CPicData
     }
 
     QString sId;
+
+    QString sGroup;
 
     QString sAnalyzeId;
 
@@ -127,6 +190,11 @@ struct CAnalyzeData
         sName = dData["Name"].toString();
         sUser = dData["User"].toString();
 
+        sClassGroup = dData["ClassGroup"].toString();
+
+        if(sClassGroup =="")
+            sClassGroup = "Def";
+
         sBuilding = dData["Building"].toString();
         sBicyclist = dData["Bicyclist"].toString();
         sCar = dData["Car"].toString();
@@ -213,7 +281,7 @@ struct CAnalyzeData
         dData["Id"] = sId.toDouble();
         dData["Name"] = sName;
         dData["User"] = sUser;
-
+        dData["ClassGroup"] = sClassGroup;
         dData["Building"] = sBuilding.toDouble();
         dData["Bicyclist"] = sBicyclist.toDouble();
         dData["Car"] = sCar.toDouble();
@@ -248,6 +316,7 @@ struct CAnalyzeData
     QString sUser;
     QString sName;
     QString sId;
+    QString sClassGroup;
 
     QString sBuilding;
     QString sBicyclist;

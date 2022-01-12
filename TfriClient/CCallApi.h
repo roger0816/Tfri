@@ -27,7 +27,7 @@ public:
 
     void closeConnect();
 
-    void callAnylyze(QList<QString> listFilePath);
+    void callAnylyze(QString sUser, QString sGroup, QList<QString> listFilePath);
 
     QString m_sServerIp;
 
