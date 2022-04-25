@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>405</width>
+    <height>346</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,7 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="page">
       <layout class="QGridLayout" name="gridLayout_2">
@@ -364,7 +364,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="pageClass" native="true">
+     <widget class="QWidget" name="pageClass">
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="2" column="0">
         <widget class="QWidget" name="widget_8" native="true">
@@ -521,38 +521,58 @@
           </property>
           <item>
            <widget class="QWidget" name="widget_16" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <layout class="QGridLayout" name="gridLayout_7">
              <property name="leftMargin">
               <number>9</number>
              </property>
              <property name="rightMargin">
               <number>9</number>
              </property>
-             <item>
+             <item row="0" column="0">
               <widget class="QLabel" name="label_4">
                <property name="text">
                 <string>新增使用者</string>
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QLineEdit" name="txUser">
-               <property name="placeholderText">
-                <string>帳號</string>
-               </property>
-              </widget>
-             </item>
-             <item>
+             <item row="1" column="1">
               <widget class="QLineEdit" name="txAddPass">
                <property name="placeholderText">
                 <string>新使用者密碼</string>
                </property>
               </widget>
              </item>
-             <item>
+             <item row="1" column="2">
+              <widget class="QLineEdit" name="txAddPass_2">
+               <property name="placeholderText">
+                <string>密碼再確認</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1" colspan="2">
+              <widget class="QLabel" name="lbAddMsg">
+               <property name="styleSheet">
+                <string notr="true">color: rgb(255, 0, 0);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="3">
               <widget class="QPushButton" name="btnAddUser">
                <property name="text">
                 <string>確定新增</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1" colspan="2">
+              <widget class="QLineEdit" name="txUser">
+               <property name="placeholderText">
+                <string>帳號</string>
                </property>
               </widget>
              </item>
@@ -575,27 +595,17 @@
              </size>
             </property>
             <layout class="QGridLayout" name="gridLayout_6">
-             <item row="0" column="1">
-              <widget class="QLineEdit" name="txUpdatePass"/>
-             </item>
              <item row="0" column="2">
-              <widget class="QPushButton" name="btnUpdateUser">
+              <widget class="QPushButton" name="btnDelUser">
+               <property name="styleSheet">
+                <string notr="true">color: rgb(255, 0, 0);</string>
+               </property>
                <property name="text">
-                <string>修改密碼</string>
+                <string>確定刪除</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="1" colspan="2">
-              <widget class="QWidget" name="widget_17" native="true">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
+             <item row="0" column="1">
               <widget class="QComboBox" name="cbUser">
                <property name="minimumSize">
                 <size>
@@ -611,13 +621,10 @@
                </property>
               </widget>
              </item>
-             <item row="2" column="1">
-              <widget class="QPushButton" name="btnDelUser">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 0, 0);</string>
-               </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_6">
                <property name="text">
-                <string>刪除選擇的使用者</string>
+                <string>刪除使用者</string>
                </property>
               </widget>
              </item>

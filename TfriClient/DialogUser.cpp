@@ -45,7 +45,7 @@ void DialogUser::setData(QString sUser,QString sPassword, QStringList listClass)
 
     ui->btnEditUser->setEnabled(sUser.trimmed().toLower()=="root");
 
-    ui->btnEditUser->hide();
+ //   ui->btnEditUser->hide();
 }
 
 
@@ -58,7 +58,12 @@ void DialogUser::setUserList(QStringList listUser, QStringList listPass)
 
     ui->cbUser->clear();
 
-    ui->cbUser->addItems(m_listUser);
+
+    QStringList listTmp  = m_listUser;
+
+    listTmp.removeOne("root");
+
+    ui->cbUser->addItems(listTmp);
 
 }
 
@@ -147,7 +152,7 @@ bool DialogUser::checkSetClass()
     bool bRe = false;
 
     bRe = ui->txAddClass->text().trimmed().length()!=0;
-    qDebug()<<"AAAAA "<<bRe;
+
     ui->btnAddClass->setEnabled(bRe);
 
     return bRe;
@@ -287,5 +292,60 @@ void DialogUser::on_btnAddClass_clicked()
     msg.exec();
 
     ui->btnOk->setEnabled(true);
+}
+
+
+void DialogUser::on_btnAddUser_clicked()
+{
+    ui->lbAddMsg->clear();
+
+    if(ui->txAddPass->text().trimmed()=="" || ui->txAddPass_2->text().trimmed()== ""  || ui->txUser->text().trimmed()== "")
+    {
+        ui->lbAddMsg->setText("帳號密碼不能空白");
+    }
+
+    else if(ui->txAddPass->text().trimmed()!= ui->txAddPass_2->text())
+    {
+        ui->lbAddMsg->setText("密碼再確認不符合");
+    }
+    else
+    {
+        DialogMsg msg;
+
+        msg.setMsg("新增使用者",QString("是否要新增使用者 : '%1'").arg(ui->txUser->text().trimmed()),QStringList()<<"否"<<"是");
+
+        if(msg.exec() ==1)
+        {
+//            m_listUser.append(ui->txUser->text().trimmed());
+
+//            m_listUser.append(ui->txAddPass->text().trimmed());
+
+            m_editUser.first=ui->txUser->text().trimmed();
+
+            m_editUser.second = ui->txAddPass->text().trimmed();
+
+            done(4);
+        }
+
+    }
+
+}
+
+
+void DialogUser::on_btnDelUser_clicked()
+{
+    DialogMsg msg;
+
+    msg.setMsg("刪除使用者",QString("是否要刪除使用者 : '%1'").arg(ui->txUser->text().trimmed()),QStringList()<<"否"<<"是");
+
+    if(msg.exec() ==1)
+    {
+
+        m_editUser.first=ui->cbUser->currentText();
+
+        m_editUser.second = ui->txAddPass->text().trimmed();
+
+        done(5);
+    }
 }
 

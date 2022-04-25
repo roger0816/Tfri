@@ -16,17 +16,17 @@ WTableAnalyze::WTableAnalyze(QWidget *parent) :
     ui->tableWidget->setColumnWidth(0,60);
     ui->tableWidget->setColumnWidth(1,120);
     ui->tableWidget->setColumnWidth(2,60);
-    ui->tableWidget->setColumnWidth(5,50);
-    ui->tableWidget->setColumnWidth(9,50);
-    ui->tableWidget->setColumnWidth(10,50);
-    ui->tableWidget->setColumnWidth(12,50);
+    ui->tableWidget->setColumnWidth(5,60);
+    ui->tableWidget->setColumnWidth(9,60);
+    ui->tableWidget->setColumnWidth(10,60);
+    ui->tableWidget->setColumnWidth(12,60);
 
-    ui->tableWidget->setColumnWidth(14,50);
+    ui->tableWidget->setColumnWidth(14,60);
     ui->tableWidget->setColumnWidth(16,60);
-    ui->tableWidget->setColumnWidth(17,65);
-    ui->tableWidget->setColumnWidth(18,140);
+    ui->tableWidget->setColumnWidth(18,65);
     ui->tableWidget->setColumnWidth(19,140);
-    ui->tableWidget->setColumnWidth(20,200);
+    ui->tableWidget->setColumnWidth(20,140);
+    ui->tableWidget->setColumnWidth(21,200);
 
     // connect(ui->tableWidget,&QTabWidget::)
 
@@ -56,6 +56,7 @@ WTableAnalyze::~WTableAnalyze()
 
 void WTableAnalyze::refresh(bool bReload)
 {
+    m_bLockChangePage = true;
 
     GLOBAL.showBlockLoading(this);
     int iTotalDataCount = CSQL.getAnalyzeCount(ui->cbClass->currentText());
@@ -80,6 +81,11 @@ void WTableAnalyze::refresh(bool bReload)
 
     GLOBAL.hideBlockLoading();
 
+
+    QTimer::singleShot(300,[=]
+    {
+        m_bLockChangePage = false;
+    });
 
 
 
@@ -163,7 +169,8 @@ QWidget *WTableAnalyze::scalePic(QString sId, QString sFileName)
 
 void WTableAnalyze::setScalePic(int iRow,QString sId, QString sFileName)
 {
-    QWidget *w = ui->tableWidget->cellWidget(iRow,20);
+
+    QWidget *w = ui->tableWidget->cellWidget(iRow,ui->tableWidget->columnCount()-1);
 
 
 
@@ -328,6 +335,8 @@ void WTableAnalyze::on_sbCount_valueChanged(int )
 
 void WTableAnalyze::reload()
 {
+    qDebug()<<"reload";
+
     ui->tableWidget->hide();
     CAnalyzeData ana;
 
@@ -336,14 +345,17 @@ void WTableAnalyze::reload()
     QStringList listFileName;
     QVariantList list ;
     //  list.append(ana.mColor);
-    list.append(CSQL.getAnalyzeData(0,ui->sbCount->value(),ui->cbClass->currentText()));
 
+    int iStartIdx = qBound(0,ui->sbNowPage->value()-1,ui->lbTotalPage->text().toInt()-1)*ui->sbCount->value();
+
+    list.append(CSQL.getAnalyzeData(iStartIdx,ui->sbCount->value(),ui->cbClass->currentText()));
+
+    ui->tableWidget->setRowCount(0);
 
     if(list.length()<1)
     {
-        ui->tableWidget->setRowCount(0);
 
-        // return;
+        return;
     }
     for(int i=0;i<list.length();i++)
     {
@@ -387,7 +399,7 @@ void WTableAnalyze::reload()
         listFileName.append(dData["Name"].toString());
 
 
-        ui->tableWidget->setCellWidget(i,20,new QWidget());
+        ui->tableWidget->setCellWidget(i,ui->tableWidget->columnCount()-1,new QWidget());
 
 
         //  ui->tableWidget->setCellWidget(i,iCol,scalePic(dData["Id"].toString(),dData["Name"].toString()));
@@ -462,18 +474,24 @@ void WTableAnalyze::on_btnChangeCount_clicked()
 
 void WTableAnalyze::on_btnNextPage_clicked()
 {
-    if(m_iPage+1>= ui->lbTotalPage->text().toInt() )
+    if(m_bLockChangePage)
+        return ;
+
+    if(ui->sbNowPage->value() >= ui->lbTotalPage->text().toInt() )
         return;
 
     m_iPage++;
 
     refresh(true);
 
-
 }
 
 void WTableAnalyze::on_sbNowPage_editingFinished()
 {
+    if(m_bLockChangePage)
+        return ;
+
+
     if(m_iPage == ui->sbNowPage->value()-1)
         return;
     qDebug()<<"edit page";
@@ -486,6 +504,10 @@ void WTableAnalyze::on_sbNowPage_editingFinished()
 
 void WTableAnalyze::on_btnPrePage_clicked()
 {
+    if(m_bLockChangePage)
+        return ;
+
+
     if(m_iPage<=0 )
         return;
 
@@ -540,6 +562,9 @@ void WTableAnalyze::on_btnOutput_clicked()
 
     QVariantList list = CSQL.getAnalyzeData("0",-1,ui->cbClass->currentText());
 
+    qDebug()<<"aa3 : "<<list.at(0).toMap()["ClassGroup"].toString();
+
+
     if(!QDir(sPath+"/"+GLOBAL.m_sUser).exists())
         QDir().mkdir(sPath+"/"+GLOBAL.m_sUser);
 
@@ -557,9 +582,13 @@ void WTableAnalyze::on_btnOutput_clicked()
 
         for(int i=0;i<list.length();i++)
         {
+
+
+
             CAnalyzeData d ;
 
             d.setData(list.at(i).toMap());
+
 
             if(i==0)
             {
@@ -630,6 +659,8 @@ void WTableAnalyze::on_btnClass_clicked()
     dialog.setData(GLOBAL.m_sUser,GLOBAL.m_sPassword,listCurrentClass);
 
 
+    dialog.setUserList(CSQL.userList(),QStringList());
+
     int iRe = dialog.exec();
 
     if(iRe ==1 )
@@ -656,6 +687,40 @@ void WTableAnalyze::on_btnClass_clicked()
         ui->cbClass->clear();
         ui->cbClass->addItem("All");
         ui->cbClass->addItems(dialog.m_listClass);
+    }
+
+    if(iRe ==4 )
+    {
+
+        QString sErrorMsg;
+
+        bool b = CSQL.addUser(dialog.m_editUser.first,dialog.m_editUser.second,sErrorMsg);
+
+        DialogMsg msg;
+
+        if(b)
+        {
+            msg.setMsg("","已新增使用者 : "+dialog.m_editUser.first,QStringList()<<"OK");
+        }
+        else
+        {
+            msg.setMsg("Error",sErrorMsg,QStringList()<<"OK");
+        }
+        msg.exec();
+    }
+
+    if(iRe ==5 )
+    {
+
+        QString sErrorMsg;
+
+        CSQL.delUser(dialog.m_editUser.first,dialog.m_editUser.second,sErrorMsg);
+
+        DialogMsg msg;
+
+        msg.setMsg("","已刪除使用者 : "+dialog.m_editUser.first,QStringList()<<"OK");
+
+        msg.exec();
     }
 }
 

@@ -1,0 +1,24 @@
+CREATE ..\..\..\..\q_project\RLib\libRpkLibQt5Win.a
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\CTcpClient.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\CTcpServer.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\Network.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\DataBase.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\CSql.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\Ipc.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\CLocalServer.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\CLocalClient.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\Packager.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\Utility.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\Library.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\qrc_res.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\moc_Network.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\moc_DataBase.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\moc_Ipc.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\moc_Utility.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\moc_Library.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\moc_CSql.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\moc_CTcpClient.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\moc_CTcpServer.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\moc_CLocalServer.o
+ADDMOD ..\..\..\..\q_project\RLib\source\obj\moc_CLocalClient.o
+SAVE

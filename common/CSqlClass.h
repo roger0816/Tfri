@@ -56,6 +56,11 @@ public:
 
     bool login(QString sUser, QString sPassword, QString &sError);
 
+    bool addUser(QString sUser, QString sPassword, QString &sError);
+
+    bool delUser(QString sUser, QString, QString &sError);
+
+    QStringList userList();
 
     QSqlDatabase m_db;
 

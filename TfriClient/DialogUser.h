@@ -31,6 +31,10 @@ public:
     QString m_sReData;
 
     QStringList m_listClass;
+
+
+    QPair<QString ,QString> m_editUser;
+
 private:
     Ui::DialogUser *ui;
 
@@ -56,6 +60,8 @@ private slots:
     void on_txAddClass_textChanged(const QString &);
     void on_btnDelClass_clicked();
     void on_btnAddClass_clicked();
+    void on_btnAddUser_clicked();
+    void on_btnDelUser_clicked();
 };
 
 #endif // DIALOGUSER_H

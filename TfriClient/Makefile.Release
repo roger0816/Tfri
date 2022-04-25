@@ -2514,41 +2514,7 @@ obj/DialogMsg.o: ../common/DialogMsg.cpp ../common/DialogMsg.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtouchdevice.h \
-		obj/ui_header/ui_DialogMsg.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/QVariant \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QApplication \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QGridLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qgridlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QHBoxLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QLabel \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlabel.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qframe.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QLineEdit \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlineedit.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtextcursor.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtextformat.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qpen.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtextoption.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QPushButton \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qicon.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QScrollArea \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qscrollarea.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QStackedWidget \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qstackedwidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QVBoxLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QWidget
+		obj/ui_header/ui_DialogMsg.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj\DialogMsg.o ..\common\DialogMsg.cpp
 
 obj/CCallApi.o: CCallApi.cpp CCallApi.h \
@@ -2831,30 +2797,7 @@ obj/DialogDetail.o: DialogDetail.cpp DialogDetail.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtCore/qtimer.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtCore/qbasictimer.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtGui/QResizeEvent \
-		obj/ui_header/ui_DialogDetail.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/QVariant \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QApplication \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QGridLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qgridlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QHBoxLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QLabel \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlabel.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qframe.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QPushButton \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qicon.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QSpacerItem \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QWidget
+		obj/ui_header/ui_DialogDetail.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj\DialogDetail.o DialogDetail.cpp
 
 obj/DialogSelectFilter.o: DialogSelectFilter.cpp DialogSelectFilter.h \
@@ -2979,42 +2922,7 @@ obj/DialogSelectFilter.o: DialogSelectFilter.cpp DialogSelectFilter.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtCore/QDir \
 		../../../Qt/5.12.12/mingw73_64/include/QtCore/qdir.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtCore/qfileinfo.h \
-		obj/ui_header/ui_DialogSelectFilter.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/QVariant \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QApplication \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QCheckBox \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qcheckbox.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qicon.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QFrame \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qframe.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QGridLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qgridlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QGroupBox \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qgroupbox.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QHBoxLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QLabel \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlabel.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QLineEdit \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlineedit.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtextcursor.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtextformat.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QPushButton \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QScrollArea \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qscrollarea.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QSpacerItem \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QVBoxLayout
+		obj/ui_header/ui_DialogSelectFilter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj\DialogSelectFilter.o DialogSelectFilter.cpp
 
 obj/DialogUser.o: DialogUser.cpp DialogUser.h \
@@ -3124,54 +3032,7 @@ obj/DialogUser.o: DialogUser.cpp DialogUser.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtouchdevice.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtCore/QDebug \
 		../common/DialogMsg.h \
-		obj/ui_header/ui_DialogUser.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/QVariant \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QApplication \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QComboBox \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qcombobox.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qstyleoption.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractspinbox.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qvalidator.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qregularexpression.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qicon.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qslider.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractslider.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qstyle.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qtabbar.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qtabwidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qrubberband.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qframe.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qabstractitemmodel.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QFrame \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QGridLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qgridlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QHBoxLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QLabel \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlabel.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QLineEdit \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlineedit.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtextcursor.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtextformat.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qpen.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtextoption.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QPushButton \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QSpacerItem \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QStackedWidget \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qstackedwidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QVBoxLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QWidget
+		obj/ui_header/ui_DialogUser.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj\DialogUser.o DialogUser.cpp
 
 obj/Global.o: Global.cpp Global.h \
@@ -3471,23 +3332,7 @@ obj/LayerLoadingLock.o: LayerLoadingLock.cpp LayerLoadingLock.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtouchdevice.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtCore/QDebug \
 		../../../Qt/5.12.12/mingw73_64/include/QtCore/QTimerEvent \
-		obj/ui_header/ui_LayerLoadingLock.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/QVariant \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QApplication \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QGridLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qgridlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QLabel \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlabel.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qframe.h
+		obj/ui_header/ui_LayerLoadingLock.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj\LayerLoadingLock.o LayerLoadingLock.cpp
 
 obj/WTableAnalyze.o: WTableAnalyze.cpp WTableAnalyze.h \
@@ -3732,17 +3577,7 @@ obj/WTableAnalyze.o: WTableAnalyze.cpp WTableAnalyze.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qspinbox.h \
 		DialogDetail.h \
 		DialogUser.h \
-		obj/ui_header/ui_WTableAnalyze.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QApplication \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QHBoxLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QPushButton \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QSpacerItem
+		obj/ui_header/ui_WTableAnalyze.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj\WTableAnalyze.o WTableAnalyze.cpp
 
 obj/main.o: main.cpp widget.h \
@@ -4136,79 +3971,7 @@ obj/widget.o: widget.cpp widget.h \
 		Global.h \
 		LayerLoadingLock.h \
 		../../../Qt/5.12.12/mingw73_64/include/QtCore/QTimerEvent \
-		obj/ui_header/ui_widget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QApplication \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QCheckBox \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qcheckbox.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qicon.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QFormLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qformlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qgridlayout.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QGridLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QHBoxLayout \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QLabel \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlabel.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qframe.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QLineEdit \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qlineedit.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtextcursor.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtextformat.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qpen.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qtextoption.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QPushButton \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QSpacerItem \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QSpinBox \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qspinbox.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractspinbox.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qvalidator.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qregularexpression.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QStackedWidget \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qstackedwidget.h \
-		WTableAnalyze.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QHeaderView \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qheaderview.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractitemview.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qabstractitemmodel.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qitemselectionmodel.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qstyleoption.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qslider.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qabstractslider.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qstyle.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qtabbar.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qtabwidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qrubberband.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QAbstractItemDelegate \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QFileDialog \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qfiledialog.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qdialog.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/QShowEvent \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QVBoxLayout \
-		../common/DialogMsg.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QDialog \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/QThread \
-		../../../Qt/5.12.12/mingw73_64/include/QtCore/qthread.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/QTableWidget \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qtablewidget.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtWidgets/qtableview.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/QImage \
-		DialogSelectFilter.h \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/QResizeEvent \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/QPainter \
-		../../../Qt/5.12.12/mingw73_64/include/QtGui/qpainter.h \
-		DialogDetail.h \
-		DialogUser.h
+		obj/ui_header/ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj\widget.o widget.cpp
 
 obj/qrc_res.o: release/qrc_res.cpp 

@@ -91,6 +91,17 @@ int CCallApi::callLogin(QString sUser, QString sPassword, QString &sErrorMsg)
     return iType;
 }
 
+bool CCallApi::addUser(QString sUser, QString sPassword)
+{
+    bool bRe = false;
+
+
+
+
+
+    return bRe;
+}
+
 bool CCallApi::queryHistory()
 {
    bool bRe =false;

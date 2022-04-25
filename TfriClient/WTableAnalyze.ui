@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1207</width>
+    <width>1280</width>
     <height>445</height>
    </rect>
   </property>
@@ -42,7 +42,214 @@
       </font>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0">
+      <item row="3" column="0" colspan="2">
+       <widget class="QWidget" name="widget_10" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QTableWidget" name="tableWidget">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">
+font: 75 12pt &quot;Arial Narrow&quot;;</string>
+           </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::SingleSelection</enum>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+           <attribute name="horizontalHeaderMinimumSectionSize">
+            <number>40</number>
+           </attribute>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>80</number>
+           </attribute>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="verticalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderDefaultSectionSize">
+            <number>40</number>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>Sid</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>FileName</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>User</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Class</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Building</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Bicyclist</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Car  </string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Fence</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Pavement</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Pedestrian</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Pole</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Road</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Road Marking</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Sky  </string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>SignSymbol</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Tree</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Unlabelled</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Timer  </string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Result</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>CreateTime</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>UpdateTime</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Picture (點擊詳細)</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QWidget" name="wColorArea" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
        <widget class="QWidget" name="widget_2" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -168,175 +375,6 @@
           </widget>
          </item>
         </layout>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QTableWidget" name="tableWidget">
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <italic>false</italic>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">
-font: 75 12pt &quot;Arial Narrow&quot;;</string>
-        </property>
-        <property name="editTriggers">
-         <set>QAbstractItemView::NoEditTriggers</set>
-        </property>
-        <property name="selectionMode">
-         <enum>QAbstractItemView::SingleSelection</enum>
-        </property>
-        <property name="selectionBehavior">
-         <enum>QAbstractItemView::SelectRows</enum>
-        </property>
-        <attribute name="horizontalHeaderMinimumSectionSize">
-         <number>40</number>
-        </attribute>
-        <attribute name="horizontalHeaderDefaultSectionSize">
-         <number>80</number>
-        </attribute>
-        <attribute name="horizontalHeaderStretchLastSection">
-         <bool>true</bool>
-        </attribute>
-        <attribute name="verticalHeaderVisible">
-         <bool>false</bool>
-        </attribute>
-        <attribute name="verticalHeaderDefaultSectionSize">
-         <number>40</number>
-        </attribute>
-        <column>
-         <property name="text">
-          <string>Sid</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>FileName</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>User</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Building</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Bicyclist</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Car  </string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Fence</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Pavement</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Pedestrian</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Pole</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Road</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Road Marking</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Sky  </string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>SignSymbol</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Tree</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Unlabelled</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Timer  </string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Result</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>CreateTime</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>UpdateTime</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Picture (點擊詳細)</string>
-         </property>
-        </column>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QWidget" name="wColorArea" native="true">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>20</height>
-         </size>
-        </property>
        </widget>
       </item>
      </layout>

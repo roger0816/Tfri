@@ -21,6 +21,8 @@ public:
     static CCallApi &INS();
     int callLogin(QString sUser,QString sPassword,QString &sErrorMsg);
 
+    bool addUser(QString sUser,QString sPassword);
+
     bool queryHistory();
 
     void openConnect();

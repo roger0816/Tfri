@@ -234,7 +234,7 @@ struct CAnalyzeData
     CAnalyzeData()
     {
 
-        listKey<<"Id"<<"Name"<<"User"<<"Building"<<"Bicyclist"<<"Car"<<"Fence"
+        listKey<<"Id"<<"Name"<<"User"<<"ClassGroup"<<"Building"<<"Bicyclist"<<"Car"<<"Fence"
                  <<"Pavement"<<"Pedestrian"<<"Pole"<<"Road"<<"Road_Marking"
                 <<"Sky"<<"SignSymbol"<<"Tree"<<"Unlabelled"
                <<"Image_Width"<<"Image_Height"<<"Algorithm_Time"<<"Algorithm_Result"

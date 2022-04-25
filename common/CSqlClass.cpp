@@ -165,7 +165,7 @@ void CSqlClass::setAnalyzeData(QString sId,CAnalyzeData cData)
     query.bindValue(":User",cData.sUser);
     QString sGroup = cData.sClassGroup;
 
-    qDebug()<<"aa 1.2 : "<<sGroup;
+
     if(sGroup=="")
         sGroup = "Def";
     query.bindValue(":ClassGroup",sGroup);
@@ -321,10 +321,10 @@ QVariantList CSqlClass::getAnalyzeData(QString sLastDate, int iCount, QString sG
     if(iCount ==-1)
         sCmdLimit="";
 
-   // QString sCmd = "SELECT * FROM AnalyzeData WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC LIMIT :Count";
+    // QString sCmd = "SELECT * FROM AnalyzeData WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC LIMIT :Count";
 
-//    if(iCount==-1)
-//        sCmd = "SELECT * FROM AnalyzeData WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC";
+    //    if(iCount==-1)
+    //        sCmd = "SELECT * FROM AnalyzeData WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC";
 
     query.prepare(sCmd.arg(sCmdGroup).arg(sCmdLimit));
     query.bindValue(":DateTime",sLastDate);
@@ -342,6 +342,7 @@ QVariantList CSqlClass::getAnalyzeData(QString sLastDate, int iCount, QString sG
         cData.sUser = query.value("User").toString() ;
         cData.sCreateTime = query.value("CreateTime").toString() ;
         cData.sUpdateTime = query.value("UpdateTime").toString() ;
+        cData.sClassGroup = query.value("ClassGroup").toString() ;
 
 
         cData.sBuilding = query.value("Building").toString() ;
@@ -366,7 +367,7 @@ QVariantList CSqlClass::getAnalyzeData(QString sLastDate, int iCount, QString sG
         cData.sAlgorithmTime = query.value("AlgorithmTime").toString() ;
         cData.bResult = query.value("Result").toBool() ;
 
-        qDebug()<<"append : "<<cData.sId;
+
         listRe.append(cData.toMap());
     }
 
@@ -388,6 +389,7 @@ QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount, QString sGroup)
         sCmdGroup = " ";
 
 
+    qDebug()<<"aa0 : "<<sGroup;
     query.prepare(sCmd.arg(sCmdGroup));
     query.bindValue(0,iCount);
     query.bindValue(1,iIdx);
@@ -402,7 +404,8 @@ QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount, QString sGroup)
         cData.sUser = query.value("User").toString() ;
         cData.sCreateTime = query.value("CreateTime").toString() ;
         cData.sUpdateTime = query.value("UpdateTime").toString() ;
-
+        cData.sClassGroup = query.value("ClassGroup").toString() ;
+        qDebug()<<"aa1 : "<<cData.sClassGroup;
 
         cData.sBuilding = query.value("Building").toString() ;
 
@@ -429,6 +432,9 @@ QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount, QString sGroup)
 
         listRe.append(cData.toMap());
     }
+
+
+    qDebug()<<"aa2 : "<<listRe.at(0).toMap()["ClassGroup"];
 
     return listRe;
 }
@@ -597,7 +603,7 @@ QList<QVariantMap> CSqlClass::getUserData(QString sUser)
 
     if(sUser=="")
     {
-         query.exec("SELECT * FROM User;");
+        query.exec("SELECT * FROM User;");
     }
 
     else
@@ -705,4 +711,72 @@ bool CSqlClass::login(QString sUser, QString sPassword, QString &sError)
 
     return bRe;
 
+}
+
+bool CSqlClass::addUser(QString sUser, QString sPassword,QString &sError)
+{
+
+    bool bHasOne = false;
+    QSqlQuery query(m_db);
+
+    query.prepare("SELECT * FROM User WHERE Name=? ;");
+    query.bindValue(0,sUser);
+    query.exec();
+
+    bHasOne = query.next();
+
+    if(bHasOne)
+    {
+        sError ="帳號已存在";
+
+        return false;
+    }
+    else
+    {
+
+        query.clear();
+
+        QString sCmd="INSERT INTO User (Name, Password, ClassGroup,CreateTime,UpdateTime) "
+                     " VALUES ('%1', '%2', 'Def','%3','%4'); ";
+
+        sCmd = sCmd.arg(sUser).arg(sPassword).arg(QDateTime::currentDateTime().toString("yyyyMMddhhmmss")).arg(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
+
+        qDebug()<<"sCmd"<<sCmd;
+
+        query.exec(sCmd);
+
+    }
+
+
+
+    return true;
+}
+
+bool CSqlClass::delUser(QString sUser, QString , QString &)
+{
+
+    QSqlQuery query(m_db);
+
+    query.prepare("DELETE  FROM User WHERE Name=? ;");
+    query.bindValue(0,sUser);
+    query.exec();
+
+    return true;
+}
+
+QStringList CSqlClass::userList()
+{
+    QStringList listUser;
+
+
+    QSqlQuery query(m_db);
+
+    query.exec("SELECT * FROM User ;");
+
+    while(query.next())
+    {
+        listUser.append(query.value(1).toString());
+    }
+
+    return listUser;
 }

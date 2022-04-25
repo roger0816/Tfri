@@ -92,6 +92,8 @@ private:
     bool m_bFirst = true;
 
     int m_iPage = 0;
+
+    bool m_bLockChangePage = false;
 };
 
 #endif // WTABLEANALYZE_H
