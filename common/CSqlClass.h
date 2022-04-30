@@ -29,11 +29,11 @@ public:
     // just set/get db
     void setAnalyzeData(QString sId, CAnalyzeData cData);
     void deleteAnalyzeData(QString sId);
-    QVariantList getAnalyzeData(QString sLastDate, int iCount=3,QString sGroup ="");
+    QVariantList getAnalyzeData(QString sUser,QString sLastDate, int iCount=3,QString sGroup ="");
 
-    QVariantList getAnalyzeData(int iIdx, int iCount=3,QString sGroup ="");
+    QVariantList getAnalyzeData(QString sUser,int iIdx, int iCount=3,QString sGroup ="");
 
-    int getAnalyzeCount(QString sGroup="");
+    int getAnalyzeCount(QString sUser ,QString sGroup="");
 
     QVariantMap getAnalyzeFromId(QString sId);
 

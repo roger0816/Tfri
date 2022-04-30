@@ -59,7 +59,7 @@ void WTableAnalyze::refresh(bool bReload)
     m_bLockChangePage = true;
 
     GLOBAL.showBlockLoading(this);
-    int iTotalDataCount = CSQL.getAnalyzeCount(ui->cbClass->currentText());
+    int iTotalDataCount = CSQL.getAnalyzeCount(ui->cbClass->currentText(),GLOBAL.m_sUser);
 
     int iTotalPage = iTotalDataCount/ui->sbCount->value();
 
@@ -93,7 +93,7 @@ void WTableAnalyze::refresh(bool bReload)
 
 void WTableAnalyze::showEvent(QShowEvent *)
 {
-
+    ui->lbUserName->setText(GLOBAL.m_sUser);
     GLOBAL.showBlockLoading(this);
     slotHeaderResize(1,1,1);
 
@@ -348,7 +348,7 @@ void WTableAnalyze::reload()
 
     int iStartIdx = qBound(0,ui->sbNowPage->value()-1,ui->lbTotalPage->text().toInt()-1)*ui->sbCount->value();
 
-    list.append(CSQL.getAnalyzeData(iStartIdx,ui->sbCount->value(),ui->cbClass->currentText()));
+    list = CSQL.getAnalyzeData(GLOBAL.m_sUser,iStartIdx,ui->sbCount->value(),ui->cbClass->currentText());
 
     ui->tableWidget->setRowCount(0);
 
@@ -360,6 +360,9 @@ void WTableAnalyze::reload()
     for(int i=0;i<list.length();i++)
     {
         QVariantMap dData = list.at(i).toMap();
+
+        if(dData["User"] !=GLOBAL.m_sUser)
+            continue;
 
         ui->tableWidget->setRowCount(i+1);
 
@@ -415,7 +418,10 @@ void WTableAnalyze::uploadFile(QString sGroup, QStringList listFile)
 {
     if(listFile.length()<1)
         return;
-    QVariantList listData = CSQL.getAnalyzeData("0",-1);
+    QVariantList listData = CSQL.getAnalyzeData(GLOBAL.m_sUser,"0",-1);
+
+    if(listData.length()<1)
+        return;
 
     QStringList listMerge,listNoMerge;
 
@@ -494,7 +500,7 @@ void WTableAnalyze::on_sbNowPage_editingFinished()
 
     if(m_iPage == ui->sbNowPage->value()-1)
         return;
-    qDebug()<<"edit page";
+
     m_iPage = ui->sbNowPage->value()-1;
 
     refresh(true);
@@ -560,9 +566,8 @@ void WTableAnalyze::on_btnOutput_clicked()
     QString sPath= QFileDialog::getExistingDirectory(this,"AA",".");
 
 
-    QVariantList list = CSQL.getAnalyzeData("0",-1,ui->cbClass->currentText());
+    QVariantList list = CSQL.getAnalyzeData(GLOBAL.m_sUser,"0",-1,ui->cbClass->currentText());
 
-    qDebug()<<"aa3 : "<<list.at(0).toMap()["ClassGroup"].toString();
 
 
     if(!QDir(sPath+"/"+GLOBAL.m_sUser).exists())

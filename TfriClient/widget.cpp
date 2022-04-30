@@ -45,6 +45,8 @@ Widget::Widget(QWidget *parent)
     ui->txPassword->setText(LIB.database()->getKeyPair("lastPassword"));
           //  bool insertKeyPair(QString sKey, QString sValue, bool isHaveKeyDoUpdate = true);
 
+    if(LIB.database()->getKeyPair("isSavePassword").toInt()!=1)
+        ui->txPassword->clear();
 
 }
 

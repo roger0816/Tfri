@@ -301,7 +301,7 @@ void CSqlClass::insertDecodePic(QString sId, QString sName, QByteArray dData)
 
 }
 
-QVariantList CSqlClass::getAnalyzeData(QString sLastDate, int iCount, QString sGroup)
+QVariantList CSqlClass::getAnalyzeData(QString sUser, QString sLastDate, int iCount, QString sGroup)
 {
     QVariantList listRe;
 
@@ -309,17 +309,22 @@ QVariantList CSqlClass::getAnalyzeData(QString sLastDate, int iCount, QString sG
 
     QString sCmd = "SELECT * FROM AnalyzeData WHERE  %1 UpdateTime>:DateTime ORDER BY UpdateTime ASC %2";
 
-    QString sCmdGroup = " ClassGroup = '"+sGroup+"' AND";
+    QString sCmdGroup = " ClassGroup = '"+sGroup+"' ";
 
 
     if(sGroup=="" || sGroup.toLower()=="all")
         sCmdGroup ="";
 
-    QString sCmdLimit =" LIMIT :Count";
+    QString sCmdLimit =" AND LIMIT :Count";
 
 
     if(iCount ==-1)
         sCmdLimit="";
+
+    sCmdGroup += " AND User = '"+sUser+"' ";
+
+    if(sUser=="root")
+        sCmdGroup +="";
 
     // QString sCmd = "SELECT * FROM AnalyzeData WHERE UpdateTime>:DateTime ORDER BY UpdateTime ASC LIMIT :Count";
 
@@ -375,7 +380,7 @@ QVariantList CSqlClass::getAnalyzeData(QString sLastDate, int iCount, QString sG
 
 }
 
-QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount, QString sGroup)
+QVariantList CSqlClass::getAnalyzeData(QString sUser, int iIdx, int iCount, QString sGroup)
 {
     QVariantList listRe;
 
@@ -385,11 +390,22 @@ QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount, QString sGroup)
     QString sCmd = "SELECT * FROM AnalyzeData %1 ORDER BY Sid ASC LIMIT ? OFFSET ?  ";
 
     QString sCmdGroup =" WHERE ClassGroup = '"+sGroup+"' ";
+
+    bool bHasGroup = true;
+
     if(sGroup=="" || sGroup.toLower()=="all")
+    {
+        bHasGroup = false;
         sCmdGroup = " ";
+    }
+    if(sUser!="root")
+    {
+        if(bHasGroup)
+            sCmdGroup += " AND User ='"+sUser+"' ";
+        else
+            sCmdGroup += "WHERE User ='"+sUser+"' ";
+    }
 
-
-    qDebug()<<"aa0 : "<<sGroup;
     query.prepare(sCmd.arg(sCmdGroup));
     query.bindValue(0,iCount);
     query.bindValue(1,iIdx);
@@ -434,13 +450,13 @@ QVariantList CSqlClass::getAnalyzeData(int iIdx, int iCount, QString sGroup)
     }
 
 
-    qDebug()<<"aa2 : "<<listRe.at(0).toMap()["ClassGroup"];
-
     return listRe;
 }
 
-int CSqlClass::getAnalyzeCount(QString sGroup)
+int CSqlClass::getAnalyzeCount(QString sUser, QString sGroup)
 {
+
+
     int iRe = 0;
 
     QSqlQuery query(m_db);
@@ -449,10 +465,20 @@ int CSqlClass::getAnalyzeCount(QString sGroup)
 
     QString sGroupCmd = "  WHERE ClassGroup ='"+sGroup+"' ";
 
+    bool bHasGroup = true;
+
     if(sGroup=="" || sGroup.toLower()=="all")
+    {
+        bHasGroup = false;
         sGroupCmd=" ";
-
-
+    }
+    if(sUser!="root")
+    {
+        if(bHasGroup)
+            sGroupCmd += " AND User ='"+sUser+"' ";
+        else
+            sGroupCmd += "WHERE User ='"+sUser+"' ";
+    }
     query.exec(sCmd.arg(sGroupCmd));
 
     if(query.next())

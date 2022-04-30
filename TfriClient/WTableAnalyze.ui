@@ -271,6 +271,35 @@ font: 75 12pt &quot;Arial Narrow&quot;;</string>
           <number>0</number>
          </property>
          <item>
+          <widget class="QWidget" name="widget_11" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>140</width>
+             <height>0</height>
+            </size>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="0">
+             <widget class="QLabel" name="lbUserName">
+              <property name="font">
+               <font>
+                <pointsize>14</pointsize>
+                <italic>true</italic>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(0, 170, 255);</string>
+              </property>
+              <property name="text">
+               <string>USER</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="btnClass">
            <property name="text">
             <string>設定</string>
