@@ -59,7 +59,7 @@ void WTableAnalyze::refresh(bool bReload)
     m_bLockChangePage = true;
 
     GLOBAL.showBlockLoading(this);
-    int iTotalDataCount = CSQL.getAnalyzeCount(ui->cbClass->currentText(),GLOBAL.m_sUser);
+    int iTotalDataCount = CSQL.getAnalyzeCount(GLOBAL.m_sUser,ui->cbClass->currentText());
 
     int iTotalPage = iTotalDataCount/ui->sbCount->value();
 
@@ -170,9 +170,10 @@ QWidget *WTableAnalyze::scalePic(QString sId, QString sFileName)
 void WTableAnalyze::setScalePic(int iRow,QString sId, QString sFileName)
 {
 
-    QWidget *w = ui->tableWidget->cellWidget(iRow,ui->tableWidget->columnCount()-1);
 
-
+    QWidget *w;// = ui->tableWidget->cellWidget(iRow,ui->tableWidget->columnCount()-1);
+    w = new QWidget;
+    qDebug()<<"sId : "<<sId<<"FileName : "<<sFileName;
 
     if(sId=="")
         return;
@@ -186,13 +187,15 @@ void WTableAnalyze::setScalePic(int iRow,QString sId, QString sFileName)
 
     lay->addItem(item,0,0);
 
-
+    qDebug()<<"aa1";
     QStringList listPic;
 
     QString sTmp =QString::number(sId.toInt());  //  00001  to   1
 
     listPic<<"../data/input/"+sTmp+"/"+sFileName;
     listPic<<"../data/output/"+sTmp+"/"+sFileName.split(".").first()+".png";
+
+
 
     for(int i=0;i<listPic.length();i++)
     {
@@ -210,11 +213,14 @@ void WTableAnalyze::setScalePic(int iRow,QString sId, QString sFileName)
 
     w->setLayout(lay);
 
-    //  ui->tableWidget->setCellWidget(iRow,20,w);
+      ui->tableWidget->setCellWidget(iRow,ui->tableWidget->columnCount()-1,w);
 }
 
 void WTableAnalyze::setPicList(QStringList listSid, QStringList listName)
 {
+
+
+
     QTimer::singleShot(100,this,[=]()
     {
         for(int i=0;i<listSid.length() && i<listName.length();i++)
@@ -279,7 +285,7 @@ void WTableAnalyze::slotHeaderResize(int , int , int )
 
 void WTableAnalyze::slotCellClicked(int iRow, int iCol)
 {
-    if(iCol !=20 || iRow<0)
+    if(iCol !=ui->tableWidget->columnCount()-1 || iRow<0)
         return;
 
 
@@ -419,9 +425,6 @@ void WTableAnalyze::uploadFile(QString sGroup, QStringList listFile)
     if(listFile.length()<1)
         return;
     QVariantList listData = CSQL.getAnalyzeData(GLOBAL.m_sUser,"0",-1);
-
-    if(listData.length()<1)
-        return;
 
     QStringList listMerge,listNoMerge;
 
@@ -566,7 +569,7 @@ void WTableAnalyze::on_btnOutput_clicked()
     QString sPath= QFileDialog::getExistingDirectory(this,"AA",".");
 
 
-    QVariantList list = CSQL.getAnalyzeData(GLOBAL.m_sUser,"0",-1,ui->cbClass->currentText());
+    QVariantList list = CSQL.getAnalyzeData(GLOBAL.m_sUser,0,-1,ui->cbClass->currentText());
 
 
 

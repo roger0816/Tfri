@@ -421,7 +421,7 @@ QVariantList CSqlClass::getAnalyzeData(QString sUser, int iIdx, int iCount, QStr
         cData.sCreateTime = query.value("CreateTime").toString() ;
         cData.sUpdateTime = query.value("UpdateTime").toString() ;
         cData.sClassGroup = query.value("ClassGroup").toString() ;
-        qDebug()<<"aa1 : "<<cData.sClassGroup;
+
 
         cData.sBuilding = query.value("Building").toString() ;
 
@@ -479,6 +479,9 @@ int CSqlClass::getAnalyzeCount(QString sUser, QString sGroup)
         else
             sGroupCmd += "WHERE User ='"+sUser+"' ";
     }
+
+    qDebug()<<sCmd.arg(sGroupCmd);
+
     query.exec(sCmd.arg(sGroupCmd));
 
     if(query.next())

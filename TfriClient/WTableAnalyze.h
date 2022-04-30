@@ -48,6 +48,8 @@ public:
 
     void setPicList(QStringList listSid,QStringList listName);
 
+    QWidget *w ;
+
 
 public slots:
 
