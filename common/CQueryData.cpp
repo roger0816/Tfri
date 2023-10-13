@@ -112,7 +112,7 @@ void CQueryData::query()
 
   //  QString sUrl = QString("http://161.35.98.42:8080/v2.1/classify_image");
 
-        QString sUrl = QString("http://161.35.98.42:8080/v2.1/classify_image?decimalplaces=3");
+        QString sUrl = QString("http://tfri.chencan.info:8080/v2.1/classify_image?decimalplaces=3");
 
     QNetworkRequest request;
 

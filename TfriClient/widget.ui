@@ -302,7 +302,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>v1.2.0501</string>
+             <string>v1.3.1013</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

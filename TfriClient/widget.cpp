@@ -48,6 +48,10 @@ Widget::Widget(QWidget *parent)
     if(LIB.database()->getKeyPair("isSavePassword").toInt()!=1)
         ui->txPassword->clear();
 
+
+
+    // ui->stackedWidget->setCurrentWidget(ui->pageAnalyze);
+
 }
 
 Widget::~Widget()
@@ -95,7 +99,12 @@ void Widget::on_pushButton_clicked()
 
     qDebug()<<"send size : "<<input.size();
 
-    LIB.network()->connectHost("157.245.142.72","6000",input,output);
+  //  LIB.network()->connectHost("157.245.142.72","6000",input,output);
+
+      LIB.network()->connectHost("172.233.80.237","6000",input,output);
+
+
+
 }
 
 void Widget::on_pushButton_2_clicked()
@@ -143,12 +152,9 @@ void Widget::on_btnLogin_clicked()
     {
         QString sErrorMsg;
 
-//        int iType = CCallApi::INS().callLogin(ui->txUser->text().trimmed(),ui->txPassword->text().trimmed(),sErrorMsg);
-
-//        if(iType!=0)
-//            bOk = true;
-
         bOk = CSQL.login(ui->txUser->text().trimmed(),ui->txPassword->text().trimmed(),sErrorMsg);
+
+
 
     }
 
