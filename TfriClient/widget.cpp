@@ -99,9 +99,9 @@ void Widget::on_pushButton_clicked()
 
     qDebug()<<"send size : "<<input.size();
 
-  //  LIB.network()->connectHost("157.245.142.72","6000",input,output);
+    LIB.network()->connectHost("139.162.73.81","6000",input,output);
 
-      LIB.network()->connectHost("172.233.80.237","6000",input,output);
+   //   LIB.network()->connectHost("172.233.80.237","6000",input,output);
 
 
 
